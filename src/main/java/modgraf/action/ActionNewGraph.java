@@ -1,4 +1,4 @@
-﻿package modgraf.action;
+package modgraf.action;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

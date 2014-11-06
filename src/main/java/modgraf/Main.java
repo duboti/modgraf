@@ -1,4 +1,4 @@
-﻿package modgraf;
+package modgraf;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;

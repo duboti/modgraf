@@ -1,4 +1,4 @@
-﻿package modgraf.view;
+package modgraf.view;
 
 import static modgraf.view.properties.DefaultProperties.createDefaultLanguage;
 import static modgraf.view.properties.DefaultProperties.createDefaultProperties;
