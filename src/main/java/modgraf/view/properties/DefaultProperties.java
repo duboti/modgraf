@@ -20,7 +20,7 @@ public class DefaultProperties
 		prop.setProperty("properties-file", "config.properties");
 		prop.setProperty("program-version", "3.2 beta");
 		prop.setProperty("program-name", "Modgraf v"+prop.getProperty("program-version"));
-		prop.setProperty("use-class-loader", "false");
+		prop.setProperty("use-class-loader", "true");
 		prop.setProperty("graphComponent-width", "600");
 		prop.setProperty("graphComponent-height", "300");
 		prop.setProperty("default-graph-type", "undirected");

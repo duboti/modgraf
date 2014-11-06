@@ -56,12 +56,12 @@ public class Help implements ActionListener
 	private JScrollPane createTextPanel()
 	{
 		JEditorPane editorPane = new JEditorPane();
-		File helpFile = new File("icons/help/help.html");
+		File helpFile = new File("help/help.html");
 		try
 		{
 			URL helpFileURL = null;
 			if (useClassLoader)
-				helpFileURL = getClass().getClassLoader().getResource("icons/help/help.html");
+				helpFileURL = getClass().getClassLoader().getResource("help/help.html");
 			else
 				helpFileURL = helpFile.toURI().toURL();
 			editorPane.setPage(helpFileURL);

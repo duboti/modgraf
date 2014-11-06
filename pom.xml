@@ -13,6 +13,13 @@
         <version>1.0</version>
     </parent>
 
+    <repositories>
+        <repository>
+            <id>my-local-repo</id>
+            <url>file:\\${basedir}\my-repo</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -34,8 +41,8 @@
             <groupId>layout.TableLayout</groupId>
             <artifactId>TableLayout</artifactId>
             <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/tablelayout.jar</systemPath>
+            <!--<scope>system</scope>-->
+            <!--<systemPath>${basedir}/src/lib/tablelayout.jar</systemPath>-->
         </dependency>
     </dependencies>
 
