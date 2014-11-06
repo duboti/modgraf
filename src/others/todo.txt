@@ -1,0 +1,74 @@
+﻿Błędy:
+- błędna kolejność w rozwiązaniu tekstowym zadania Najkrótsza ścieżka
+- nazwy Tak, Nie, Anuluj powinny być po polsku
+- Nazwa "Nowy graf" w pasku tytułu przed stworzeniem pierwszego grafu
+- Istnieje możliwość zmiany kształtu krawędzi na koło itd.
+- po zmianie języka w opcjach tracimy aktualnie otwarty graf. Graf jest wyświetlany w formie graficznej jednak niedostępne są opcje tj. zapisz, wykonaj algorytm
+- komunikaty algorytmów nie są przetłumaczone na angielski
+- "Zapisz jako" startuje zawsze z domyślnego katalogu
+
+
+Klasy wymagające refaktoringu:
+- ActionSetCustomSize
+- ? ActionNewGraph
+
+
+Podstawowe:
+- poszukać TODO w kodzie
+- dodać czasy wykonywania obliczeń przez algorytmy
+- dodać długość najkrótszej ścieżki w rozwiązaniu tekstowym
+- przycisk "wyczyść style"
+- generator grafów pełnych, dwudzielnych, losowych
+- zmodyfikować wygląd okna "Parametry startowe algorytmu"
+- wykonywanie obliczeń w oddzielnym wątku
+- klasa ze stałymi "ModgrafConstants" np directed, 
+- możliwość przybliżania i oddalania grafu 
+- możliwość przesuwania grafu na przybliżeniu + mini podgląd całości
+- funkcja cofnij (ponów)
+- zmiana typu istniejącego grafu
+- zmiana 1.0 na 0 lub 1
+
+
+Dodatkowe:
+- dodanie nowych kształtów (np. trójkąt)
+- menu Krawędź
+- wydzielenie z klasy Editor klasy Graph?Model?Data?Utils?Common?
+- wybór zakończenia strzałki
+- dodawanie wierzchołka powinno być po naciśnięciu klawisza CTRL + lewy klawisz myszki
+- zarządzanie stylami
+- zapisywanie i wczytywanie samych styli
+- wybór jednego z zainstalowanych styli
+- zaznaczanie obszaru myszką
+- przybliżanie i oddalanie grafu
+- przesuwanie całego grafu
+- opisy po najechaniu na ikonę
+- zakładki
+- dodanie grafów etykietowanych
+
+Narzędzia:
+- Opcje
+- Wyczyść style
+- Zapisz rozwiązanie tekstowe
+- Zmień typ grafu
+	- na nieskierowany
+	- na nieważony
+- Generatory
+	- graf pełny
+	- graf dwudzielny
+	- graf losowy
+
+Dokończyć (przetestować):
+- działanie opcji
+- możliwość zmiany rozmiaru (kroju, koloru) czcionki
+- zmiana koloru obramowania wierzchołka
+
+
+find modgraf -name "*.java" | xargs cat | wc -l
+11.06.2013 2700 linii kodu
+02.09.2013 3672 linii kodu (bez javadoc)
+25.09.2013 4451 linii kodu (wersja ostateczna v3.0, pełny javadoc)
+06.11.2013 5616 linii kodu (dokończona modyfikacja styli wierzchołków)
+29.05.2014 7446 linii kodu dokończona krokowa wersja alg. Dijkstry
+
+cd D:\Dokumenty\programy\java\Modgraf3
+javadoc -d .\javadoc -sourcepath .\src -encoding UTF-8 -charset UTF-8 -docencoding UTF-8 modgraf modgraf.action modgraf.algorithm modgraf.event modgraf.jgrapht modgraf.view modgraf.view.properties

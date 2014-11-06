@@ -1,0 +1,2 @@
+#create local repo with tablelayout.jar
+mvn org.apache.maven.plugins:maven-install-plugin:2.3.1:install-file -Dfile=modgraf/src/lib/tablelayout.jar -DgroupId=layout.TableLayout -DartifactId=TableLayout -Dversion=1.0 -Dpackaging=jar -DlocalRepositoryPath=modgraf/my-repo
