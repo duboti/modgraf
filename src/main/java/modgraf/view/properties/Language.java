@@ -107,7 +107,8 @@ public class Language
 		lang.setProperty("warning-not-number-double-weight-default", "Podana wartość nie jest formatu liczba/liczba (przepustowość/koszt)!\nWpisana została wartość domyślna: ");
 		lang.setProperty("warning-not-number-weight-default", "Podana wartość nie jest liczbą!\nWpisana została wartość domyślna: ");
 		lang.setProperty("warning-wrong-graph-type", "Niewłaściwy typ grafu do tego zadania!\nTen algorytm działa tylko na ");
-		
+		lang.setProperty("warning-not-generate", "Nie udało się stworzyć grafu o zadanych parametrach!");
+
 		lang.setProperty("question-changes-exist", "Istnieją zmiany, które nie zostały zapisane.\nCzy na pewno chcesz kontynuować?");
 		lang.setProperty("question-save-before-exit", "Czy chcesz zapisać zmiany przed wyjściem?");
 		lang.setProperty("question-file-exists", "Plik o podanej nazwie już istnieje.\nCzy chcesz go zastąpić?");
@@ -151,6 +152,7 @@ public class Language
 		lang.setProperty("label-graph-type", "Typ grafu");
 		lang.setProperty("label-edge-type", "Liczba parametrów krawędzi");
 		lang.setProperty("label-number-of-vertices", "Ilość wierzchołków");
+		lang.setProperty("label-number-of-edges", "Ilość krawędzi");
 		lang.setProperty("label-height", "Wysokość");
 		lang.setProperty("label-width", "Szerokość");
 		lang.setProperty("label-start-vertex", "Wierzchołek startowy");
@@ -345,8 +347,9 @@ public class Language
 		lang.setProperty("warning-not-number-double-weight-default", "The specified value is not a format number/number (capacity/cost)!\nSet the default value: ");
 		lang.setProperty("warning-not-number-weight-default", "The specified value is not a number!\nSet the default value: ");
 		lang.setProperty("warning-wrong-graph-type", "Wrong type of graph for this task!\nThis algorithm works only on ");
-		
-		lang.setProperty("question-changes-exist", "There are changes that have not been saved.\nAre you sure you want to continue?");
+        lang.setProperty("warning-not-generate", "Failed to create a graph of the given parameters!");
+
+        lang.setProperty("question-changes-exist", "There are changes that have not been saved.\nAre you sure you want to continue?");
 		lang.setProperty("question-save-before-exit", "Do you want to save your changes before exiting?");
 		lang.setProperty("question-file-exists", "A file with the same name already exists.\nDo you want to replace it?");
 		lang.setProperty("question-transparent-background", "Do you want to be transparent background?");
@@ -389,6 +392,7 @@ public class Language
 		lang.setProperty("label-graph-type", "Graph type");
 		lang.setProperty("label-edge-type", "Number of edge parameters");
 		lang.setProperty("label-number-of-vertices", "Number of vertices");
+		lang.setProperty("label-number-of-vertices", "Number of edges");
 		lang.setProperty("label-height", "Height");
 		lang.setProperty("label-width", "Width");
 		lang.setProperty("label-start-vertex", "Start vertex");

@@ -7,12 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import modgraf.jgrapht.DoubleWeightedGraph;
 import modgraf.jgrapht.ModgrafVertexFactory;
@@ -26,12 +21,15 @@ import org.jgrapht.DirectedGraph;
 import org.jgrapht.Graph;
 import org.jgrapht.UndirectedGraph;
 import org.jgrapht.WeightedGraph;
-import org.jgrapht.generate.CompleteGraphGenerator;
-import org.jgrapht.generate.RandomGraphGenerator;
+import org.jgrapht.generate.*;
 
 public class ActionGenerateGraph implements ActionListener
 {
-	private Editor editor;
+    public static final int MAX_NUMBER_OF_EDGES = 999;
+    public static final int MIN_NUMBER_OF_EDGES = 0;
+    public static final int MAX_NUMBER_OF_VERTICES = 50;
+    public static final int MIN_NUMBER_OF_VERTICES = 2;
+    private Editor editor;
 	private Properties lang;
 	private JFrame frame;
 	private JComboBox<String> graphType;
@@ -42,7 +40,7 @@ public class ActionGenerateGraph implements ActionListener
 	
 	public enum Type
 	{
-		COMPLETE, RANDOM, RING, SCALE_FREE, COMPLETE_BIPARTITE; //RANDOM_FLOW;
+		COMPLETE, RANDOM, RING, SCALE_FREE, COMPLETE_BIPARTITE //,RANDOM_FLOW
 	}
 	
 	public ActionGenerateGraph(Editor e, Type t)
@@ -63,36 +61,79 @@ public class ActionGenerateGraph implements ActionListener
 		String input = numOfVerticesField.getText();
 		if (input == null)
 			return;
-		int number = 0;
-		try 
+		int numberOfVertices;
+		int numberOfEdges = 0;
+		try
 		{
-			number = new Integer(input);
+			numberOfVertices = Integer.valueOf(input);
 		}
 		catch(NumberFormatException e)
 		{
 			JOptionPane.showMessageDialog(editor.getGraphComponent(),
 					lang.getProperty("warning-not-proper-number")+
-					lang.getProperty("from")+" 2 "+
-					lang.getProperty("to")+" 50!", 
+					lang.getProperty("from")+" "+MIN_NUMBER_OF_VERTICES+" "+
+					lang.getProperty("to")+" "+MAX_NUMBER_OF_VERTICES+"! ",
 					lang.getProperty("warning"), JOptionPane.WARNING_MESSAGE);
 			return;
 		}
-		CompleteGraphGenerator<Vertex, ModgrafEdge> generator = new CompleteGraphGenerator<>(number);
-//		RandomGraphGenerator<Vertex, ModgrafEdge> generator2 = new RandomGraphGenerator<>(aNumOfVertexes, aNumOfEdges);
+        try
+        {
+            if (numOfEdgesField != null)
+                numberOfEdges = Integer.valueOf(numOfEdgesField.getText());
+        }
+        catch(NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(editor.getGraphComponent(),
+                    lang.getProperty("warning-not-proper-number")+
+                    lang.getProperty("from")+" "+MIN_NUMBER_OF_EDGES+" "+
+                    lang.getProperty("to")+" "+MAX_NUMBER_OF_EDGES+"! ",
+                    lang.getProperty("warning"), JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        GraphGenerator<Vertex, ModgrafEdge, Vertex> generator;
+        switch (type)
+        {
+            case COMPLETE:
+                generator = new CompleteGraphGenerator<>(numberOfVertices);
+                break;
+            case RANDOM:
+                generator = new RandomGraphGenerator<>(numberOfVertices, numberOfEdges);
+                break;
+            case RING:
+                generator = new RingGraphGenerator<>(numberOfVertices);
+                break;
+            case SCALE_FREE:
+                generator = new ScaleFreeGraphGenerator<>(numberOfVertices);
+                break;
+            case COMPLETE_BIPARTITE:
+                generator = new CompleteBipartiteGraphGenerator<>(numberOfVertices, numberOfEdges);
+                break;
+            default:
+                return;
+        }
 		boolean directed = false;
 		if (graphType.getSelectedIndex() == 1)
 			directed = true;
-		Integer edge = (Integer)edges.getSelectedItem();
-		int edgeWeightDegree = edge.intValue();
+		Integer edgeWeightDegree = (Integer)edges.getSelectedItem();
 		Graph<Vertex, ModgrafEdge> target = editor.createNewGraphT(directed, edgeWeightDegree);
 		ModgrafVertexFactory factory = new ModgrafVertexFactory();
-		generator.generateGraph(target, factory, null);
+        try
+        {
+            generator.generateGraph(target, factory, null);
+        }
+        catch (IllegalArgumentException e)
+        {
+            JOptionPane.showMessageDialog(editor.getGraphComponent(),
+                    lang.getProperty("warning-not-generate"),
+                    lang.getProperty("warning"), JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 		String grfFile = saveGrf(target);
 		ActionOpenGrf actionOpen = new ActionOpenGrf(editor);
 		actionOpen.createGraphFromGrfFile(grfFile);
 		actionOpen.setMxGeometryOnCircle();
 	}
-	
+
 	private void openParamsWindow()
 	{
 		JPanel paramsPanel = createParamsPanel();
@@ -111,7 +152,7 @@ public class ActionGenerateGraph implements ActionListener
 	{
 		double size[][] =
             {{0.55, 0.05, 0.4},
-             {30, 30, 30}};
+             {30, 30, 30, 30}};
 		PreferencesTab paramsPanel = new PreferencesTab(editor, size);
 		GeneralTab gt = new GeneralTab(editor);
 		graphType = gt.createGraphTypeComboBox();
@@ -122,19 +163,37 @@ public class ActionGenerateGraph implements ActionListener
 		paramsPanel.addComponent(0, graphType);
 		paramsPanel.addComponent(1, edges);
 		paramsPanel.addComponent(2, createNumOfVerticesField(paramsPanel));
+        if (type == Type.RANDOM)
+        {
+            paramsPanel.addLabel(3, "label-number-of-edges");
+            paramsPanel.addComponent(3, createNumOfEdgesField(paramsPanel));
+        }
+        if (type == Type.COMPLETE_BIPARTITE)
+        {
+            paramsPanel.addLabel(3, "label-number-of-vertices");
+            paramsPanel.addComponent(3, createNumOfEdgesField(paramsPanel));
+        }
 		return paramsPanel;
 	}
 
-	private JFormattedTextField createNumOfVerticesField(PreferencesTab pt)
+    private JFormattedTextField createNumOfVerticesField(PreferencesTab pt)
 	{
 		numOfVerticesField = new JFormattedTextField(
-				pt.createNumberFormatter(2, 50));
+				pt.createNumberFormatter(MIN_NUMBER_OF_VERTICES, MAX_NUMBER_OF_VERTICES));
 		numOfVerticesField.setToolTipText(
-				pt.createHint(1, 50));
+				pt.createHint(MIN_NUMBER_OF_VERTICES, MAX_NUMBER_OF_VERTICES));
 		numOfVerticesField.setColumns(PreferencesTab.FIELD_SIZE);
 		return numOfVerticesField;
 	}
-	
+
+    private JFormattedTextField createNumOfEdgesField(PreferencesTab pt)
+    {
+        numOfEdgesField = new JFormattedTextField(pt.createNumberFormatter(MIN_NUMBER_OF_EDGES, MAX_NUMBER_OF_EDGES));
+        numOfEdgesField.setToolTipText(pt.createHint(MIN_NUMBER_OF_EDGES, MAX_NUMBER_OF_EDGES));
+        numOfEdgesField.setColumns(PreferencesTab.FIELD_SIZE);
+        return numOfEdgesField;
+    }
+
 	private JPanel createButtonPanel()
 	{
 		JPanel buttonPanel = new JPanel();
