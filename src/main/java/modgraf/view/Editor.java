@@ -1,12 +1,27 @@
 package modgraf.view;
 
-import static modgraf.view.properties.DefaultProperties.createDefaultLanguage;
-import static modgraf.view.properties.DefaultProperties.createDefaultProperties;
+import com.mxgraph.swing.mxGraphComponent;
+import com.mxgraph.util.mxConstants;
+import com.mxgraph.util.mxEvent;
+import com.mxgraph.util.mxEventObject;
+import com.mxgraph.util.mxEventSource.mxIEventListener;
+import com.mxgraph.util.mxUtils;
+import com.mxgraph.view.mxGraph;
+import com.mxgraph.view.mxStylesheet;
+import modgraf.Main;
+import modgraf.action.ActionSave;
+import modgraf.event.*;
+import modgraf.jgrapht.*;
+import modgraf.jgrapht.edge.*;
+import modgraf.view.properties.Language;
+import org.jgrapht.DirectedGraph;
+import org.jgrapht.Graph;
+import org.jgrapht.graph.SimpleDirectedGraph;
+import org.jgrapht.graph.SimpleGraph;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Toolkit;
+import javax.swing.*;
+import javax.swing.text.JTextComponent;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -18,48 +33,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JTextPane;
-import javax.swing.text.JTextComponent;
-
-import modgraf.Main;
-import modgraf.action.ActionSave;
-import modgraf.event.EventAddCellsListener;
-import modgraf.event.EventConnectCellListener;
-import modgraf.event.EventLabelChangedListener;
-import modgraf.event.EventRemoveCellsListener;
-import modgraf.event.EventSplitEdgeListener;
-import modgraf.jgrapht.DirectedDoubleWeightedGraph;
-import modgraf.jgrapht.UndirectedDoubleWeightedGraph;
-import modgraf.jgrapht.Vertex;
-import modgraf.jgrapht.edge.DirectedDoubleWeightedEdge;
-import modgraf.jgrapht.edge.DirectedEdge;
-import modgraf.jgrapht.edge.DirectedWeightedEdge;
-import modgraf.jgrapht.edge.DoubleWeightedEdgeImpl;
-import modgraf.jgrapht.edge.ModgrafEdge;
-import modgraf.jgrapht.edge.ModgrafEdgeFactory;
-import modgraf.jgrapht.edge.UndirectedEdge;
-import modgraf.jgrapht.edge.WeightedEdgeImpl;
-import modgraf.view.properties.Language;
-
-import org.jgrapht.DirectedGraph;
-import org.jgrapht.Graph;
-import org.jgrapht.graph.SimpleDirectedGraph;
-import org.jgrapht.graph.SimpleDirectedWeightedGraph;
-import org.jgrapht.graph.SimpleGraph;
-import org.jgrapht.graph.SimpleWeightedGraph;
-
-import com.mxgraph.swing.mxGraphComponent;
-import com.mxgraph.util.mxConstants;
-import com.mxgraph.util.mxEvent;
-import com.mxgraph.util.mxEventObject;
-import com.mxgraph.util.mxEventSource.mxIEventListener;
-import com.mxgraph.util.mxUtils;
-import com.mxgraph.view.mxGraph;
-import com.mxgraph.view.mxStylesheet;
+import static modgraf.view.properties.DefaultProperties.createDefaultLanguage;
+import static modgraf.view.properties.DefaultProperties.createDefaultProperties;
 
 /**
  * Najważniejsza klasa w progrmie. Prawie wszystkie pozostałe klasy 
@@ -386,7 +361,7 @@ public class Editor
 
 	private Hashtable<String, Object> createVertexStyle()
 	{
-		Hashtable<String, Object> vertexStyle = new Hashtable<String, Object>();
+		Hashtable<String, Object> vertexStyle = new Hashtable<>();
 		vertexStyle.put(mxConstants.STYLE_SHAPE, properties.getProperty("default-vertex-shape"));
 		vertexStyle.put(mxConstants.STYLE_FILLCOLOR, properties.getProperty("default-vertex-fill-color"));
 		vertexStyle.put(mxConstants.STYLE_STROKECOLOR, properties.getProperty("default-vertex-border-color"));
@@ -414,33 +389,33 @@ public class Editor
 		{
 		case 0:
 			ModgrafEdgeFactory<UndirectedEdge> edgeFactory0 = 
-					new ModgrafEdgeFactory<UndirectedEdge>(UndirectedEdge.class, this);
-			graph = new SimpleGraph<Vertex, ModgrafEdge>(edgeFactory0);
+					new ModgrafEdgeFactory<>(UndirectedEdge.class, this);
+			graph = new SimpleGraph<>(edgeFactory0);
 			break;
 		case 1:
 			ModgrafEdgeFactory<WeightedEdgeImpl> edgeFactory1 = 
-					new ModgrafEdgeFactory<WeightedEdgeImpl>(WeightedEdgeImpl.class, this);
-			graph = new SimpleWeightedGraph<Vertex, ModgrafEdge>(edgeFactory1);
+					new ModgrafEdgeFactory<>(WeightedEdgeImpl.class, this);
+			graph = new ModgrafUndirectedWeightedGraph(edgeFactory1);
 			break;
 		case 2:
 			ModgrafEdgeFactory<DoubleWeightedEdgeImpl> edgeFactory2 = 
-					new ModgrafEdgeFactory<DoubleWeightedEdgeImpl>(DoubleWeightedEdgeImpl.class, this);
-			graph = new UndirectedDoubleWeightedGraph<Vertex, ModgrafEdge>(edgeFactory2);
+					new ModgrafEdgeFactory<>(DoubleWeightedEdgeImpl.class, this);
+			graph = new UndirectedDoubleWeightedGraph<>(edgeFactory2);
 			break;
 		case 10:
 			ModgrafEdgeFactory<DirectedEdge> edgeFactory10 = 
-					new ModgrafEdgeFactory<DirectedEdge>(DirectedEdge.class, this);
-			graph = new SimpleDirectedGraph<Vertex, ModgrafEdge>(edgeFactory10);
+					new ModgrafEdgeFactory<>(DirectedEdge.class, this);
+			graph = new SimpleDirectedGraph<>(edgeFactory10);
 			break;
 		case 11:
 			ModgrafEdgeFactory<DirectedWeightedEdge> edgeFactory11 = 
-					new ModgrafEdgeFactory<DirectedWeightedEdge>(DirectedWeightedEdge.class, this);
-			graph = new SimpleDirectedWeightedGraph<Vertex, ModgrafEdge>(edgeFactory11);
+					new ModgrafEdgeFactory<>(DirectedWeightedEdge.class, this);
+			graph = new ModgrafDirectedWeightedGraph(edgeFactory11);
 			break;
 		case 12:
 			ModgrafEdgeFactory<DirectedDoubleWeightedEdge> edgeFactory12 = 
-					new ModgrafEdgeFactory<DirectedDoubleWeightedEdge>(DirectedDoubleWeightedEdge.class, this);
-			graph = new DirectedDoubleWeightedGraph<Vertex, ModgrafEdge>(edgeFactory12);
+					new ModgrafEdgeFactory<>(DirectedDoubleWeightedEdge.class, this);
+			graph = new DirectedDoubleWeightedGraph<>(edgeFactory12);
 			break;
 		}
 		return graph;
@@ -462,7 +437,7 @@ public class Editor
 			sb.append(language.getProperty("text-read-graph"));
 		else
 			sb.append(language.getProperty("text-create-graph"));
-		String graphType = null;
+		String graphType;
 		if (directed)
 			graphType = language.getProperty("graph-type-directed");
 		else

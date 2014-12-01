@@ -4,7 +4,6 @@ import modgraf.jgrapht.edge.DoubleWeightedEdge;
 import modgraf.jgrapht.edge.DoubleWeightedEdgeImpl;
 
 import org.jgrapht.EdgeFactory;
-import org.jgrapht.graph.ClassBasedEdgeFactory;
 import org.jgrapht.graph.SimpleDirectedGraph;
 
 /**
@@ -19,11 +18,6 @@ import org.jgrapht.graph.SimpleDirectedGraph;
 public class DirectedDoubleWeightedGraph<V, E> extends SimpleDirectedGraph<V, E> implements DoubleWeightedGraph<V, E>
 {
 	private static final long serialVersionUID = -8581178535061693287L;
-	
-    public DirectedDoubleWeightedGraph(Class<? extends E> edgeClass)
-    {
-    	super(new ClassBasedEdgeFactory<V, E>(edgeClass));
-    }
 
     public DirectedDoubleWeightedGraph(EdgeFactory<V, E> ef)
     {

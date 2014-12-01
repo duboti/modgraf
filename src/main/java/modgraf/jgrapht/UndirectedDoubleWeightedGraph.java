@@ -3,7 +3,6 @@ package modgraf.jgrapht;
 import modgraf.jgrapht.edge.DoubleWeightedEdgeImpl;
 
 import org.jgrapht.EdgeFactory;
-import org.jgrapht.graph.ClassBasedEdgeFactory;
 import org.jgrapht.graph.SimpleGraph;
 
 /**
@@ -19,11 +18,6 @@ public class UndirectedDoubleWeightedGraph<V, E> extends SimpleGraph<V, E> imple
 {
 	private static final long serialVersionUID = 5484453318429102341L;
 	
-	public UndirectedDoubleWeightedGraph(Class<? extends E> edgeClass)
-    {
-        super(new ClassBasedEdgeFactory<V, E>(edgeClass));
-    }
-
 	public UndirectedDoubleWeightedGraph(EdgeFactory<V, E> ef)
     {
         super(ef);
