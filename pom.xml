@@ -5,13 +5,6 @@
     <artifactId>modgraf</artifactId>
     <packaging>jar</packaging>
     <version>3.3-SNAPSHOT</version>
-    <name>modgraf</name>
-
-    <parent>
-        <groupId>modgraf</groupId>
-        <artifactId>modgraf-root</artifactId>
-        <version>1.0</version>
-    </parent>
 
     <repositories>
         <repository>
@@ -30,7 +23,7 @@
         <dependency>
             <groupId>org.jgrapht</groupId>
             <artifactId>jgrapht-core</artifactId>
-            <version>0.9.0</version>
+            <version>0.9.1</version>
         </dependency>
         <dependency>
             <groupId>com.mxgraph</groupId>
