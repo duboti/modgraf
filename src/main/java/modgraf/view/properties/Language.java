@@ -51,6 +51,7 @@ public class Language
 		
 		lang.setProperty("menu-algorithm-shortest-path", "Najkrótsza ścieżka");
 		lang.setProperty("menu-algorithm-maximum-flow", "Maksymalny przepływ");
+		lang.setProperty("menu-algorithm-cheapest-flow", "Najtańszy przepływ");
 		lang.setProperty("menu-algorithm-hamiltonian-cycle", "Problem komiwojażera");
 		lang.setProperty("menu-algorithm-chromatic-number", "Kolorowanie wierzchołków");
 		lang.setProperty("menu-algorithm-edge-coloring", "Kolorowanie krawędzi");
@@ -291,6 +292,7 @@ public class Language
 		
 		lang.setProperty("menu-algorithm-shortest-path", "Shortest path");
 		lang.setProperty("menu-algorithm-maximum-flow", "Maximum flow");
+		lang.setProperty("menu-algorithm-cheapest-flow", "Cheapest flow");
 		lang.setProperty("menu-algorithm-hamiltonian-cycle", "Travelling salesman problem");
 		lang.setProperty("menu-algorithm-chromatic-number", "Chromatic number");
 		lang.setProperty("menu-algorithm-edge-coloring", "Edge coloring");
