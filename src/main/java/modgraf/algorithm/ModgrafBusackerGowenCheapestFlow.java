@@ -3,8 +3,6 @@ package modgraf.algorithm;
 import java.awt.event.ActionEvent;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.swing.JOptionPane;
 
@@ -18,13 +16,9 @@ import modgraf.view.Editor;
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.Graph;
 import org.jgrapht.alg.BellmanFordShortestPath;
-import org.jgrapht.alg.EdmondsKarpMaximumFlow;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleDirectedGraph;
 import org.jgrapht.graph.SimpleDirectedWeightedGraph;
-
-import com.mxgraph.model.mxCell;
-import com.mxgraph.model.mxGraphModel;
 
 /**
  * 
@@ -58,64 +52,59 @@ public class ModgrafBusackerGowenCheapestFlow extends ModgrafAbstractAlgorithm
 		return lang.getProperty("menu-algorithm-cheapest-flow");
 	}
 
-	private void createTextResult(EdmondsKarpMaximumFlow<Vertex,ModgrafEdge> ekmf)
+	private void createTextResult(SimpleDirectedWeightedGraph<Vertex, DirectedTripleWeightedEdge> graph)
 	{
-		StringBuilder sb = new StringBuilder();
-		String newLine = "\n";
-		sb.append(lang.getProperty("alg-mf-message-1"));
-		sb.append(ekmf.getMaximumFlowValue());
-		sb.append(newLine);
-		sb.append(lang.getProperty("alg-mf-message-2"));
-		sb.append(newLine);
-		Graph<Vertex, ModgrafEdge> graphT = editor.getGraphT();
-		Map<ModgrafEdge, Double> resultMap = ekmf.getMaximumFlow();
-		mxGraphModel model = (mxGraphModel)editor.getGraphComponent().getGraph().getModel();
-		for (Entry<ModgrafEdge, Double> entry : resultMap.entrySet())
-		{
-			double flow = entry.getValue().doubleValue();
-			if (flow > 0)
-			{
-				ModgrafEdge edge = entry.getKey();
-				double capacity =  graphT.getEdgeWeight(edge);
-				Vertex sourceId = graphT.getEdgeSource(edge);
-				Vertex targetId = graphT.getEdgeTarget(edge);
-				mxCell cellSource = (mxCell) model.getCell(sourceId.getId());
-				mxCell cellTarget = (mxCell) model.getCell(targetId.getId());
-				String source = cellSource.getValue().toString();
-				String target = cellTarget.getValue().toString();
-				sb.append(source);
-				sb.append(" : ");
-				sb.append(target);
-				sb.append(" --> ");
-				sb.append(flow);
-				sb.append("/");
-				sb.append(capacity);
-				sb.append(newLine);
+		StringBuilder builder = new StringBuilder();
+		builder.append("Najtańszy przesył w sieci otrzymano w następujący sposób: \n");
+		for(DirectedTripleWeightedEdge e : graph.edgeSet()) {
+			if(e.getFlow() > 0) {
+				builder.append("Krawędź: " + graph.getEdgeSource(e).getName() + " do " + graph.getEdgeTarget(e).getName() + ":\n");
+				builder.append("Ilość przesłanych jednostek: " + (int)e.getFlow() + "\n");
 			}
 		}
-		editor.setText(sb.toString());
+		
+		builder.append("Koszt przesyłu:\n");
+		builder.append(this.calculateCost(graph));
+		editor.setText(builder.toString());
 	}
 
-	private void createGraphicalResult(EdmondsKarpMaximumFlow<Vertex,ModgrafEdge> ekmf)
+	private void createGraphicalResult(SimpleDirectedWeightedGraph<Vertex, DirectedTripleWeightedEdge> graph)
 	{
 		int width = 4;
 		int halfWidth = 2;
 		Graph<Vertex, ModgrafEdge> graphT = editor.getGraphT();
-		changeVertexStrokeWidth(startVertex, width);
-		changeVertexStrokeWidth(endVertex, width);
-		Map<ModgrafEdge, Double> resultMap = ekmf.getMaximumFlow();
-		for (Entry<ModgrafEdge, Double> entry : resultMap.entrySet())
-		{
-			double flow = entry.getValue().doubleValue();
-			if (flow > 0)
-			{
-				ModgrafEdge edge = entry.getKey();
-				double capacity =  graphT.getEdgeWeight(edge);
-				if (flow == capacity)
-					changeEdgeStrokeWidth(edge, width);
-				if (flow < capacity)
-					changeEdgeStrokeWidth(edge, halfWidth);
+		
+		for(DirectedTripleWeightedEdge edge : graph.edgeSet()) {
+			String sourceId = edge.getSource().getId();
+			String targetId = edge.getTarget().getId();
+			
+			Vertex source = null;
+			Vertex target = null;
+			for(Vertex v : graphT.vertexSet()) {
+				if(v.getId().equals(sourceId)) {
+					source = v;
+				}
+				else if (v.getId().equals(targetId)) {
+					target = v;
+				}
 			}
+			
+			if(null == source || null == target) {
+				throw new IllegalArgumentException("Something wrong with finding vertices");
+			}
+			
+			ModgrafEdge newEdge = graphT.getEdge(source, target);
+			
+			if(null == newEdge) {
+				throw new IllegalArgumentException("Edge not found");
+			}
+			
+			if(edge.getFlow() > 0) {
+				changeEdgeStrokeWidth(newEdge, width);
+			} else {
+				changeEdgeStrokeWidth(newEdge, halfWidth);
+			}
+				
 		}
 		editor.getGraphComponent().refresh();
 	}
@@ -123,75 +112,41 @@ public class ModgrafBusackerGowenCheapestFlow extends ModgrafAbstractAlgorithm
 	@Override
 	protected void findAndShowResult()
 	{
-		int flow = 5;
-		DirectedGraph<Vertex, ModgrafEdge> graph = (DirectedGraph<Vertex, ModgrafEdge>)editor.getGraphT();
+		try {
+			int flow = this.showDialogForFlow();
+			DirectedGraph<Vertex, ModgrafEdge> graph = (DirectedGraph<Vertex, ModgrafEdge>)editor.getGraphT();
 		
-		SimpleDirectedWeightedGraph<Vertex,DirectedTripleWeightedEdge> newGraph = new SimpleDirectedWeightedGraph<Vertex,DirectedTripleWeightedEdge>(DirectedTripleWeightedEdge.class);
+			SimpleDirectedWeightedGraph<Vertex, DirectedTripleWeightedEdge> newGraph = this.generateNewGraph(graph);
 		
-		for(Vertex vertex : graph.vertexSet()) 
-		{
-			newGraph.addVertex(new Vertex(vertex.getId(),vertex.getName()));
-		}
-		
-		for(ModgrafEdge e:  graph.edgeSet()) 
-		{
-			DirectedTripleWeightedEdge newEdge = new DirectedTripleWeightedEdge(e.getSource(), e.getTarget());
-			newEdge.setFlow(0);
-			double capacity = ((DirectedDoubleWeightedEdge)e).getCapacity();
-			double cost = ((DirectedDoubleWeightedEdge)e).getCost();
-			newEdge.setCapacity(capacity);
-			newEdge.setCost(cost);
-			newGraph.addEdge(e.getSource(), e.getTarget(),newEdge);
-		}
-		
-		int W = 0;
+			int W = 0;
 		
 		
-		while (W < flow) {
-			System.out.println("GRAF");
-			System.out.println(newGraph);
-			System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-			SimpleDirectedWeightedGraph<Vertex,DirectedTripleWeightedEdge> residualGraph =
-					this.getResidualNetwork(newGraph);
-			System.out.println("RESIDUAL GRAPH");
-			System.out.println(residualGraph);
-			System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-			List<Vertex> bellmanFordList = this.getBellmanFordPath(residualGraph);
+			while (W < flow) {
+				SimpleDirectedWeightedGraph<Vertex,DirectedTripleWeightedEdge> residualGraph =
+						this.getResidualNetwork(newGraph);
+				List<Vertex> bellmanFordList = this.getBellmanFordPath(residualGraph);
 			
 			
-			double min = this.findSmallestNumberInPath(bellmanFordList, residualGraph);
+				double min = this.findSmallestNumberInPath(bellmanFordList, residualGraph);
 			
-			double delta = (W + min > flow) ? flow - W : min;
+				double delta = (W + min > flow) ? flow - W : min;
 			
-			this.updateGraph(bellmanFordList, residualGraph, newGraph, delta);
+				this.updateGraph(bellmanFordList, residualGraph, newGraph, delta);
 			
-			W += delta;
+				W += delta;
+			}
+			
+			calculateCost(newGraph);
+			createTextResult(newGraph);
+			createGraphicalResult(newGraph);
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(editor.getGraphComponent(),
+			lang.getProperty("message-no-solution"),
+			lang.getProperty("information"), JOptionPane.INFORMATION_MESSAGE);
 		}
 
-		System.out.println("GRAF");
-		System.out.println(newGraph);
-		
-		
-		
-		calculateCost(newGraph);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-//			createTextResult(ekmf);
-//			createGraphicalResult(ekmf);
-//		else
-//			JOptionPane.showMessageDialog(editor.getGraphComponent(),
-//					lang.getProperty("message-no-solution"),
-//					lang.getProperty("information"), JOptionPane.INFORMATION_MESSAGE);
-//	}
 	}
 
 	private void updateGraph(List<Vertex> bellmanFordList, 
@@ -259,7 +214,7 @@ public class ModgrafBusackerGowenCheapestFlow extends ModgrafAbstractAlgorithm
 			if(vertex.getId().equals(id))
 				return vertex;
 		}
-		return null;
+		throw new IllegalArgumentException("Vertex not found");
 	}
 	
 	
@@ -282,11 +237,9 @@ public class ModgrafBusackerGowenCheapestFlow extends ModgrafAbstractAlgorithm
 		
 		bf = new BellmanFordShortestPath<Vertex, DefaultWeightedEdge>(g,startVertex);
 		List<DefaultWeightedEdge> list = bf.findPathBetween(g, startVertex, endVertex);
-		System.out.println("Ścieżka");
-		System.out.println(bf.findPathBetween(g, startVertex, endVertex));
-		System.out.println("KOSZT ŚCIEŻKI");
-		System.out.println(bf.getCost(endVertex));
-		
+
+		if(list.size() == 0)
+			throw new IllegalArgumentException("Bellman-Ford algorithm went wrong");
 		
 		List<Vertex> vertices = new LinkedList<>();
 		for(DefaultWeightedEdge e : list)
@@ -317,6 +270,39 @@ public class ModgrafBusackerGowenCheapestFlow extends ModgrafAbstractAlgorithm
 		System.out.println("KOSZT");
 		System.out.println(cost);
 		return cost;
+	}
+	
+	private SimpleDirectedWeightedGraph<Vertex,DirectedTripleWeightedEdge> generateNewGraph(DirectedGraph<Vertex, ModgrafEdge> graph) {
+		
+		SimpleDirectedWeightedGraph<Vertex,DirectedTripleWeightedEdge> newGraph = 
+				new SimpleDirectedWeightedGraph<Vertex,DirectedTripleWeightedEdge>(DirectedTripleWeightedEdge.class);
+		
+		for(Vertex vertex : graph.vertexSet()) 
+		{
+			newGraph.addVertex(new Vertex(vertex.getId(),vertex.getName()));
+		}
+		
+		for(ModgrafEdge e:  graph.edgeSet()) 
+		{
+			DirectedTripleWeightedEdge newEdge = new DirectedTripleWeightedEdge(e.getSource(), e.getTarget());
+			newEdge.setFlow(0);
+			double capacity = ((DirectedDoubleWeightedEdge)e).getCapacity();
+			double cost = ((DirectedDoubleWeightedEdge)e).getCost();
+			newEdge.setCapacity(capacity);
+			newEdge.setCost(cost);
+			newGraph.addEdge(e.getSource(), e.getTarget(),newEdge);
+		}	
+		return newGraph;
+	}
+	
+	private int showDialogForFlow() {
+		String input = JOptionPane.showInputDialog(
+				editor.getGraphComponent(), "Podaj oczekiwaną ilość przesłanych jednostek", "Parametr", JOptionPane.QUESTION_MESSAGE);
+		try {
+			return Integer.parseInt(input);
+		} catch(Exception e) {
+			throw new IllegalArgumentException("Unable to parse");
+		}
 	}
 }
 
