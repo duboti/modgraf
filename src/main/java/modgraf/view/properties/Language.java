@@ -158,6 +158,7 @@ public class Language
 		lang.setProperty("label-width", "Szerokość");
 		lang.setProperty("label-start-vertex", "Wierzchołek startowy");
 		lang.setProperty("label-end-vertex", "Wierzchołek końcowy");
+		lang.setProperty("label-expected-flow", "Oczekiwany przepływ");
 		lang.setProperty("label-program-name", "Nazwa programu");
 		lang.setProperty("label-version", "Wersja");
 		lang.setProperty("label-date", "Data");
@@ -399,6 +400,7 @@ public class Language
 		lang.setProperty("label-width", "Width");
 		lang.setProperty("label-start-vertex", "Start vertex");
 		lang.setProperty("label-end-vertex", "End vertex");
+		lang.setProperty("label-expected-flow", "Expected flow");
 		lang.setProperty("label-program-name", "Program name");
 		lang.setProperty("label-version", "Version");
 		lang.setProperty("label-date", "Date");
