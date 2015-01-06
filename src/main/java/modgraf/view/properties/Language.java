@@ -211,6 +211,13 @@ public class Language
 		lang.setProperty("alg-ec-message-1", "Liczba użytych kolorów: ");
 		lang.setProperty("alg-ec-message-2", "\nGrupy krawędzi o tych samych kolorach:\n");
 		
+		lang.setProperty("alg-bg-message-1", "Ilość przesłanych jednostek:\n");
+		lang.setProperty("alg-bg-message-2", "Wykorzystane krawędzie:\n");
+		lang.setProperty("alg-bg-message-3", "Koszt przesyłu:\n");
+		lang.setProperty("alg-bg-error-1", "Nie znaleziono wierzchołka");
+		lang.setProperty("alg-bg-error-2", "Algorytm Bellmana-Forda nie mógł znaleźć drogi w scieżce powiększającej");
+		lang.setProperty("alg-bg-error-3", "Zły format danych wejściowych (powinna być liczba)");
+		
 		lang.setProperty("pref-generalTab-name", "Ogólne");
 		lang.setProperty("pref-general-graph-type", "Domyślny typ grafu");
 		lang.setProperty("pref-general-edge-type", "Domyślna liczba parametrów krawędzi");
@@ -408,7 +415,7 @@ public class Language
 		
 		lang.setProperty("button-new-graph", "New graph");
 		lang.setProperty("button-change-size", "Change size");
-		lang.setProperty("button-run-algorithm", "New graph");
+		lang.setProperty("button-run-algorithm", "Run");
 		lang.setProperty("button-close", "Close");
 		lang.setProperty("button-save", "Save");
 		lang.setProperty("button-cancel", "Cancel");
@@ -452,6 +459,13 @@ public class Language
 		lang.setProperty("alg-mf-message-2", "Przepływ odbywa się krawędziami: ");
 		lang.setProperty("alg-ec-message-1", "Liczba użytych kolorów: ");
 		lang.setProperty("alg-ec-message-2", "\nGrupy krawędzi o tych samych kolorach:\n");
+		
+		lang.setProperty("alg-bg-message-1", "Number of sent units:\n");
+		lang.setProperty("alg-bg-message-2", "Edges used to transport units:\n");
+		lang.setProperty("alg-bg-message-3", "Cost of transport:\n");
+		lang.setProperty("alg-bg-error-1", "Vertex not found");
+		lang.setProperty("alg-bg-error-2", "Bellman-Ford algorithm couldn't find route in residual path");
+		lang.setProperty("alg-bg-error-3", "Bad input format (should be numeric)");
 		
 		lang.setProperty("pref-generalTab-name", "General");
 		lang.setProperty("pref-general-graph-type", "Default graph type");

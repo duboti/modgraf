@@ -65,17 +65,20 @@ public class ModgrafBusackerGowenCheapestFlow extends ModgrafAbstractAlgorithm {
 	private void createTextResult(
 			SimpleDirectedWeightedGraph<Vertex, DirectedTripleWeightedEdge> graph) {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Najtańszy przesył w sieci otrzymano w następujący sposób: \n");
+		builder.append(lang.getProperty("alg-bg-message-2") + "\n");
 		for (DirectedTripleWeightedEdge e : graph.edgeSet()) {
 			if (e.getFlow() > 0) {
-				builder.append("Krawędź: " + graph.getEdgeSource(e).getName()
-						+ " do " + graph.getEdgeTarget(e).getName() + ":\n");
-				builder.append("Ilość przesłanych jednostek: "
+				builder.append(lang.getProperty("pref-edgeTab-name") + " "
+						+ lang.getProperty("from") + " "
+						+ graph.getEdgeSource(e).getName() + " "
+						+ lang.getProperty("to") + " "
+						+ graph.getEdgeTarget(e).getName() + ":\n");
+				builder.append(lang.getProperty("alg-bg-message-1")
 						+ (int) e.getFlow() + "\n");
 			}
 		}
 
-		builder.append("Koszt przesyłu:\n");
+		builder.append(lang.getProperty("alg-bg-message-3"));
 		builder.append(this.calculateCost(graph));
 		editor.setText(builder.toString());
 	}
@@ -106,6 +109,7 @@ public class ModgrafBusackerGowenCheapestFlow extends ModgrafAbstractAlgorithm {
 			}
 
 			ModgrafEdge newEdge = graphT.getEdge(source, target);
+
 			if (null == newEdge) {
 				throw new IllegalArgumentException("Edge not found");
 			}
@@ -152,6 +156,10 @@ public class ModgrafBusackerGowenCheapestFlow extends ModgrafAbstractAlgorithm {
 			createTextResult(newGraph);
 			createGraphicalResult(newGraph);
 
+		} catch (IllegalStateException e) {
+			JOptionPane.showMessageDialog(editor.getGraphComponent(),
+					e.getMessage(), lang.getProperty("information"),
+					JOptionPane.INFORMATION_MESSAGE);
 		} catch (Exception e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(editor.getGraphComponent(),
@@ -239,7 +247,7 @@ public class ModgrafBusackerGowenCheapestFlow extends ModgrafAbstractAlgorithm {
 			if (vertex.getId().equals(id))
 				return vertex;
 		}
-		throw new IllegalArgumentException("Vertex not found");
+		throw new IllegalStateException(lang.getProperty("alg-bg-error-1"));
 	}
 
 	@SuppressWarnings("static-access")
@@ -264,9 +272,9 @@ public class ModgrafBusackerGowenCheapestFlow extends ModgrafAbstractAlgorithm {
 		List<DefaultWeightedEdge> list = bf.findPathBetween(g, startVertex,
 				endVertex);
 
-		if (list.size() == 0)
-			throw new IllegalArgumentException(
-					"Bellman-Ford algorithm went wrong");
+		if (list == null) {
+			throw new IllegalStateException(lang.getProperty("alg-bg-error-2"));
+		}
 
 		List<Vertex> vertices = new LinkedList<>();
 		for (DefaultWeightedEdge e : list)
@@ -295,8 +303,6 @@ public class ModgrafBusackerGowenCheapestFlow extends ModgrafAbstractAlgorithm {
 		for (DirectedTripleWeightedEdge e : graph.edgeSet()) {
 			cost += e.getCost() * e.getFlow();
 		}
-		System.out.println("KOSZT");
-		System.out.println(cost);
 		return cost;
 	}
 
@@ -353,8 +359,17 @@ public class ModgrafBusackerGowenCheapestFlow extends ModgrafAbstractAlgorithm {
 		start.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				ModgrafBusackerGowenCheapestFlow.this.flow = Integer
-						.parseInt(flowField.getText());
+				try {
+					ModgrafBusackerGowenCheapestFlow.this.flow = Integer
+							.parseInt(flowField.getText());
+				} catch (NumberFormatException e) {
+					JOptionPane.showMessageDialog(editor.getGraphComponent(),
+							lang.getProperty("alg-bg-error-3"),
+							lang.getProperty("information"),
+							JOptionPane.INFORMATION_MESSAGE);
+					throw new IllegalStateException(lang
+							.getProperty("alg-bg-error-3"));
+				}
 				startActionButton();
 			}
 		});
