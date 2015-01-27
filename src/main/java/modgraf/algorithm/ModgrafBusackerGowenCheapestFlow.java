@@ -3,8 +3,13 @@ package modgraf.algorithm;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
@@ -25,9 +30,6 @@ import modgraf.view.Editor;
 
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.Graph;
-import org.jgrapht.alg.BellmanFordShortestPath;
-import org.jgrapht.graph.DefaultWeightedEdge;
-import org.jgrapht.graph.SimpleDirectedGraph;
 import org.jgrapht.graph.SimpleDirectedWeightedGraph;
 
 /**
@@ -69,12 +71,12 @@ public class ModgrafBusackerGowenCheapestFlow extends ModgrafAbstractAlgorithm {
 		for (DirectedTripleWeightedEdge e : graph.edgeSet()) {
 			if (e.getFlow() > 0) {
 				builder.append(lang.getProperty("pref-edgeTab-name") + " "
-						+ lang.getProperty("from") + " "
-						+ graph.getEdgeSource(e).getName() + " "
-						+ lang.getProperty("to") + " "
-						+ graph.getEdgeTarget(e).getName() + ":\n");
-				builder.append(lang.getProperty("alg-bg-message-1")
-						+ (int) e.getFlow() + "\n");
+						+ " " + graph.getEdgeSource(e).getName() + " " + "-"
+						+ " " + graph.getEdgeTarget(e).getName() + ": "
+						+ lang.getProperty("alg-bg-message-1")
+						+ (int) e.getFlow() + "; "
+						+ lang.getProperty("alg-bg-message-3")
+						+ (e.getCost() * e.getFlow()) + "\n\n");
 			}
 		}
 
@@ -250,38 +252,77 @@ public class ModgrafBusackerGowenCheapestFlow extends ModgrafAbstractAlgorithm {
 		throw new IllegalStateException(lang.getProperty("alg-bg-error-1"));
 	}
 
-	@SuppressWarnings("static-access")
 	private List<Vertex> getBellmanFordPath(
 			SimpleDirectedWeightedGraph<Vertex, DirectedTripleWeightedEdge> graph) {
-		BellmanFordShortestPath<Vertex, DefaultWeightedEdge> bf;
 
-		SimpleDirectedGraph<Vertex, DefaultWeightedEdge> g = new SimpleDirectedGraph<Vertex, DefaultWeightedEdge>(
-				DefaultWeightedEdge.class);
+		List<DirectedTripleWeightedEdge> wynik = bellmanFORD(graph,
+				startVertex, endVertex);
 
-		for (Vertex vertex : graph.vertexSet())
-			g.addVertex(vertex);
-
-		for (DirectedTripleWeightedEdge e : graph.edgeSet()) {
-			DefaultWeightedEdge defaultWeightedEdge = new DefaultWeightedEdge();
-			g.addEdge(e.getSource(), e.getTarget(), defaultWeightedEdge);
-			g.setEdgeWeight(defaultWeightedEdge, e.getCost());
-		}
-
-		bf = new BellmanFordShortestPath<Vertex, DefaultWeightedEdge>(g,
-				startVertex);
-		List<DefaultWeightedEdge> list = bf.findPathBetween(g, startVertex,
-				endVertex);
-
-		if (list == null) {
+		if (wynik == null) {
 			throw new IllegalStateException(lang.getProperty("alg-bg-error-2"));
 		}
 
 		List<Vertex> vertices = new LinkedList<>();
-		for (DefaultWeightedEdge e : list)
-			vertices.add(g.getEdgeSource(e));
+		for (DirectedTripleWeightedEdge e : wynik)
+			vertices.add(graph.getEdgeSource(e));
 
 		vertices.add(endVertex);
 		return vertices;
+	}
+
+	private List<DirectedTripleWeightedEdge> bellmanFORD(
+			SimpleDirectedWeightedGraph<Vertex, DirectedTripleWeightedEdge> graph,
+			Vertex source, Vertex dest) {
+		int size = graph.vertexSet().size();
+		Map<Vertex, Integer> costs = new HashMap<Vertex, Integer>();
+		Map<Vertex, Vertex> predecessors = new HashMap<Vertex, Vertex>();
+
+		Set<Vertex> vertices = graph.vertexSet();
+
+		for (Vertex v : vertices) {
+			if (v != source) {
+				costs.put(v, Integer.MAX_VALUE);
+			}
+		}
+		costs.put(source, 0);
+		for (int i = 1; i < size - 1; ++i) {
+			for (DirectedTripleWeightedEdge edge : graph.edgeSet()) {
+				Vertex edgeSource = graph.getEdgeSource(edge);
+				Vertex edgeDest = graph.getEdgeTarget(edge);
+
+				int pathCost = costs.get(edgeSource);
+				int stepCost = (int) (pathCost == Integer.MAX_VALUE ? Integer.MAX_VALUE
+						: pathCost + edge.getCost());
+				if (stepCost < costs.get(edgeDest)) {
+					costs.put(edgeDest, stepCost);
+					predecessors.put(edgeDest, edgeSource);
+				}
+			}
+		}
+
+		// ------
+		List<DirectedTripleWeightedEdge> path = new ArrayList<>();
+		Vertex current = dest;
+
+		int restriction = 0;
+		try {
+			while (!(current.getName().equals(source.getName()))) {
+				restriction++;
+				Vertex predecessor = predecessors.get(current);
+				DirectedTripleWeightedEdge edge = graph.getEdge(predecessor,
+						current);
+				path.add(edge);
+				current = predecessor;
+				if (restriction > 999)
+					throw new IllegalStateException(
+							lang.getProperty("alg-bg-error-2"));
+			}
+			Collections.reverse(path);
+			return path;
+		} catch (NullPointerException e) {
+			throw new IllegalStateException(lang.getProperty("alg-bg-error-2"));
+		}
+
 	}
 
 	private double findSmallestNumberInPath(

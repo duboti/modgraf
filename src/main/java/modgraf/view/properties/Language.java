@@ -211,11 +211,11 @@ public class Language
 		lang.setProperty("alg-ec-message-1", "Liczba użytych kolorów: ");
 		lang.setProperty("alg-ec-message-2", "\nGrupy krawędzi o tych samych kolorach:\n");
 		
-		lang.setProperty("alg-bg-message-1", "Ilość przesłanych jednostek:\n");
+		lang.setProperty("alg-bg-message-1", "Ilość przesłanych jednostek:");
 		lang.setProperty("alg-bg-message-2", "Wykorzystane krawędzie:\n");
-		lang.setProperty("alg-bg-message-3", "Koszt przesyłu:\n");
+		lang.setProperty("alg-bg-message-3", "Koszt przesyłu:");
 		lang.setProperty("alg-bg-error-1", "Nie znaleziono wierzchołka");
-		lang.setProperty("alg-bg-error-2", "Algorytm Bellmana-Forda nie mógł znaleźć drogi w scieżce powiększającej");
+		lang.setProperty("alg-bg-error-2", "Nie znaleziono rozwiązania dopuszczalnego");
 		lang.setProperty("alg-bg-error-3", "Zły format danych wejściowych (powinna być liczba)");
 		
 		lang.setProperty("pref-generalTab-name", "Ogólne");
@@ -464,7 +464,7 @@ public class Language
 		lang.setProperty("alg-bg-message-2", "Edges used to transport units:\n");
 		lang.setProperty("alg-bg-message-3", "Cost of transport:\n");
 		lang.setProperty("alg-bg-error-1", "Vertex not found");
-		lang.setProperty("alg-bg-error-2", "Bellman-Ford algorithm couldn't find route in residual path");
+		lang.setProperty("alg-bg-error-2", "No solution found in given graph");
 		lang.setProperty("alg-bg-error-3", "Bad input format (should be numeric)");
 		
 		lang.setProperty("pref-generalTab-name", "General");
