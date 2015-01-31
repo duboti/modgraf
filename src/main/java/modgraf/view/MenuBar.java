@@ -25,20 +25,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-import modgraf.action.ActionAddNewAlghoritm;
-import modgraf.action.ActionAddVertex;
-import modgraf.action.ActionGenerateGraph;
-import modgraf.action.ActionNewGraph;
-import modgraf.action.ActionOpen;
-import modgraf.action.ActionRemoveSelected;
-import modgraf.action.ActionSave;
-import modgraf.action.ActionSaveAs;
-import modgraf.action.ActionSetColor;
-import modgraf.action.ActionSetCustomSize;
-import modgraf.action.ActionSetFontFamily;
-import modgraf.action.ActionSetIntegerValueStyle;
-import modgraf.action.ActionSetShape;
-import modgraf.action.ActionSetSize;
+import modgraf.action.*;
 import modgraf.algorithm.ModgrafBusackerGowenCheapestFlow;
 import modgraf.algorithm.ModgrafChromaticNumber;
 import modgraf.algorithm.ModgrafEdgeColoring;
@@ -133,7 +120,7 @@ public class MenuBar extends JMenuBar
 		
 		JMenu utils = new JMenu(lang.getProperty("menu-utils"));
 		utils.add(createMenuItem("menu-utils-preferences", new Preferences(editor)));
-		utils.add(createMenuItem("menu-utils-clear-styles", null));
+		utils.add(createMenuItem("menu-utils-clear-styles", new ActionClearStyles(editor)));
 		JMenu generators = new JMenu(lang.getProperty("menu-utils-generators"));
 		generators.add(createMenuItem("menu-utils-gen-complete", new ActionGenerateGraph(editor, ActionGenerateGraph.Type.COMPLETE)));
 		generators.add(createMenuItem("menu-utils-gen-random", new ActionGenerateGraph(editor, ActionGenerateGraph.Type.RANDOM)));

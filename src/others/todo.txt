@@ -7,14 +7,12 @@
 - komunikaty algorytmów nie są przetłumaczone na angielski
 - "Zapisz jako" startuje zawsze z domyślnego katalogu
 - obsługa # - komentarza - podczas wczytywania plików w formacie starego modgrafa
-- po wyłączeniu programu zostawały jakieś okienka (z wynikami?)
 
 
 Podstawowe:
 - przydałoby się pogrupowanie algorytmów w menu - tak było w poprzednim modgrafie, np. algorytmy najkrótszej ścieżki i pod tą pozycją kilka algorytmów
 - zapis tekstowych wyników do pliku
 - zmiana typu istniejącego grafu
-- przycisk "wyczyść style"
 - poszukać TODO w kodzie
 
 
