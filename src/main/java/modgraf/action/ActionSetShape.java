@@ -12,16 +12,16 @@ import modgraf.view.Editor;
  * 
  * @author Daniel Pogrebniak
  *
- * @see ActionSetVertexStyle
+ * @see ActionSetStyle
  * @see ActionListener
  */
-public class ActionSetShape extends ActionSetVertexStyle implements ActionListener 
+public class ActionSetShape extends ActionSetStyle implements ActionListener
 {
 	private String shape;
 	
 	public ActionSetShape(Editor e, String shape)
 	{
-		super(e, STYLE_SHAPE);
+		super(e, STYLE_SHAPE, true);
 		this.shape = shape;
 	}
 	

@@ -15,16 +15,16 @@ import modgraf.view.Editor;
  *
  * @see ActionListener
  */
-public class ActionSetIntegerValueStyle extends ActionSetVertexStyle implements ActionListener
+public class ActionSetIntegerValueStyle extends ActionSetStyle implements ActionListener
 {
 	private Properties lang;
 	private int minWidth;
 	private int maxWidth;
 	private String frameName;
 	
-	public ActionSetIntegerValueStyle(Editor e, String styleName, String frameName, int minWidth, int maxWidth)
+	public ActionSetIntegerValueStyle(Editor e, String styleName, String frameName, int minWidth, int maxWidth, boolean isVertex)
 	{
-		super(e, styleName);
+		super(e, styleName, isVertex);
 		this.lang = editor.getLanguage();
 		this.minWidth = minWidth;
 		this.maxWidth = maxWidth;
@@ -42,7 +42,7 @@ public class ActionSetIntegerValueStyle extends ActionSetVertexStyle implements 
 				JOptionPane.PLAIN_MESSAGE, null, null, "1");
 		if (stringValue != null)
 		{
-			int intValue = -1;
+			int intValue;
 			try
 			{
 				intValue = Integer.parseInt(stringValue);

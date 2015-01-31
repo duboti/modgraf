@@ -1,6 +1,6 @@
 package modgraf.action;
 
-import static com.mxgraph.util.mxConstants.STYLE_FONTCOLOR;
+import static com.mxgraph.util.mxConstants.STYLE_FONTFAMILY;
 
 import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
@@ -14,14 +14,14 @@ import javax.swing.JOptionPane;
 
 import modgraf.view.Editor;
 
-public class ActionSetFontFamily extends ActionSetVertexStyle implements ActionListener
+public class ActionSetFontFamily extends ActionSetStyle implements ActionListener
 {
 	private Properties lang;
 	private Properties prop;
 	
-	public ActionSetFontFamily(Editor e)
+	public ActionSetFontFamily(Editor e, boolean isVertex)
 	{
-		super(e, STYLE_FONTCOLOR);
+		super(e, STYLE_FONTFAMILY, isVertex);
 		lang = editor.getLanguage();
 		prop = e.getProperties();
 	}
@@ -30,9 +30,9 @@ public class ActionSetFontFamily extends ActionSetVertexStyle implements ActionL
 	public void actionPerformed(ActionEvent arg0) 
 	{
 		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		List<String> fonts = new ArrayList<String>();
-		fonts.addAll(Arrays.asList(new String[] { "Helvetica", "Verdana",
-				"Times New Roman", "Garamond", "Courier New", "Arial", "---" }));
+		List<String> fonts = new ArrayList<>();
+		fonts.addAll(Arrays.asList("Helvetica", "Verdana",
+                "Times New Roman", "Garamond", "Courier New", "Arial", "---"));
 		fonts.addAll(Arrays.asList(env.getAvailableFontFamilyNames()));
 		String newValue = (String)JOptionPane.showInputDialog(
 				editor.getGraphComponent(),

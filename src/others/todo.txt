@@ -2,7 +2,6 @@
 - błędna kolejność w rozwiązaniu tekstowym zadania Najkrótsza ścieżka
 - nazwy Tak, Nie, Anuluj powinny być po polsku
 - Nazwa "Nowy graf" w pasku tytułu przed stworzeniem pierwszego grafu
-- Istnieje możliwość zmiany kształtu krawędzi na koło itd.
 - po zmianie języka w opcjach tracimy aktualnie otwarty graf. Graf jest wyświetlany w formie graficznej jednak niedostępne są opcje tj. zapisz, wykonaj algorytm
 - "Zapisz jako" startuje zawsze z domyślnego katalogu
 
@@ -11,6 +10,7 @@ Podstawowe:
 - przydałoby się pogrupowanie algorytmów w menu - tak było w poprzednim modgrafie, np. algorytmy najkrótszej ścieżki i pod tą pozycją kilka algorytmów
 - zmiana typu istniejącego grafu
 - poszukać TODO w kodzie
+- zmiana wyglądu małych okien
 
 
 Dodatkowe:
@@ -23,7 +23,6 @@ Dodatkowe:
 - możliwość przesuwania grafu na przybliżeniu + mini podgląd całości
 - funkcja cofnij (ponów)
 - dodanie nowych kształtów (np. trójkąt)
-- menu Krawędź
 - wydzielenie z klasy Editor klasy Graph?Model?Data?Utils?Common?
 - wybór zakończenia strzałki
 - dodawanie wierzchołka powinno być po naciśnięciu klawisza CTRL + lewy klawisz myszki

@@ -71,34 +71,19 @@ public class MenuBar extends JMenuBar
 		JMenu vertex = new JMenu(lang.getProperty("menu-vertex"));
 		vertex.add(createMenuItem("menu-vertex-add", 	new ActionAddVertex(editor), 		false, "icons/add.png", 	"INSERT"));
 		vertex.add(createMenuItem("menu-vertex-delete", new ActionRemoveSelected(editor), 	false, "icons/minus.png", 	"DELETE"));
-		vertex.add(createMenuItem("menu-vertex-fill-color", 	new ActionSetColor(editor, STYLE_FILLCOLOR, "frame-select-fill-color")));
-		
-		JMenu size = new JMenu(lang.getProperty("menu-vertex-size"));
-		size.add(createMenuItem("menu-vertex-size-small", 	new ActionSetSize(editor, 25.0)));
-		size.add(createMenuItem("menu-vertex-size-medium", 	new ActionSetSize(editor, 50.0)));
-		size.add(createMenuItem("menu-vertex-size-big", 	new ActionSetSize(editor, 100.0)));
-		size.add(createMenuItem("menu-vertex-size-custom",	new ActionSetCustomSize(editor)));
-		vertex.add(size);
-		
-		JMenu shape = new JMenu(lang.getProperty("menu-vertex-shape"));
-		shape.add(createMenuItem("menu-vertex-shape-circle", 	new ActionSetShape(editor, SHAPE_ELLIPSE)));
-		shape.add(createMenuItem("menu-vertex-shape-square", 	new ActionSetShape(editor, SHAPE_RECTANGLE)));
-		shape.add(createMenuItem("menu-vertex-shape-rhombus", 	new ActionSetShape(editor, SHAPE_RHOMBUS)));
-		shape.add(createMenuItem("menu-vertex-shape-cloud", 	new ActionSetShape(editor, SHAPE_CLOUD)));
-		shape.add(createMenuItem("menu-vertex-shape-hexagon", 	new ActionSetShape(editor, SHAPE_HEXAGON)));
-		vertex.add(shape);
-		
-		JMenu border = new JMenu(lang.getProperty("menu-vertex-border"));
-		border.add(createMenuItem("menu-vertex-border-width",	new ActionSetIntegerValueStyle(editor, STYLE_STROKEWIDTH, "frame-change-line-width", BORDER_MINIMUM_WIDTH, BORDER_MAXIMUM_WIDTH)));
-		border.add(createMenuItem("menu-vertex-border-color",	new ActionSetColor(editor, STYLE_STROKECOLOR, "frame-select-border-color")));
-		vertex.add(border);
-		
-		JMenu font = new JMenu(lang.getProperty("menu-vertex-font"));
-		font.add(createMenuItem("menu-vertex-font-size",	new ActionSetIntegerValueStyle(editor, STYLE_FONTSIZE, "frame-change-font-size", FONT_MINIMUM_SIZE, FONT_MAXIMUM_SIZE)));
-		font.add(createMenuItem("menu-vertex-font-color",	new ActionSetColor(editor, STYLE_FONTCOLOR, "frame-select-font-color")));
-		font.add(createMenuItem("menu-vertex-font-family",	new ActionSetFontFamily(editor)));
-		vertex.add(font);
+		vertex.add(createMenuItem("menu-vertex-fill-color", 	new ActionSetColor(editor, STYLE_FILLCOLOR, "frame-select-fill-color", true)));
+		vertex.add(createMenuSize());
+		vertex.add(createMenuShape());
+		vertex.add(createMenuBorder());
+		vertex.add(createMenuFont(true));
 		add(vertex);
+
+        JMenu edge = new JMenu(lang.getProperty("menu-edge"));
+        edge.add(createMenuItem("menu-edge-delete", new ActionRemoveSelected(editor), 	false, "icons/minus.png", 	"DELETE"));
+        edge.add(createMenuItem("menu-edge-width",	new ActionSetIntegerValueStyle(editor, STYLE_STROKEWIDTH, "frame-change-line-width", BORDER_MINIMUM_WIDTH, BORDER_MAXIMUM_WIDTH, false)));
+        edge.add(createMenuItem("menu-edge-color",	new ActionSetColor(editor, STYLE_STROKECOLOR, "frame-select-border-color", false)));
+        edge.add(createMenuFont(false));
+        add(edge);
 
 		algorithm = new JMenu(lang.getProperty("menu-algorithm"));
 		algorithm.add(createMenuItem("menu-algorithm-add", new ActionAddNewAlghoritm(editor)));
@@ -112,7 +97,7 @@ public class MenuBar extends JMenuBar
 		algorithm.add(createDisabledAlgorithm("menu-algorithm-cheapest-flow", 	new ModgrafBusackerGowenCheapestFlow(editor), 0, 2));
 		algorithm.add(createDisabledAlgorithm("menu-algorithm-hamiltonian-cycle",new ModgrafHamiltonianCycle(editor), 2, 1));
 		algorithm.add(createDisabledAlgorithm("menu-algorithm-chromatic-number", new ModgrafChromaticNumber(editor), 2, 3));
-		algorithm.add(createDisabledAlgorithm("menu-algorithm-edge-coloring", 	 new ModgrafEdgeColoring(editor), 2, 3));
+		algorithm.add(createDisabledAlgorithm("menu-algorithm-edge-coloring", new ModgrafEdgeColoring(editor), 2, 3));
 		add(algorithm);
 		
 		steps = new JMenu(lang.getProperty("menu-algorithm-steps"));
@@ -138,8 +123,42 @@ public class MenuBar extends JMenuBar
 		help.add(createMenuItem("menu-help-about", new AboutModgraf(editor)));
 		add(help);
 	}
-	
-	private JMenuItem createMenuItem(String propertyName, ActionListener action)
+
+    private JMenu createMenuFont(boolean isVertex) {
+        JMenu font = new JMenu(lang.getProperty("menu-vertex-font"));
+        font.add(createMenuItem("menu-vertex-font-size",	new ActionSetIntegerValueStyle(editor, STYLE_FONTSIZE, "frame-change-font-size", FONT_MINIMUM_SIZE, FONT_MAXIMUM_SIZE, isVertex)));
+        font.add(createMenuItem("menu-vertex-font-color",	new ActionSetColor(editor, STYLE_FONTCOLOR, "frame-select-font-color", isVertex)));
+        font.add(createMenuItem("menu-vertex-font-family",	new ActionSetFontFamily(editor, isVertex)));
+        return font;
+    }
+
+    private JMenu createMenuBorder() {
+        JMenu border = new JMenu(lang.getProperty("menu-vertex-border"));
+        border.add(createMenuItem("menu-vertex-border-width",	new ActionSetIntegerValueStyle(editor, STYLE_STROKEWIDTH, "frame-change-line-width", BORDER_MINIMUM_WIDTH, BORDER_MAXIMUM_WIDTH, true)));
+        border.add(createMenuItem("menu-vertex-border-color",	new ActionSetColor(editor, STYLE_STROKECOLOR, "frame-select-border-color", true)));
+        return border;
+    }
+
+    private JMenu createMenuShape() {
+        JMenu shape = new JMenu(lang.getProperty("menu-vertex-shape"));
+        shape.add(createMenuItem("menu-vertex-shape-circle", 	new ActionSetShape(editor, SHAPE_ELLIPSE)));
+        shape.add(createMenuItem("menu-vertex-shape-square", 	new ActionSetShape(editor, SHAPE_RECTANGLE)));
+        shape.add(createMenuItem("menu-vertex-shape-rhombus", 	new ActionSetShape(editor, SHAPE_RHOMBUS)));
+        shape.add(createMenuItem("menu-vertex-shape-cloud", 	new ActionSetShape(editor, SHAPE_CLOUD)));
+        shape.add(createMenuItem("menu-vertex-shape-hexagon", 	new ActionSetShape(editor, SHAPE_HEXAGON)));
+        return shape;
+    }
+
+    private JMenu createMenuSize() {
+        JMenu size = new JMenu(lang.getProperty("menu-vertex-size"));
+        size.add(createMenuItem("menu-vertex-size-small", 	new ActionSetSize(editor, 25.0)));
+        size.add(createMenuItem("menu-vertex-size-medium", 	new ActionSetSize(editor, 50.0)));
+        size.add(createMenuItem("menu-vertex-size-big", 	new ActionSetSize(editor, 100.0)));
+        size.add(createMenuItem("menu-vertex-size-custom",	new ActionSetCustomSize(editor)));
+        return size;
+    }
+
+    private JMenuItem createMenuItem(String propertyName, ActionListener action)
 	{
 		return createMenuItem(propertyName, action, true);
 	}

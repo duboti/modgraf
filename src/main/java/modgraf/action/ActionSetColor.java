@@ -15,16 +15,16 @@ import com.mxgraph.util.mxUtils;
  * 
  * @author Daniel Pogrebniak
  *
- * @see ActionSetVertexStyle
+ * @see ActionSetStyle
  * @see ActionListener
  */
-public class ActionSetColor extends ActionSetVertexStyle implements ActionListener
+public class ActionSetColor extends ActionSetStyle implements ActionListener
 {
 	private String frameName;
 	
-	public ActionSetColor(Editor e, String styleName, String frameName)
+	public ActionSetColor(Editor e, String styleName, String frameName, boolean isVertex)
 	{
-		super(e, styleName);
+		super(e, styleName, isVertex);
 		this.frameName = frameName;
 	}
 	

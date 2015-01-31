@@ -19,7 +19,7 @@ public class Language
 
 		lang.setProperty("menu-vertex", "Wierzchołek");
 		lang.setProperty("menu-vertex-add", "Dodaj wierzchołek");
-		lang.setProperty("menu-vertex-delete", "Usuń zaznaczony");
+		lang.setProperty("menu-vertex-delete", "Usuń zaznaczone");
 		lang.setProperty("menu-vertex-fill-color", "Kolor wypełnienia");
 		lang.setProperty("menu-vertex-size", "Rozmiar");
 		lang.setProperty("menu-vertex-shape", "Kształt");
@@ -46,7 +46,12 @@ public class Language
 		lang.setProperty("menu-vertex-font-color", "Kolor");
 		lang.setProperty("menu-vertex-font-family", "Krój");
 		lang.setProperty("menu-vertex-font-size", "Rozmiar");
-		
+
+        lang.setProperty("menu-edge", "Krawędź");
+        lang.setProperty("menu-edge-delete", "Usuń zaznaczone");
+        lang.setProperty("menu-edge-width", "Grubość");
+        lang.setProperty("menu-edge-color", "Kolor");
+
 		lang.setProperty("menu-algorithm", "Algorytmy");
 		lang.setProperty("menu-algorithm-add", "Dodaj nowy algorytm");
 		
@@ -296,7 +301,12 @@ public class Language
 		lang.setProperty("menu-vertex-font-color", "Color");
 		lang.setProperty("menu-vertex-font-family", "Family");
 		lang.setProperty("menu-vertex-font-size", "Size");
-		
+
+        lang.setProperty("menu-edge", "Edge");
+        lang.setProperty("menu-edge-delete", "Delete selected");
+        lang.setProperty("menu-edge-width", "Width");
+        lang.setProperty("menu-edge-color", "Color");
+
 		lang.setProperty("menu-algorithm", "Algorithms");
 		lang.setProperty("menu-algorithm-add", "Add new algorithm");
 		lang.setProperty("menu-algorithm-generator", "Complete graph generator");
