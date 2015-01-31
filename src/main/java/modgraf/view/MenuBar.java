@@ -39,6 +39,7 @@ import modgraf.action.ActionSetFontFamily;
 import modgraf.action.ActionSetIntegerValueStyle;
 import modgraf.action.ActionSetShape;
 import modgraf.action.ActionSetSize;
+import modgraf.algorithm.ModgrafBusackerGowenCheapestFlow;
 import modgraf.algorithm.ModgrafChromaticNumber;
 import modgraf.algorithm.ModgrafEdgeColoring;
 import modgraf.algorithm.ModgrafEdmondsKarpMaximumFlow;
@@ -120,6 +121,7 @@ public class MenuBar extends JMenuBar
 		shortestPath.add(createDisabledAlgorithm("menu-algorithm-shortest-path-fw",	new ModgrafShortestPath(editor, ModgrafShortestPath.Algorithm.FloydWarshall), 2, 1));
 		algorithm.add(shortestPath);
 		algorithm.add(createDisabledAlgorithm("menu-algorithm-maximum-flow", 	 new ModgrafEdmondsKarpMaximumFlow(editor), 0, 1));
+		algorithm.add(createDisabledAlgorithm("menu-algorithm-cheapest-flow", 	new ModgrafBusackerGowenCheapestFlow(editor), 0, 2));
 		algorithm.add(createDisabledAlgorithm("menu-algorithm-hamiltonian-cycle",new ModgrafHamiltonianCycle(editor), 2, 1));
 		algorithm.add(createDisabledAlgorithm("menu-algorithm-chromatic-number", new ModgrafChromaticNumber(editor), 1, 3));
 		algorithm.add(createDisabledAlgorithm("menu-algorithm-edge-coloring", 	 new ModgrafEdgeColoring(editor), 1, 3));
