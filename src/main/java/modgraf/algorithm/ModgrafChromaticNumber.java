@@ -12,11 +12,13 @@ import modgraf.jgrapht.Vertex;
 import modgraf.jgrapht.edge.ModgrafEdge;
 import modgraf.view.Editor;
 
+import org.jgrapht.DirectedGraph;
 import org.jgrapht.UndirectedGraph;
 import org.jgrapht.alg.ChromaticNumber;
 
 import com.mxgraph.model.mxCell;
 import com.mxgraph.model.mxGraphModel;
+import org.jgrapht.graph.AsUndirectedGraph;
 
 /**
  * Klasa rozwiązuje problem kolorowania wierzchołków.
@@ -38,24 +40,18 @@ public class ModgrafChromaticNumber extends ModgrafAbstractAlgorithm
 	@Override
 	public void actionPerformed(ActionEvent arg0)
 	{
-		if (editor.getGraphT() instanceof UndirectedGraph)
-		{
-			startAlgorithmWithoutParams();
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(editor.getGraphComponent(),
-					lang.getProperty("warning-wrong-graph-type")+
-				    lang.getProperty("alg-cn-graph-type"),
-				    lang.getProperty("warning"), JOptionPane.WARNING_MESSAGE);
-		}
+        startAlgorithmWithoutParams();
 	}
 
 	@Override
 	protected void findAndShowResult()
 	{
-		Map<Integer, Set<Vertex>> result = ChromaticNumber.findGreedyColoredGroups(
-				(UndirectedGraph<Vertex, ModgrafEdge>)editor.getGraphT());
+        UndirectedGraph<Vertex, ModgrafEdge> undirectedGraph;
+        if (editor.getGraphT() instanceof UndirectedGraph)
+            undirectedGraph = (UndirectedGraph<Vertex, ModgrafEdge>) editor.getGraphT();
+        else
+            undirectedGraph = new AsUndirectedGraph<Vertex, ModgrafEdge>((DirectedGraph) editor.getGraphT());
+        Map<Integer, Set<Vertex>> result = ChromaticNumber.findGreedyColoredGroups(undirectedGraph);
 		if (result != null)
 		{
 			createTextResult(result);
@@ -118,8 +114,8 @@ public class ModgrafChromaticNumber extends ModgrafAbstractAlgorithm
 
 	private String getColor(ArrayList<String> colorList, Integer colorInt)
 	{
-		String color = null;
-		if (colorInt.intValue() < 16)
+		String color;
+		if (colorInt < 16)
 			color = colorList.get(colorInt.intValue());
 		else
 		{

@@ -110,7 +110,7 @@ public class MenuBar extends JMenuBar
 		algorithm.add(createDisabledAlgorithm("menu-algorithm-maximum-flow", 	 new ModgrafEdmondsKarpMaximumFlow(editor), 0, 1));
 		algorithm.add(createDisabledAlgorithm("menu-algorithm-cheapest-flow", 	new ModgrafBusackerGowenCheapestFlow(editor), 0, 2));
 		algorithm.add(createDisabledAlgorithm("menu-algorithm-hamiltonian-cycle",new ModgrafHamiltonianCycle(editor), 2, 1));
-		algorithm.add(createDisabledAlgorithm("menu-algorithm-chromatic-number", new ModgrafChromaticNumber(editor), 1, 3));
+		algorithm.add(createDisabledAlgorithm("menu-algorithm-chromatic-number", new ModgrafChromaticNumber(editor), 2, 3));
 		algorithm.add(createDisabledAlgorithm("menu-algorithm-edge-coloring", 	 new ModgrafEdgeColoring(editor), 2, 3));
 		add(algorithm);
 		
