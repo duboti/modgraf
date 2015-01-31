@@ -12,7 +12,8 @@ public class AlgorithmMenuItems
 	private Set<JMenuItem> unweighted;
 	private Set<JMenuItem> weighted;
 	private Set<JMenuItem> doubleWeighted;
-	
+	private Set<JMenuItem> all;
+
 	public AlgorithmMenuItems() 
 	{
 		directed = new HashSet<>();
@@ -20,6 +21,7 @@ public class AlgorithmMenuItems
 		unweighted = new HashSet<>();
 		weighted = new HashSet<>();
 		doubleWeighted = new HashSet<>();
+		all = new HashSet<>();
 	}
 	
 	/**
@@ -41,6 +43,9 @@ public class AlgorithmMenuItems
 			weighted.add(algorithm);
 		if (egdeWeight == 2)
 			doubleWeighted.add(algorithm);
+
+        if (directedType == 2 && egdeWeight == 3)
+            all.add(algorithm);
 	}
 	
 	public void enableSpecifiedAlgorithms (boolean directed, int egdeWeight)
@@ -72,6 +77,7 @@ public class AlgorithmMenuItems
 			unsetEnabled(undirected);
 		else
 			unsetEnabled(this.directed);
+        setEnabled(all);
 	}
 
 	private void unsetEnabled(Set<JMenuItem> items) 

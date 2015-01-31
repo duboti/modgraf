@@ -13,12 +13,13 @@ import modgraf.jgrapht.Vertex;
 import modgraf.jgrapht.edge.ModgrafEdge;
 import modgraf.view.Editor;
 
-import org.jgrapht.Graph;
+import org.jgrapht.DirectedGraph;
 import org.jgrapht.UndirectedGraph;
 
 import com.mxgraph.model.mxCell;
 import com.mxgraph.model.mxGraphModel;
 import com.mxgraph.util.mxConstants;
+import org.jgrapht.graph.AsUndirectedGraph;
 
 public class ModgrafEdgeColoring extends ModgrafAbstractAlgorithm 
 {
@@ -30,17 +31,7 @@ public class ModgrafEdgeColoring extends ModgrafAbstractAlgorithm
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
 	{
-		if (editor.getGraphT() instanceof UndirectedGraph)
-		{
-			startAlgorithmWithoutParams();
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(editor.getGraphComponent(),
-					lang.getProperty("warning-wrong-graph-type")+
-				    lang.getProperty("alg-cn-graph-type"),
-				    lang.getProperty("warning"), JOptionPane.WARNING_MESSAGE);
-		}
+        startAlgorithmWithoutParams();
 	}
 
 	@Override
@@ -53,8 +44,12 @@ public class ModgrafEdgeColoring extends ModgrafAbstractAlgorithm
 	{
 		Date start = new Date();
 		EdgeColoring edgeColoring = new EdgeColoring();
-		Map<Integer, Set<ModgrafEdge>> result = edgeColoring.findColoredEgdeGroups(
-				(UndirectedGraph<Vertex, ModgrafEdge>) editor.getGraphT());
+        UndirectedGraph<Vertex, ModgrafEdge> undirectedGraph;
+        if (editor.getGraphT() instanceof UndirectedGraph)
+            undirectedGraph = (UndirectedGraph<Vertex, ModgrafEdge>) editor.getGraphT();
+        else
+            undirectedGraph = new AsUndirectedGraph<Vertex, ModgrafEdge>((DirectedGraph) editor.getGraphT());
+		Map<Integer, Set<ModgrafEdge>> result = edgeColoring.findColoredEgdeGroups(undirectedGraph);
 		Date end = new Date();
 		if (result != null)
 		{
@@ -103,7 +98,6 @@ public class ModgrafEdgeColoring extends ModgrafAbstractAlgorithm
 	private void createGraphicalResult(Map<Integer, Set<ModgrafEdge>> result)
 	{
 		mxGraphModel model = (mxGraphModel)editor.getGraphComponent().getGraph().getModel();
-		Graph<Vertex, ModgrafEdge> graphT = editor.getGraphT();
 		ArrayList<String> colorList = createColorList();
 		model.beginUpdate();
 		for (Integer colorInt : result.keySet())
@@ -112,9 +106,7 @@ public class ModgrafEdgeColoring extends ModgrafAbstractAlgorithm
 			String color = getColor(colorList, colorInt);
 			for (ModgrafEdge edge : edgeSet)
 			{
-				Vertex sourceId = graphT.getEdgeSource(edge);
-				Vertex targetId = graphT.getEdgeTarget(edge);
-				String edgeId = editor.getEdgeId(sourceId.getId(), targetId.getId());
+				String edgeId = editor.getEdgeId(edge.getSource().getId(), edge.getTarget().getId());
 				setCellStyle(edgeId, mxConstants.STYLE_STROKECOLOR, color);
 			}
 		}
@@ -124,8 +116,8 @@ public class ModgrafEdgeColoring extends ModgrafAbstractAlgorithm
 
 	private String getColor(ArrayList<String> colorList, Integer colorInt)
 	{
-		String color = null;
-		if (colorInt.intValue() < colorList.size())
+		String color;
+		if (colorInt < colorList.size())
 			color = colorList.get(colorInt.intValue());
 		else
 		{
