@@ -4,14 +4,11 @@
 - Nazwa "Nowy graf" w pasku tytułu przed stworzeniem pierwszego grafu
 - Istnieje możliwość zmiany kształtu krawędzi na koło itd.
 - po zmianie języka w opcjach tracimy aktualnie otwarty graf. Graf jest wyświetlany w formie graficznej jednak niedostępne są opcje tj. zapisz, wykonaj algorytm
-- komunikaty algorytmów nie są przetłumaczone na angielski
 - "Zapisz jako" startuje zawsze z domyślnego katalogu
-- obsługa # - komentarza - podczas wczytywania plików w formacie starego modgrafa
 
 
 Podstawowe:
 - przydałoby się pogrupowanie algorytmów w menu - tak było w poprzednim modgrafie, np. algorytmy najkrótszej ścieżki i pod tą pozycją kilka algorytmów
-- zapis tekstowych wyników do pliku
 - zmiana typu istniejącego grafu
 - poszukać TODO w kodzie
 

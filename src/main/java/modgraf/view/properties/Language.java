@@ -380,7 +380,7 @@ public class Language
 		lang.setProperty("message-range-tip", "integers from");
 		
 		lang.setProperty("files-all", "All supported types (*.xml;*.grf;*png)");
-		lang.setProperty("files-jar", "Java ARchive");
+		lang.setProperty("files-jar", "Java ARchive (*.jar)");
 		lang.setProperty("files-grf", "Modgraf 2 format (*.grf)");
 		lang.setProperty("files-xml", "Extensible Markup Language (*.xml)");
 		lang.setProperty("files-png", "Portable Network Graphics + XML (*.png)");
@@ -447,26 +447,26 @@ public class Language
 		lang.setProperty("alg-hc-graph-type", "completed undirected weighted graphs.");
 		lang.setProperty("alg-mf-graph-type", "directed weighted graphs.");
 		
-		lang.setProperty("alg-sp-message-1", "Najkrótsza ścieżka między wierzchołkami ");
-		lang.setProperty("alg-sp-message-2", " i ");
-		lang.setProperty("alg-sp-message-3", " przechodzi przez ");
-		lang.setProperty("alg-sp-message-4", "bezpośrednią krawędź.\n");
-		lang.setProperty("alg-sp-message-5", " krawędzie.\n");
-		lang.setProperty("alg-sp-message-6", " krawędzi.\n");
-		lang.setProperty("alg-sp-message-7", "Ścieżka przechodzi kolejno przez wierzchołki: ");
-		lang.setProperty("alg-sp-message-8", " ma długość równą ");
+		lang.setProperty("alg-sp-message-1", "The shortest path from ");
+		lang.setProperty("alg-sp-message-2", " to ");
+		lang.setProperty("alg-sp-message-3", " includes ");
+		lang.setProperty("alg-sp-message-4", "direct edge.\n");
+		lang.setProperty("alg-sp-message-5", " edges.\n");
+		lang.setProperty("alg-sp-message-6", " edge.\n");
+		lang.setProperty("alg-sp-message-7", "The path passes successively through the vertices: ");
+		lang.setProperty("alg-sp-message-8", " have length ");
 		
-		lang.setProperty("alg-cn-message-1", "Minimalna liczba kolorów: ");
-		lang.setProperty("alg-cn-message-2", "\nGrupy wierzchołków o tych samych kolorach:\n");
-		lang.setProperty("alg-hc-message-1", "Najkrótsza ścieżka przechodzi kolejno przez wierzchołki: ");
-		lang.setProperty("alg-mf-message-1", "Maksymalny przepływ: ");
-		lang.setProperty("alg-mf-message-2", "Przepływ odbywa się krawędziami: ");
-		lang.setProperty("alg-ec-message-1", "Liczba użytych kolorów: ");
-		lang.setProperty("alg-ec-message-2", "\nGrupy krawędzi o tych samych kolorach:\n");
+		lang.setProperty("alg-cn-message-1", "The minimum number of colors: ");
+		lang.setProperty("alg-cn-message-2", "\nA group of vertices of the same color:\n");
+		lang.setProperty("alg-hc-message-1", "The shortest path passes sequentially through the vertices: ");
+		lang.setProperty("alg-mf-message-1", "Maximum flow: ");
+		lang.setProperty("alg-mf-message-2", "The flow use edges: ");
+		lang.setProperty("alg-ec-message-1", "Number of used colors: ");
+		lang.setProperty("alg-ec-message-2", "\nEdges group of the same color:\n");
 		
-		lang.setProperty("alg-bg-message-1", "Number of sent units:\n");
+		lang.setProperty("alg-bg-message-1", "Number of sent units:");
 		lang.setProperty("alg-bg-message-2", "Edges used to transport units:\n");
-		lang.setProperty("alg-bg-message-3", "Cost of transport:\n");
+		lang.setProperty("alg-bg-message-3", "Cost of transport:");
 		lang.setProperty("alg-bg-error-1", "Vertex not found");
 		lang.setProperty("alg-bg-error-2", "No solution found in given graph");
 		lang.setProperty("alg-bg-error-3", "Bad input format (should be numeric)");
@@ -495,13 +495,13 @@ public class Language
 		lang.setProperty("pref-vertex-font-color", "Default font color in names");
 		
 		lang.setProperty("pref-edgeTab-name", "Edge");
-		lang.setProperty("pref-edge-width", "Domyślna grubość");
-		lang.setProperty("pref-edge-color", "Domyślny kolor");
-		lang.setProperty("pref-edge-weight", "Domyślna wartość w grafie ważonym");
-		lang.setProperty("pref-edge-capacity", "Domyślna pierwsza wartość w grafie podwójnie ważonym");
-		lang.setProperty("pref-edge-cost", "Domyślna druga wartość w grafie podwójnie ważonym");
-		lang.setProperty("pref-edge-font-size", "Domyślny rozmiar czcionki");
-		lang.setProperty("pref-edge-font-color", "Domyślny kolor czcionki");
+		lang.setProperty("pref-edge-width", "Default width");
+		lang.setProperty("pref-edge-color", "Default color");
+		lang.setProperty("pref-edge-weight", "Default value in weighted graph");
+		lang.setProperty("pref-edge-capacity", "Default first value in double weighted graph");
+		lang.setProperty("pref-edge-cost", "Default second value in double weighted graph");
+		lang.setProperty("pref-edge-font-size", "Default font size");
+		lang.setProperty("pref-edge-font-color", "Default font color");
 		
 		return lang;
 	}
