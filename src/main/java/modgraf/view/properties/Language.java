@@ -46,7 +46,7 @@ public class Language
 		lang.setProperty("menu-vertex-font-family", "Krój");
 		lang.setProperty("menu-vertex-font-size", "Rozmiar");
 		
-		lang.setProperty("menu-algorithm", "Algorytmy szybkie");
+		lang.setProperty("menu-algorithm", "Algorytmy");
 		lang.setProperty("menu-algorithm-add", "Dodaj nowy algorytm");
 		
 		lang.setProperty("menu-algorithm-shortest-path", "Najkrótsza ścieżka");
@@ -60,7 +60,7 @@ public class Language
 		lang.setProperty("menu-algorithm-shortest-path-d", "Dijkstra");
 		lang.setProperty("menu-algorithm-shortest-path-fw", "Floyd Warshall");
 		
-		lang.setProperty("menu-algorithm-steps", "Algorytmy krokowe");
+		lang.setProperty("menu-algorithm-steps", "Tryb krokowy");
 		lang.setProperty("menu-algorithm-steps-dijkstra", "alg. Dijkstry");
 		
 		lang.setProperty("menu-utils", "Narzędzia");
@@ -309,7 +309,7 @@ public class Language
 		lang.setProperty("menu-algorithm-shortest-path-d", "Dijkstra");
 		lang.setProperty("menu-algorithm-shortest-path-fw", "Floyd Warshall");
 		
-		lang.setProperty("menu-algorithm-steps", "Steps algorithms");
+		lang.setProperty("menu-algorithm-steps", "Step mode");
 		lang.setProperty("menu-algorithm-steps-dijkstra", "Dijkstra");
 
 		lang.setProperty("menu-utils", "Utils");
