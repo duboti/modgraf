@@ -15,7 +15,8 @@ public class Language
 		lang.setProperty("menu-file-open", "Otwórz");
 		lang.setProperty("menu-file-save", "Zapisz");
 		lang.setProperty("menu-file-saveas", "Zapisz jako");
-		
+        lang.setProperty("menu-file-save-text-result", "Zapisz rozwiązanie tekstowe");
+
 		lang.setProperty("menu-vertex", "Wierzchołek");
 		lang.setProperty("menu-vertex-add", "Dodaj wierzchołek");
 		lang.setProperty("menu-vertex-delete", "Usuń zaznaczony");
@@ -132,7 +133,8 @@ public class Language
 		lang.setProperty("files-grf", "Pliki programu Modgraf 2 (*.grf)");
 		lang.setProperty("files-xml", "Pliki XML (*.xml)");
 		lang.setProperty("files-png", "Pliki PNG+XML (*.png)");
-		
+		lang.setProperty("files-txt", "Pliki tekstowe (*.txt)");
+
 		lang.setProperty("frame-new-graph-name", "Nowy graf");
 		lang.setProperty("frame-new-graph", "Utwórz nowy graf");
 		lang.setProperty("frame-generate-graph", "Generuj nowy graf");
@@ -263,7 +265,8 @@ public class Language
 		lang.setProperty("menu-file-open", "Open");
 		lang.setProperty("menu-file-save", "Save");
 		lang.setProperty("menu-file-saveas", "Save as");
-		
+		lang.setProperty("menu-file-save-text-result", "Save text result");
+
 		lang.setProperty("menu-vertex", "Vertex");
 		lang.setProperty("menu-vertex-add", "Add vertex");
 		lang.setProperty("menu-vertex-delete", "Delete selected");
@@ -381,6 +384,7 @@ public class Language
 		lang.setProperty("files-grf", "Modgraf 2 format (*.grf)");
 		lang.setProperty("files-xml", "Extensible Markup Language (*.xml)");
 		lang.setProperty("files-png", "Portable Network Graphics + XML (*.png)");
+        lang.setProperty("files-txt", "Normal text file (*.txt)");
 		
 		lang.setProperty("frame-new-graph-name", "New graph");
 		lang.setProperty("frame-new-graph", "Create new graph");

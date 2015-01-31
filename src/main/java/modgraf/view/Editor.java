@@ -171,7 +171,11 @@ public class Editor
 	{
 		textPane.setText(str);
 	}
-	
+
+    public String getText()
+    {
+        return textPane.getText();
+    }
 	/**
 	 * @param vc wartość licznika wierzchołków
 	 */

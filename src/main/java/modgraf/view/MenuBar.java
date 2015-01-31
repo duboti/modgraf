@@ -65,6 +65,7 @@ public class MenuBar extends JMenuBar
 		file.add(createMenuItem("menu-file-open", 	new ActionOpen(editor), 	true, "icons/open.png",	"ctrl O"));
 		file.add(createMenuItem("menu-file-save", 	new ActionSave(editor), 	false,"icons/save.gif", "ctrl S"));
 		file.add(createMenuItem("menu-file-saveas",	new ActionSaveAs(editor), 	false));
+		file.add(createMenuItem("menu-file-save-text-result",	new ActionSaveTextResult(editor), 	false));
 		add(file);
 		
 		JMenu vertex = new JMenu(lang.getProperty("menu-vertex"));
