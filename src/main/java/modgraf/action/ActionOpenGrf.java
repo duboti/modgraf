@@ -21,8 +21,9 @@ import com.mxgraph.view.mxGraph;
 public class ActionOpenGrf 
 {
 	private Editor editor;
-	
-	public ActionOpenGrf(Editor e)
+    private int linesWithComment = 0;
+
+    public ActionOpenGrf(Editor e)
 	{
 		editor = e;
 	}
@@ -63,7 +64,8 @@ public class ActionOpenGrf
 		ArrayList<String> edgeList = new ArrayList<>();
 		while (i < lines.length && !lines[i].isEmpty())
 		{
-			grfValidationEdge(lines[i], edgeWeightDegree, directed, vertexNameList, edgeList);
+			if (!lines[i].startsWith("#"))
+                grfValidationEdge(lines[i], edgeWeightDegree, directed, vertexNameList, edgeList);
 			++i;
 		}
 		int edgeCounter = edgeList.size();
@@ -75,7 +77,8 @@ public class ActionOpenGrf
 			int validVertexCounter = 0;
 			while (i < lines.length && !lines[i].isEmpty())
 			{
-				validVertexCounter = grfValidationVertexGeometry(lines[i], edgeWeightDegree, vertexNameList, validVertexCounter);
+                if (!lines[i].startsWith("#"))
+                    validVertexCounter = grfValidationVertexGeometry(lines[i], edgeWeightDegree, vertexNameList, validVertexCounter);
 				++i;
 			}
 			if (validVertexCounter != vertexNameList.size())
@@ -157,7 +160,6 @@ public class ActionOpenGrf
 	{
 		String[] lines = grfFile.split("\n");
 		boolean directed = lines[2].startsWith("s") || lines[2].startsWith("S");
-		lines[4].split("\t");
 		StringTokenizer st = new StringTokenizer(lines[4]);
 		int edgeWeightDegree = st.countTokens() - 2;
 		int i = 4;
@@ -165,7 +167,10 @@ public class ActionOpenGrf
 		editor.getGraphComponent().setGraph(editor.createNewMxGraph());
 		while (i < lines.length && !lines[i].isEmpty())
 		{
-			createGrfEdge(lines[i], edgeWeightDegree);
+            if (!lines[i].startsWith("#"))
+                createGrfEdge(lines[i], edgeWeightDegree);
+            else
+                ++linesWithComment;
 			++i;
 		}
 		editor.setTextAboutNewGraph(directed, edgeWeightDegree, true);
@@ -222,9 +227,11 @@ public class ActionOpenGrf
 		String[] lines = grfFile.split("\n");
 		int edgeCounter = graphT.edgeSet().size();
 		int vertexCounter = graphT.vertexSet().size();
-		for (int i = edgeCounter + 5; i < lines.length && !lines[i].isEmpty(); ++i)
+		for (int i = edgeCounter + 5 + linesWithComment; i < lines.length && !lines[i].isEmpty(); ++i)
 		{
-			StringTokenizer st = new StringTokenizer(lines[i]);
+            if (lines[i].startsWith("#"))
+                continue;
+            StringTokenizer st = new StringTokenizer(lines[i]);
 			mxCell cell = (mxCell) model.getCell(editor.getVertexId(st.nextToken()));
 			model.beginUpdate();
 			cell.getGeometry().setY(Double.parseDouble(st.nextToken()));
