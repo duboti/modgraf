@@ -79,10 +79,7 @@ public class EventLabelChangedListener extends LabelChangedUtils implements mxIE
 	{
 		String id = cell.getId();
 		String value = (String)cell.getValue();
-		if (id.equals(editor.getVertexId(value)))
-			return false;
-		else
-			return true;
+		return !id.equals(editor.getVertexId(value));
 	}
 
 	private void changeValueForVertex(mxCell cell)
@@ -120,5 +117,13 @@ public class EventLabelChangedListener extends LabelChangedUtils implements mxIE
 			}
 			editor.removeVertexId(vertexValuesList.get(0));
 		}
+        for (Vertex vertex : graphT.vertexSet())
+        {
+            if (vertex.getId().equals(cell.getId()))
+            {
+                vertex.setName(cell.getValue().toString());
+                break;
+            }
+        }
 	}
 }

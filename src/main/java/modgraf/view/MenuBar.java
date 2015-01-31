@@ -181,7 +181,7 @@ public class MenuBar extends JMenuBar
 	
 	public JMenuItem addAlgorithm(String propertyName, ActionListener action, int directedType, int egdeWeight)
 	{
-		JMenuItem alg = createDisabledAlgorithm(propertyName, action, egdeWeight, egdeWeight);
+		JMenuItem alg = createDisabledAlgorithm(propertyName, action, directedType, egdeWeight);
 		alg.setEnabled(true);
 		algorithm.add(alg);
 		return alg;

@@ -8,7 +8,6 @@
 - "Zapisz jako" startuje zawsze z domyślnego katalogu
 - obsługa # - komentarza - podczas wczytywania plików w formacie starego modgrafa
 - po wyłączeniu programu zostawały jakieś okienka (z wynikami?)
-- po zmianie nazwy wierzchołków, program ciągle wykorzystuje pierwotne numery (algorytmy je wykorzystują); po zapisaniu i wczytaniu jest już ok; tak jest w najtańszym problemie, ale studenci GIS twierdzą, że tak jest też w innych algorytmach
 
 
 Podstawowe:

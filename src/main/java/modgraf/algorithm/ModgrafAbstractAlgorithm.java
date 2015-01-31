@@ -25,7 +25,6 @@ import org.jgrapht.Graph;
 
 import com.mxgraph.model.mxGraphModel;
 import com.mxgraph.util.mxConstants;
-import com.mxgraph.view.mxCellState;
 import com.mxgraph.view.mxGraph;
 
 /**
