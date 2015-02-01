@@ -48,7 +48,7 @@ public class ModgrafEdgeColoring extends ModgrafAbstractAlgorithm
         if (editor.getGraphT() instanceof UndirectedGraph)
             undirectedGraph = (UndirectedGraph<Vertex, ModgrafEdge>) editor.getGraphT();
         else
-            undirectedGraph = new AsUndirectedGraph<Vertex, ModgrafEdge>((DirectedGraph) editor.getGraphT());
+            undirectedGraph = new AsUndirectedGraph<>((DirectedGraph<Vertex, ModgrafEdge>) editor.getGraphT());
 		Map<Integer, Set<ModgrafEdge>> result = edgeColoring.findColoredEgdeGroups(undirectedGraph);
 		Date end = new Date();
 		if (result != null)

@@ -88,16 +88,12 @@ public class MenuBar extends JMenuBar
 		algorithm = new JMenu(lang.getProperty("menu-algorithm"));
 		algorithm.add(createMenuItem("menu-algorithm-add", new ActionAddNewAlghoritm(editor)));
 		algorithm.addSeparator();
-		JMenu shortestPath = new JMenu(lang.getProperty("menu-algorithm-shortest-path"));
-		shortestPath.add(createDisabledAlgorithm("menu-algorithm-shortest-path-bf",	new ModgrafShortestPath(editor, ModgrafShortestPath.Algorithm.BellmanFord), 2, 1));
-		shortestPath.add(createDisabledAlgorithm("menu-algorithm-shortest-path-d",	new ModgrafShortestPath(editor, ModgrafShortestPath.Algorithm.Dijkstra), 2, 1));
-		shortestPath.add(createDisabledAlgorithm("menu-algorithm-shortest-path-fw",	new ModgrafShortestPath(editor, ModgrafShortestPath.Algorithm.FloydWarshall), 2, 1));
-		algorithm.add(shortestPath);
-		algorithm.add(createDisabledAlgorithm("menu-algorithm-maximum-flow", 	 new ModgrafEdmondsKarpMaximumFlow(editor), 0, 1));
-		algorithm.add(createDisabledAlgorithm("menu-algorithm-cheapest-flow", 	new ModgrafBusackerGowenCheapestFlow(editor), 0, 2));
-		algorithm.add(createDisabledAlgorithm("menu-algorithm-hamiltonian-cycle",new ModgrafHamiltonianCycle(editor), 2, 1));
-		algorithm.add(createDisabledAlgorithm("menu-algorithm-chromatic-number", new ModgrafChromaticNumber(editor), 2, 3));
-		algorithm.add(createDisabledAlgorithm("menu-algorithm-edge-coloring", new ModgrafEdgeColoring(editor), 2, 3));
+		algorithm.add(createMenuShortestPath());
+		algorithm.add(createMenuMaximumFlow());
+		algorithm.add(createMenuCheapestFlow());
+		algorithm.add(createMenuTsp());
+		algorithm.add(createMenuChromaticNumber());
+        algorithm.add(createMenuEdgeColoring());
 		add(algorithm);
 		
 		steps = new JMenu(lang.getProperty("menu-algorithm-steps"));
@@ -123,6 +119,45 @@ public class MenuBar extends JMenuBar
 		help.add(createMenuItem("menu-help-about", new AboutModgraf(editor)));
 		add(help);
 	}
+
+    private JMenu createMenuEdgeColoring() {
+        JMenu edgeColoring = new JMenu(lang.getProperty("menu-algorithm-edge-coloring"));
+        edgeColoring.add(createDisabledAlgorithm("menu-algorithm-edge-coloring-approximate", new ModgrafEdgeColoring(editor), 2, 3));
+        return edgeColoring;
+    }
+
+    private JMenu createMenuChromaticNumber() {
+        JMenu chromaticNumber = new JMenu(lang.getProperty("menu-algorithm-chromatic-number"));
+        chromaticNumber.add(createDisabledAlgorithm("menu-algorithm-chromatic-number-greedy", new ModgrafChromaticNumber(editor), 2, 3));
+        return chromaticNumber;
+    }
+
+    private JMenu createMenuTsp() {
+        JMenu hamiltonianCycle = new JMenu(lang.getProperty("menu-algorithm-tsp"));
+        hamiltonianCycle.add(createDisabledAlgorithm("menu-algorithm-tsp-approximate", new ModgrafHamiltonianCycle(editor), 2, 1));
+        hamiltonianCycle.add(createDisabledAlgorithm("menu-algorithm-tsp-exact", new ModgrafHamiltonianCycle(editor), 2, 1));
+        return hamiltonianCycle;
+    }
+
+    private JMenu createMenuCheapestFlow() {
+        JMenu cheapestFlow = new JMenu(lang.getProperty("menu-algorithm-cheapest-flow"));
+        cheapestFlow.add(createDisabledAlgorithm("menu-algorithm-cheapest-flow-bg", new ModgrafBusackerGowenCheapestFlow(editor), 0, 2));
+        return cheapestFlow;
+    }
+
+    private JMenu createMenuMaximumFlow() {
+        JMenu maximumFlow = new JMenu(lang.getProperty("menu-algorithm-maximum-flow"));
+        maximumFlow.add(createDisabledAlgorithm("menu-algorithm-maximum-flow-ek", 	 new ModgrafEdmondsKarpMaximumFlow(editor), 0, 1));
+        return maximumFlow;
+    }
+
+    private JMenu createMenuShortestPath() {
+        JMenu shortestPath = new JMenu(lang.getProperty("menu-algorithm-shortest-path"));
+        shortestPath.add(createDisabledAlgorithm("menu-algorithm-shortest-path-bf",	new ModgrafShortestPath(editor, ModgrafShortestPath.Algorithm.BellmanFord), 2, 1));
+        shortestPath.add(createDisabledAlgorithm("menu-algorithm-shortest-path-d",	new ModgrafShortestPath(editor, ModgrafShortestPath.Algorithm.Dijkstra), 2, 1));
+        shortestPath.add(createDisabledAlgorithm("menu-algorithm-shortest-path-fw",	new ModgrafShortestPath(editor, ModgrafShortestPath.Algorithm.FloydWarshall), 2, 1));
+        return shortestPath;
+    }
 
     private JMenu createMenuFont(boolean isVertex) {
         JMenu font = new JMenu(lang.getProperty("menu-vertex-font"));

@@ -50,7 +50,7 @@ public class ModgrafChromaticNumber extends ModgrafAbstractAlgorithm
         if (editor.getGraphT() instanceof UndirectedGraph)
             undirectedGraph = (UndirectedGraph<Vertex, ModgrafEdge>) editor.getGraphT();
         else
-            undirectedGraph = new AsUndirectedGraph<Vertex, ModgrafEdge>((DirectedGraph) editor.getGraphT());
+            undirectedGraph = new AsUndirectedGraph<>((DirectedGraph<Vertex, ModgrafEdge>) editor.getGraphT());
         Map<Integer, Set<Vertex>> result = ChromaticNumber.findGreedyColoredGroups(undirectedGraph);
 		if (result != null)
 		{

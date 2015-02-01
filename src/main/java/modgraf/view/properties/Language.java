@@ -58,14 +58,20 @@ public class Language
 		lang.setProperty("menu-algorithm-shortest-path", "Najkrótsza ścieżka");
 		lang.setProperty("menu-algorithm-maximum-flow", "Maksymalny przepływ");
 		lang.setProperty("menu-algorithm-cheapest-flow", "Najtańszy przepływ");
-		lang.setProperty("menu-algorithm-hamiltonian-cycle", "Problem komiwojażera");
+		lang.setProperty("menu-algorithm-tsp", "Problem komiwojażera");
 		lang.setProperty("menu-algorithm-chromatic-number", "Kolorowanie wierzchołków");
 		lang.setProperty("menu-algorithm-edge-coloring", "Kolorowanie krawędzi");
-		
-		lang.setProperty("menu-algorithm-shortest-path-bf", "Bellman Ford");
-		lang.setProperty("menu-algorithm-shortest-path-d", "Dijkstra");
-		lang.setProperty("menu-algorithm-shortest-path-fw", "Floyd Warshall");
-		
+
+        lang.setProperty("menu-algorithm-shortest-path-bf", "Bellman-Ford");
+        lang.setProperty("menu-algorithm-shortest-path-d", "Dijkstra");
+        lang.setProperty("menu-algorithm-shortest-path-fw", "Floyd-Warshall");
+        lang.setProperty("menu-algorithm-maximum-flow-ek", "Edmonds–Karp");
+        lang.setProperty("menu-algorithm-cheapest-flow-bg", "Busacker-Gowen");
+        lang.setProperty("menu-algorithm-tsp-approximate", "Algorytm przybliżony");
+        lang.setProperty("menu-algorithm-tsp-exact", "Algorytm dokładny");
+        lang.setProperty("menu-algorithm-chromatic-number-greedy", "Algorytm zachłanny");
+        lang.setProperty("menu-algorithm-edge-coloring-approximate", "Algorytm przybliżony");
+
 		lang.setProperty("menu-algorithm-steps", "Tryb krokowy");
 		lang.setProperty("menu-algorithm-steps-dijkstra", "alg. Dijkstry");
 		
@@ -314,14 +320,20 @@ public class Language
 		lang.setProperty("menu-algorithm-shortest-path", "Shortest path");
 		lang.setProperty("menu-algorithm-maximum-flow", "Maximum flow");
 		lang.setProperty("menu-algorithm-cheapest-flow", "Cheapest flow");
-		lang.setProperty("menu-algorithm-hamiltonian-cycle", "Travelling salesman problem");
+		lang.setProperty("menu-algorithm-tsp", "Travelling salesman problem");
 		lang.setProperty("menu-algorithm-chromatic-number", "Chromatic number");
 		lang.setProperty("menu-algorithm-edge-coloring", "Edge coloring");
 		
-		lang.setProperty("menu-algorithm-shortest-path-bf", "Bellman Ford");
+		lang.setProperty("menu-algorithm-shortest-path-bf", "Bellman-Ford");
 		lang.setProperty("menu-algorithm-shortest-path-d", "Dijkstra");
-		lang.setProperty("menu-algorithm-shortest-path-fw", "Floyd Warshall");
-		
+		lang.setProperty("menu-algorithm-shortest-path-fw", "Floyd-Warshall");
+        lang.setProperty("menu-algorithm-maximum-flow-ek", "Edmonds–Karp");
+        lang.setProperty("menu-algorithm-cheapest-flow-bg", "Busacker-Gowen");
+        lang.setProperty("menu-algorithm-tsp-approximate", "Approximate algorithm");
+        lang.setProperty("menu-algorithm-tsp-exact", "Exact algorithm");
+        lang.setProperty("menu-algorithm-chromatic-number-greedy", "Greedy algorithm");
+        lang.setProperty("menu-algorithm-edge-coloring-approximate", "Approximate algorithm");
+
 		lang.setProperty("menu-algorithm-steps", "Step mode");
 		lang.setProperty("menu-algorithm-steps-dijkstra", "Dijkstra");
 
