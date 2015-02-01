@@ -61,6 +61,7 @@ public class Language
 		lang.setProperty("menu-algorithm-tsp", "Problem komiwojażera");
 		lang.setProperty("menu-algorithm-chromatic-number", "Kolorowanie wierzchołków");
 		lang.setProperty("menu-algorithm-edge-coloring", "Kolorowanie krawędzi");
+		lang.setProperty("menu-algorithm-spanning-tree", "Minimalne drzewo rozpinające");
 
         lang.setProperty("menu-algorithm-shortest-path-bf", "Bellman-Ford");
         lang.setProperty("menu-algorithm-shortest-path-d", "Dijkstra");
@@ -71,6 +72,8 @@ public class Language
         lang.setProperty("menu-algorithm-tsp-exact", "Algorytm dokładny");
         lang.setProperty("menu-algorithm-chromatic-number-greedy", "Algorytm zachłanny");
         lang.setProperty("menu-algorithm-edge-coloring-approximate", "Algorytm przybliżony");
+        lang.setProperty("menu-algorithm-spanning-tree-k", "Kruskal");
+        lang.setProperty("menu-algorithm-spanning-tree-p", "Prim");
 
 		lang.setProperty("menu-algorithm-steps", "Tryb krokowy");
 		lang.setProperty("menu-algorithm-steps-dijkstra", "alg. Dijkstry");
@@ -230,7 +233,12 @@ public class Language
 		lang.setProperty("alg-bg-error-1", "Nie znaleziono wierzchołka");
 		lang.setProperty("alg-bg-error-2", "Nie znaleziono rozwiązania dopuszczalnego");
 		lang.setProperty("alg-bg-error-3", "Zły format danych wejściowych (powinna być liczba)");
-		
+
+        lang.setProperty("alg-st-message-1", "Suma wag w minimalnym drzewie rozpinającym wynosi: ");
+        lang.setProperty("alg-st-message-2", "Minimalne drzewo rozpinające zawiera ");
+        lang.setProperty("alg-st-message-3", " krawędzi.");
+        lang.setProperty("alg-st-message-4", "\nKrawędzie należące do drzewa:\n");
+
 		lang.setProperty("pref-generalTab-name", "Ogólne");
 		lang.setProperty("pref-general-graph-type", "Domyślny typ grafu");
 		lang.setProperty("pref-general-edge-type", "Domyślna liczba parametrów krawędzi");
@@ -323,6 +331,7 @@ public class Language
 		lang.setProperty("menu-algorithm-tsp", "Travelling salesman problem");
 		lang.setProperty("menu-algorithm-chromatic-number", "Chromatic number");
 		lang.setProperty("menu-algorithm-edge-coloring", "Edge coloring");
+        lang.setProperty("menu-algorithm-spanning-tree", "Minimum spanning tree");
 		
 		lang.setProperty("menu-algorithm-shortest-path-bf", "Bellman-Ford");
 		lang.setProperty("menu-algorithm-shortest-path-d", "Dijkstra");
@@ -333,6 +342,8 @@ public class Language
         lang.setProperty("menu-algorithm-tsp-exact", "Exact algorithm");
         lang.setProperty("menu-algorithm-chromatic-number-greedy", "Greedy algorithm");
         lang.setProperty("menu-algorithm-edge-coloring-approximate", "Approximate algorithm");
+        lang.setProperty("menu-algorithm-spanning-tree-k", "Kruskal");
+        lang.setProperty("menu-algorithm-spanning-tree-p", "Prim");
 
 		lang.setProperty("menu-algorithm-steps", "Step mode");
 		lang.setProperty("menu-algorithm-steps-dijkstra", "Dijkstra");
@@ -492,7 +503,12 @@ public class Language
 		lang.setProperty("alg-bg-error-1", "Vertex not found");
 		lang.setProperty("alg-bg-error-2", "No solution found in given graph");
 		lang.setProperty("alg-bg-error-3", "Bad input format (should be numeric)");
-		
+
+        lang.setProperty("alg-st-message-1", "The sum of the weights in the minimum spanning tree is: ");
+        lang.setProperty("alg-st-message-2", "Minimum spanning tree contains ");
+        lang.setProperty("alg-st-message-3", " edges.");
+        lang.setProperty("alg-st-message-4", "\nEdges belonging to the tree:\n");
+
 		lang.setProperty("pref-generalTab-name", "General");
 		lang.setProperty("pref-general-graph-type", "Default graph type");
 		lang.setProperty("pref-general-edge-type", "Default number of edge parameters");

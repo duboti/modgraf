@@ -26,12 +26,7 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 import modgraf.action.*;
-import modgraf.algorithm.ModgrafBusackerGowenCheapestFlow;
-import modgraf.algorithm.ModgrafChromaticNumber;
-import modgraf.algorithm.ModgrafEdgeColoring;
-import modgraf.algorithm.ModgrafEdmondsKarpMaximumFlow;
-import modgraf.algorithm.ModgrafHamiltonianCycle;
-import modgraf.algorithm.ModgrafShortestPath;
+import modgraf.algorithm.*;
 import modgraf.algorithm.steps.DijkstraAlgorithm;
 import modgraf.view.properties.Preferences;
 
@@ -94,6 +89,7 @@ public class MenuBar extends JMenuBar
 		algorithm.add(createMenuTsp());
 		algorithm.add(createMenuChromaticNumber());
         algorithm.add(createMenuEdgeColoring());
+        algorithm.add(createMenuSpanningTree());
 		add(algorithm);
 		
 		steps = new JMenu(lang.getProperty("menu-algorithm-steps"));
@@ -119,6 +115,13 @@ public class MenuBar extends JMenuBar
 		help.add(createMenuItem("menu-help-about", new AboutModgraf(editor)));
 		add(help);
 	}
+
+    private JMenu createMenuSpanningTree() {
+        JMenu spanningTree = new JMenu(lang.getProperty("menu-algorithm-spanning-tree"));
+        spanningTree.add(createDisabledAlgorithm("menu-algorithm-spanning-tree-k", new ModgrafSpanningTree(editor, ModgrafSpanningTree.Algorithm.Kruskal), 2, 3));
+        spanningTree.add(createDisabledAlgorithm("menu-algorithm-spanning-tree-p", new ModgrafSpanningTree(editor, ModgrafSpanningTree.Algorithm.Prim), 2, 3));
+        return spanningTree;
+    }
 
     private JMenu createMenuEdgeColoring() {
         JMenu edgeColoring = new JMenu(lang.getProperty("menu-algorithm-edge-coloring"));
