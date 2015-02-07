@@ -33,6 +33,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import static modgraf.view.AlgorithmMenuItems.DirectedType.both;
+import static modgraf.view.AlgorithmMenuItems.EdgeWeight.any;
 import static modgraf.view.properties.DefaultProperties.createDefaultLanguage;
 import static modgraf.view.properties.DefaultProperties.createDefaultProperties;
 
@@ -291,7 +293,7 @@ public class Editor
 	 */
 	public void addAlgorithmToMemuBar(String name, ActionListener algorithm)
 	{
-		menuBar.addAlgorithm(name, algorithm, 2, 3);
+		menuBar.addAlgorithm(name, algorithm, both, any);
 	}
 	
 	/**

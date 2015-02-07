@@ -62,6 +62,7 @@ public class Language
 		lang.setProperty("menu-algorithm-chromatic-number", "Kolorowanie wierzchołków");
 		lang.setProperty("menu-algorithm-edge-coloring", "Kolorowanie krawędzi");
 		lang.setProperty("menu-algorithm-spanning-tree", "Minimalne drzewo rozpinające");
+		lang.setProperty("menu-algorithm-eulerian-cycle", "Cykl Eulera");
 
         lang.setProperty("menu-algorithm-shortest-path-bf", "Bellman-Ford");
         lang.setProperty("menu-algorithm-shortest-path-d", "Dijkstra");
@@ -74,6 +75,7 @@ public class Language
         lang.setProperty("menu-algorithm-edge-coloring-approximate", "Algorytm przybliżony");
         lang.setProperty("menu-algorithm-spanning-tree-k", "Kruskal");
         lang.setProperty("menu-algorithm-spanning-tree-p", "Prim");
+        lang.setProperty("menu-algorithm-eulerian-cycle-h", "Hierholzer");
 
 		lang.setProperty("menu-algorithm-steps", "Tryb krokowy");
 		lang.setProperty("menu-algorithm-steps-dijkstra", "alg. Dijkstry");
@@ -141,6 +143,7 @@ public class Language
 		lang.setProperty("message-no-solution", "Nie znaleziono rozwiązania!");
 		lang.setProperty("message-not-complete-graph", "Nie znaleziono rozwiązania!\nPrawdopodobnie graf nie jes pełny.");
 		lang.setProperty("message-range-tip", "Liczby całkowite od");
+        lang.setProperty("message-not-eulerian-graph", "Ten graf nie zawiera cyklu Eulera.");
 		
 		lang.setProperty("files-all", "Wszystkie wspierane formaty (*.xml;*.grf;*png)");
 		lang.setProperty("files-jar", "Pliki JAR");
@@ -209,7 +212,8 @@ public class Language
 		lang.setProperty("alg-cn-graph-type", "nieskierowanych grafach.");
 		lang.setProperty("alg-hc-graph-type", "pełnych nieskierowanych ważonych grafach.");
 		lang.setProperty("alg-mf-graph-type", "ważonych skierowanych grafach.");
-		
+		lang.setProperty("alg-ec-graph-type", "nieskierowanych grafach.");
+
 		lang.setProperty("alg-sp-message-1", "Najkrótsza ścieżka między wierzchołkami ");
 		lang.setProperty("alg-sp-message-2", " i ");
 		lang.setProperty("alg-sp-message-3", " przechodzi przez ");
@@ -332,6 +336,7 @@ public class Language
 		lang.setProperty("menu-algorithm-chromatic-number", "Chromatic number");
 		lang.setProperty("menu-algorithm-edge-coloring", "Edge coloring");
         lang.setProperty("menu-algorithm-spanning-tree", "Minimum spanning tree");
+        lang.setProperty("menu-algorithm-eulerian-cycle", "Eulerian cycle");
 		
 		lang.setProperty("menu-algorithm-shortest-path-bf", "Bellman-Ford");
 		lang.setProperty("menu-algorithm-shortest-path-d", "Dijkstra");
@@ -344,6 +349,7 @@ public class Language
         lang.setProperty("menu-algorithm-edge-coloring-approximate", "Approximate algorithm");
         lang.setProperty("menu-algorithm-spanning-tree-k", "Kruskal");
         lang.setProperty("menu-algorithm-spanning-tree-p", "Prim");
+        lang.setProperty("menu-algorithm-eulerian-cycle-h", "Hierholzer");
 
 		lang.setProperty("menu-algorithm-steps", "Step mode");
 		lang.setProperty("menu-algorithm-steps-dijkstra", "Dijkstra");
@@ -411,7 +417,8 @@ public class Language
 		lang.setProperty("message-no-solution", "Not found solution!");
 		lang.setProperty("message-not-complete-graph", "Not found solution!\nProbably graph is not complete.");
 		lang.setProperty("message-range-tip", "integers from");
-		
+		lang.setProperty("message-not-eulerian-graph", "This graph is not Eulerian.");
+
 		lang.setProperty("files-all", "All supported types (*.xml;*.grf;*png)");
 		lang.setProperty("files-jar", "Java ARchive (*.jar)");
 		lang.setProperty("files-grf", "Modgraf 2 format (*.grf)");
@@ -479,6 +486,7 @@ public class Language
 		lang.setProperty("alg-cn-graph-type", "undirected graphs.");
 		lang.setProperty("alg-hc-graph-type", "completed undirected weighted graphs.");
 		lang.setProperty("alg-mf-graph-type", "directed weighted graphs.");
+        lang.setProperty("alg-ec-graph-type", "undirected graphs.");
 		
 		lang.setProperty("alg-sp-message-1", "The shortest path from ");
 		lang.setProperty("alg-sp-message-2", " to ");

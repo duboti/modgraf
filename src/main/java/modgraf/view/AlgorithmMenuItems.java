@@ -7,7 +7,20 @@ import javax.swing.JMenuItem;
 
 public class AlgorithmMenuItems 
 {
-	private Set<JMenuItem> directed;
+	public enum DirectedType {
+        directed,
+        undirected,
+        both
+    }
+
+    public enum EdgeWeight {
+        unweighted,
+        weighted,
+        doubleWeighted,
+        any
+    }
+
+    private Set<JMenuItem> directed;
 	private Set<JMenuItem> undirected;
 	private Set<JMenuItem> unweighted;
 	private Set<JMenuItem> weighted;
@@ -23,28 +36,22 @@ public class AlgorithmMenuItems
 		doubleWeighted = new HashSet<>();
 		all = new HashSet<>();
 	}
-	
-	/**
-	 * 
-	 * @param algorithm
-	 * @param directedType 0=directed, 1=undirected, 2=directed or undirected
-	 * @param egdeWeight 0=unweighted, 1=weighted, 2=doubleWeighted, 3=all
-	 */
-	public void addAlgorithm(JMenuItem algorithm, int directedType, int egdeWeight)
+
+	public void addAlgorithm(JMenuItem algorithm, DirectedType directedType, EdgeWeight edgeWeight)
 	{
-		if (directedType == 0)
+		if (directedType == DirectedType.directed)
 			directed.add(algorithm);
-		if (directedType == 1)
+		if (directedType == DirectedType.undirected)
 			undirected.add(algorithm);
 
-		if (egdeWeight == 0)
+		if (edgeWeight == EdgeWeight.unweighted)
 			unweighted.add(algorithm);
-		if (egdeWeight == 1)
+		if (edgeWeight == EdgeWeight.weighted)
 			weighted.add(algorithm);
-		if (egdeWeight == 2)
+		if (edgeWeight == EdgeWeight.doubleWeighted)
 			doubleWeighted.add(algorithm);
 
-        if (directedType == 2 && egdeWeight == 3)
+        if (directedType == DirectedType.both && edgeWeight == EdgeWeight.any)
             all.add(algorithm);
 	}
 	

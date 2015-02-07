@@ -10,6 +10,12 @@ import static com.mxgraph.util.mxConstants.STYLE_FONTCOLOR;
 import static com.mxgraph.util.mxConstants.STYLE_FONTSIZE;
 import static com.mxgraph.util.mxConstants.STYLE_STROKECOLOR;
 import static com.mxgraph.util.mxConstants.STYLE_STROKEWIDTH;
+import static modgraf.view.AlgorithmMenuItems.DirectedType.both;
+import static modgraf.view.AlgorithmMenuItems.DirectedType.directed;
+import static modgraf.view.AlgorithmMenuItems.DirectedType.undirected;
+import static modgraf.view.AlgorithmMenuItems.EdgeWeight.any;
+import static modgraf.view.AlgorithmMenuItems.EdgeWeight.doubleWeighted;
+import static modgraf.view.AlgorithmMenuItems.EdgeWeight.weighted;
 import static modgraf.view.properties.PreferencesTab.FONT_MAXIMUM_SIZE;
 import static modgraf.view.properties.PreferencesTab.FONT_MINIMUM_SIZE;
 import static modgraf.view.properties.VertexTab.BORDER_MAXIMUM_WIDTH;
@@ -17,6 +23,7 @@ import static modgraf.view.properties.VertexTab.BORDER_MINIMUM_WIDTH;
 
 import java.awt.Component;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.util.Properties;
 
 import javax.swing.ImageIcon;
@@ -28,6 +35,8 @@ import javax.swing.KeyStroke;
 import modgraf.action.*;
 import modgraf.algorithm.*;
 import modgraf.algorithm.steps.DijkstraAlgorithm;
+import modgraf.view.AlgorithmMenuItems.DirectedType;
+import modgraf.view.AlgorithmMenuItems.EdgeWeight;
 import modgraf.view.properties.Preferences;
 
 /**
@@ -90,10 +99,11 @@ public class MenuBar extends JMenuBar
 		algorithm.add(createMenuChromaticNumber());
         algorithm.add(createMenuEdgeColoring());
         algorithm.add(createMenuSpanningTree());
+        algorithm.add(createMenuEulerianCycle());
 		add(algorithm);
 		
 		steps = new JMenu(lang.getProperty("menu-algorithm-steps"));
-		steps.add(createDisabledAlgorithm("menu-algorithm-steps-dijkstra",	new DijkstraAlgorithm(editor), 2, 1));
+		steps.add(createDisabledAlgorithm("menu-algorithm-steps-dijkstra",	new DijkstraAlgorithm(editor), both, weighted));
 		add(steps);
 		
 		JMenu utils = new JMenu(lang.getProperty("menu-utils"));
@@ -116,49 +126,55 @@ public class MenuBar extends JMenuBar
 		add(help);
 	}
 
+    private JMenu createMenuEulerianCycle() {
+        JMenu eulerianCycle = new JMenu(lang.getProperty("menu-algorithm-eulerian-cycle"));
+        eulerianCycle.add(createDisabledAlgorithm("menu-algorithm-eulerian-cycle-h", new ModgrafEulerianCycle(editor), undirected, any));
+        return eulerianCycle;
+    }
+
     private JMenu createMenuSpanningTree() {
         JMenu spanningTree = new JMenu(lang.getProperty("menu-algorithm-spanning-tree"));
-        spanningTree.add(createDisabledAlgorithm("menu-algorithm-spanning-tree-k", new ModgrafSpanningTree(editor, ModgrafSpanningTree.Algorithm.Kruskal), 2, 3));
-        spanningTree.add(createDisabledAlgorithm("menu-algorithm-spanning-tree-p", new ModgrafSpanningTree(editor, ModgrafSpanningTree.Algorithm.Prim), 2, 3));
+        spanningTree.add(createDisabledAlgorithm("menu-algorithm-spanning-tree-k", new ModgrafSpanningTree(editor, ModgrafSpanningTree.Algorithm.Kruskal), both, any));
+        spanningTree.add(createDisabledAlgorithm("menu-algorithm-spanning-tree-p", new ModgrafSpanningTree(editor, ModgrafSpanningTree.Algorithm.Prim), both, any));
         return spanningTree;
     }
 
     private JMenu createMenuEdgeColoring() {
         JMenu edgeColoring = new JMenu(lang.getProperty("menu-algorithm-edge-coloring"));
-        edgeColoring.add(createDisabledAlgorithm("menu-algorithm-edge-coloring-approximate", new ModgrafEdgeColoring(editor), 2, 3));
+        edgeColoring.add(createDisabledAlgorithm("menu-algorithm-edge-coloring-approximate", new ModgrafEdgeColoring(editor), both, any));
         return edgeColoring;
     }
 
     private JMenu createMenuChromaticNumber() {
         JMenu chromaticNumber = new JMenu(lang.getProperty("menu-algorithm-chromatic-number"));
-        chromaticNumber.add(createDisabledAlgorithm("menu-algorithm-chromatic-number-greedy", new ModgrafChromaticNumber(editor), 2, 3));
+        chromaticNumber.add(createDisabledAlgorithm("menu-algorithm-chromatic-number-greedy", new ModgrafChromaticNumber(editor), both, any));
         return chromaticNumber;
     }
 
     private JMenu createMenuTsp() {
         JMenu hamiltonianCycle = new JMenu(lang.getProperty("menu-algorithm-tsp"));
-        hamiltonianCycle.add(createDisabledAlgorithm("menu-algorithm-tsp-approximate", new ModgrafHamiltonianCycle(editor), 2, 1));
-        hamiltonianCycle.add(createDisabledAlgorithm("menu-algorithm-tsp-exact", new ModgrafHamiltonianCycle(editor), 2, 1));
+        hamiltonianCycle.add(createDisabledAlgorithm("menu-algorithm-tsp-approximate", new ModgrafHamiltonianCycle(editor), both, weighted));
+        hamiltonianCycle.add(createDisabledAlgorithm("menu-algorithm-tsp-exact", new ModgrafHamiltonianCycle(editor), both, weighted));
         return hamiltonianCycle;
     }
 
     private JMenu createMenuCheapestFlow() {
         JMenu cheapestFlow = new JMenu(lang.getProperty("menu-algorithm-cheapest-flow"));
-        cheapestFlow.add(createDisabledAlgorithm("menu-algorithm-cheapest-flow-bg", new ModgrafBusackerGowenCheapestFlow(editor), 0, 2));
+        cheapestFlow.add(createDisabledAlgorithm("menu-algorithm-cheapest-flow-bg", new ModgrafBusackerGowenCheapestFlow(editor), directed, doubleWeighted));
         return cheapestFlow;
     }
 
     private JMenu createMenuMaximumFlow() {
         JMenu maximumFlow = new JMenu(lang.getProperty("menu-algorithm-maximum-flow"));
-        maximumFlow.add(createDisabledAlgorithm("menu-algorithm-maximum-flow-ek", 	 new ModgrafEdmondsKarpMaximumFlow(editor), 0, 1));
+        maximumFlow.add(createDisabledAlgorithm("menu-algorithm-maximum-flow-ek", 	 new ModgrafEdmondsKarpMaximumFlow(editor), directed, weighted));
         return maximumFlow;
     }
 
     private JMenu createMenuShortestPath() {
         JMenu shortestPath = new JMenu(lang.getProperty("menu-algorithm-shortest-path"));
-        shortestPath.add(createDisabledAlgorithm("menu-algorithm-shortest-path-bf",	new ModgrafShortestPath(editor, ModgrafShortestPath.Algorithm.BellmanFord), 2, 1));
-        shortestPath.add(createDisabledAlgorithm("menu-algorithm-shortest-path-d",	new ModgrafShortestPath(editor, ModgrafShortestPath.Algorithm.Dijkstra), 2, 1));
-        shortestPath.add(createDisabledAlgorithm("menu-algorithm-shortest-path-fw",	new ModgrafShortestPath(editor, ModgrafShortestPath.Algorithm.FloydWarshall), 2, 1));
+        shortestPath.add(createDisabledAlgorithm("menu-algorithm-shortest-path-bf",	new ModgrafShortestPath(editor, ModgrafShortestPath.Algorithm.BellmanFord), both, weighted));
+        shortestPath.add(createDisabledAlgorithm("menu-algorithm-shortest-path-d",	new ModgrafShortestPath(editor, ModgrafShortestPath.Algorithm.Dijkstra), both, weighted));
+        shortestPath.add(createDisabledAlgorithm("menu-algorithm-shortest-path-fw",	new ModgrafShortestPath(editor, ModgrafShortestPath.Algorithm.FloydWarshall), both, weighted));
         return shortestPath;
     }
 
@@ -214,8 +230,11 @@ public class MenuBar extends JMenuBar
 			element.addActionListener(action);
 		if (icon != null)
 		{
-			if (useClassLoader)
-				element.setIcon(new ImageIcon(getClass().getClassLoader().getResource(icon)));
+            if (useClassLoader) {
+                URL resource = getClass().getClassLoader().getResource(icon);
+                if (resource != null)
+                    element.setIcon(new ImageIcon(resource));
+            }
 			else
 				element.setIcon(new ImageIcon(icon));
 		}
@@ -224,18 +243,18 @@ public class MenuBar extends JMenuBar
 		return element;
 	}
 	
-	public JMenuItem addAlgorithm(String propertyName, ActionListener action, int directedType, int egdeWeight)
+	public JMenuItem addAlgorithm(String propertyName, ActionListener action, DirectedType directedType, EdgeWeight edgeWeight)
 	{
-		JMenuItem alg = createDisabledAlgorithm(propertyName, action, directedType, egdeWeight);
+		JMenuItem alg = createDisabledAlgorithm(propertyName, action, directedType, edgeWeight);
 		alg.setEnabled(true);
 		algorithm.add(alg);
 		return alg;
 	}
 	
-	private JMenuItem createDisabledAlgorithm(String propertyName, ActionListener action, int directedType, int egdeWeight)
+	private JMenuItem createDisabledAlgorithm(String propertyName, ActionListener action, DirectedType directedType, EdgeWeight edgeWeight)
 	{
 		JMenuItem alg = createMenuItem(propertyName, action, false);
-		ami.addAlgorithm(alg, directedType, egdeWeight);
+		ami.addAlgorithm(alg, directedType, edgeWeight);
 		return alg;
 	}
 	
