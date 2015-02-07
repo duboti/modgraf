@@ -107,7 +107,7 @@ public class MenuBar extends JMenuBar
 		add(steps);
 		
 		JMenu utils = new JMenu(lang.getProperty("menu-utils"));
-		utils.add(createMenuItem("menu-utils-preferences", new Preferences(editor)));
+		utils.add(createMenuItem("menu-utils-preferences", new Preferences(editor), true, "icons/settings.png", null));
 		utils.add(createMenuItem("menu-utils-clear-styles", new ActionClearStyles(editor)));
 		JMenu generators = new JMenu(lang.getProperty("menu-utils-generators"));
 		generators.add(createMenuItem("menu-utils-gen-complete", new ActionGenerateGraph(editor, ActionGenerateGraph.Type.COMPLETE)));
@@ -120,9 +120,9 @@ public class MenuBar extends JMenuBar
 		add(utils);
 		
 		JMenu help = new JMenu(lang.getProperty("menu-help"));
-		help.add(createMenuItem("menu-help-help", new Help(editor)));
+		help.add(createMenuItem("menu-help-help", new Help(editor), true, "icons/help.png", null));
 		help.addSeparator();
-		help.add(createMenuItem("menu-help-about", new AboutModgraf(editor)));
+		help.add(createMenuItem("menu-help-about", new AboutModgraf(editor), true, "icons/information.png", null));
 		add(help);
 	}
 
