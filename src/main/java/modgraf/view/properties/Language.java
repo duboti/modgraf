@@ -83,6 +83,13 @@ public class Language
 		lang.setProperty("menu-utils", "Narzędzia");
 		lang.setProperty("menu-utils-preferences", "Opcje");
 		lang.setProperty("menu-utils-clear-styles", "Wyczyść style");
+
+        lang.setProperty("menu-utils-converters", "Konwertery typów grafów");
+        lang.setProperty("menu-utils-con-undirected", "na graf nieskierowany");
+        lang.setProperty("menu-utils-con-unweighted", "na graf nieważony");
+        lang.setProperty("menu-utils-con-weighted-cost", "na graf ważony (koszt)");
+        lang.setProperty("menu-utils-con-weighted-capacity", "na graf ważony (przepustowość)");
+
 		lang.setProperty("menu-utils-generators", "Generatory grafów");
 		lang.setProperty("menu-utils-gen-complete", "Pełny");
 		lang.setProperty("menu-utils-gen-random", "Losowy");
@@ -357,6 +364,13 @@ public class Language
 		lang.setProperty("menu-utils", "Utils");
 		lang.setProperty("menu-utils-preferences", "Preferences");
 		lang.setProperty("menu-utils-clear-styles", "Clear styles");
+
+        lang.setProperty("menu-utils-converters", "Graph types converters");
+        lang.setProperty("menu-utils-con-undirected", "undirected");
+        lang.setProperty("menu-utils-con-unweighted", "unweighted");
+        lang.setProperty("menu-utils-con-weighted-cost", "weighted (cost)");
+        lang.setProperty("menu-utils-con-weighted-capacity", "weighted (capacity)");
+
 		lang.setProperty("menu-utils-generators", "Graph generators");
 		lang.setProperty("menu-utils-gen-complete", "Complete");
 		lang.setProperty("menu-utils-gen-random", "Random");

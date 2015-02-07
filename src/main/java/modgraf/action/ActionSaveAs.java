@@ -43,6 +43,8 @@ import com.mxgraph.util.png.mxPngEncodeParam;
 import com.mxgraph.util.png.mxPngImageEncoder;
 import com.mxgraph.view.mxGraph;
 
+import static modgraf.action.ActionGraphTypeConverter.NewType.*;
+
 /**
  * Klasa odpowiada za zapisanie grafu do dowolnego pliku.
  * 
@@ -93,7 +95,7 @@ public class ActionSaveAs implements ActionListener
 		if (fileName.endsWith(".png"))
 			file = savePng(fileName, graphComponent, graphT);	
 		if (fileName.endsWith(".grf"))
-			file = saveGrf(fileName, graphComponent, graphT);
+			file = saveGrf(fileName, null);
 		editor.setCurrentFile(file);
 		editor.setModified(false);
 		editor.setText(lang.getProperty("message-save-file")+file);
@@ -190,17 +192,19 @@ public class ActionSaveAs implements ActionListener
 		return null;
 	}
 	
-	private File saveGrf(String fileName, mxGraphComponent graphComponent,
-			Graph<Vertex, ModgrafEdge> graphT)
+	public File saveGrf(String fileName, ActionGraphTypeConverter.NewType newType)
 	{
-		String newLine = "\r\n";
-		StringBuilder grf = createGrfHeader(graphT, newLine);
-		createGrfEdges(graphT, grf, newLine);
+        mxGraphComponent graphComponent = editor.getGraphComponent();
+        Graph<Vertex, ModgrafEdge> graphT = editor.getGraphT();
+        String newLine = "\r\n";
+		StringBuilder grf = createGrfHeader(graphT, newLine, newType);
+		createGrfEdges(graphT, grf, newLine, newType);
 		createGrfGeometry(graphComponent, graphT, grf, newLine);
 		return writeTextFile(fileName, grf.toString());
 	}
 
-	private StringBuilder createGrfHeader(Graph<Vertex, ModgrafEdge> graphT, String newLine)
+	private StringBuilder createGrfHeader(Graph<Vertex, ModgrafEdge> graphT, String newLine,
+                                          ActionGraphTypeConverter.NewType newType)
 	{
 		StringBuilder grf = new StringBuilder("Graf programu Modgraf 3.0");//TODO property
 		grf.append(newLine);
@@ -208,7 +212,7 @@ public class ActionSaveAs implements ActionListener
 		String type = null;
 		if (graphT instanceof DirectedGraph)
 			type = "skierowany";
-		if (graphT instanceof UndirectedGraph)
+		if (graphT instanceof UndirectedGraph || undirected.equals(newType))
 			type = "nieskierowany";
 		grf.append(type);
 		grf.append(newLine);
@@ -217,7 +221,7 @@ public class ActionSaveAs implements ActionListener
 	}
 
 	private void createGrfEdges(Graph<Vertex, ModgrafEdge> graphT,
-			StringBuilder grf, String newLine)
+                                StringBuilder grf, String newLine, ActionGraphTypeConverter.NewType newType)
 	{
 		Set<ModgrafEdge> egdeSet = graphT.edgeSet();
 		mxGraphModel model = (mxGraphModel)editor.getGraphComponent().getGraph().getModel();
@@ -229,14 +233,21 @@ public class ActionSaveAs implements ActionListener
 			mxCell target = (mxCell) model.getCell(edge.getTarget().getId());
 			grf.append(target.getValue().toString());
 			grf.append("\t");
-			if (edge instanceof WeightedEdge)
-				grf.append(((WeightedEdge) edge).getWeight());
-			if (edge instanceof DoubleWeightedEdge)
-			{
-				grf.append(((DoubleWeightedEdge) edge).getCapacity());
-				grf.append("\t");
-				grf.append(((DoubleWeightedEdge) edge).getCost());
-			}
+            if (newType == null || undirected.equals(newType)) {
+                if (edge instanceof WeightedEdge)
+                    grf.append(((WeightedEdge) edge).getWeight());
+                if (edge instanceof DoubleWeightedEdge)
+                {
+                    grf.append(((DoubleWeightedEdge) edge).getCapacity());
+                    grf.append("\t");
+                    grf.append(((DoubleWeightedEdge) edge).getCost());
+                }
+            } else {
+                if (weightedCapacity.equals(newType))
+                    grf.append(((DoubleWeightedEdge) edge).getCapacity());
+                if (weightedCost.equals(newType))
+                    grf.append(((DoubleWeightedEdge) edge).getCost());
+            }
 			grf.append(newLine);
 		}
 		grf.append(newLine);

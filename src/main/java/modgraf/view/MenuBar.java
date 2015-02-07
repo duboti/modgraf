@@ -13,9 +13,7 @@ import static com.mxgraph.util.mxConstants.STYLE_STROKEWIDTH;
 import static modgraf.view.AlgorithmMenuItems.DirectedType.both;
 import static modgraf.view.AlgorithmMenuItems.DirectedType.directed;
 import static modgraf.view.AlgorithmMenuItems.DirectedType.undirected;
-import static modgraf.view.AlgorithmMenuItems.EdgeWeight.any;
-import static modgraf.view.AlgorithmMenuItems.EdgeWeight.doubleWeighted;
-import static modgraf.view.AlgorithmMenuItems.EdgeWeight.weighted;
+import static modgraf.view.AlgorithmMenuItems.EdgeWeight.*;
 import static modgraf.view.properties.PreferencesTab.FONT_MAXIMUM_SIZE;
 import static modgraf.view.properties.PreferencesTab.FONT_MINIMUM_SIZE;
 import static modgraf.view.properties.VertexTab.BORDER_MAXIMUM_WIDTH;
@@ -109,6 +107,14 @@ public class MenuBar extends JMenuBar
 		JMenu utils = new JMenu(lang.getProperty("menu-utils"));
 		utils.add(createMenuItem("menu-utils-preferences", new Preferences(editor), true, "icons/settings.png", null));
 		utils.add(createMenuItem("menu-utils-clear-styles", new ActionClearStyles(editor)));
+
+        JMenu converters = new JMenu(lang.getProperty("menu-utils-converters"));
+        converters.add(createDisabledAlgorithm("menu-utils-con-undirected", new ActionGraphTypeConverter(editor, ActionGraphTypeConverter.NewType.undirected), directed, any));
+        converters.add(createDisabledAlgorithm("menu-utils-con-unweighted", new ActionGraphTypeConverter(editor, ActionGraphTypeConverter.NewType.unweighted), both, anyWeighted));
+        converters.add(createDisabledAlgorithm("menu-utils-con-weighted-cost", new ActionGraphTypeConverter(editor, ActionGraphTypeConverter.NewType.weightedCost), both, doubleWeighted));
+        converters.add(createDisabledAlgorithm("menu-utils-con-weighted-capacity", new ActionGraphTypeConverter(editor, ActionGraphTypeConverter.NewType.weightedCapacity), both, doubleWeighted));
+        utils.add(converters);
+
 		JMenu generators = new JMenu(lang.getProperty("menu-utils-generators"));
 		generators.add(createMenuItem("menu-utils-gen-complete", new ActionGenerateGraph(editor, ActionGenerateGraph.Type.COMPLETE)));
 		generators.add(createMenuItem("menu-utils-gen-random", new ActionGenerateGraph(editor, ActionGenerateGraph.Type.RANDOM)));

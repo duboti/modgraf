@@ -2,10 +2,7 @@ package modgraf.action;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URLDecoder;
 import java.util.Map;
 import java.util.Properties;
@@ -121,16 +118,15 @@ public class ActionOpen implements ActionListener
 
 	/**
 	 * Metoda wybiera sposób wczytywania pliku po jego rozszerzeniu.
-	 * @param chooser 
 	 * @throws IOException
 	 */
 	private void chooseFileType(JFileChooser chooser) throws IOException
 	{
 		String fileName = chooser.getSelectedFile().getName();
 		if (fileName.endsWith(".xml") || fileName.endsWith(".XML"))
-			openXml(chooser);
+			openXml(chooser.getSelectedFile());
 		else if (fileName.endsWith(".grf") || fileName.endsWith(".GRF"))
-			new ActionOpenGrf(editor).openGrf(chooser);	
+			new ActionOpenGrf(editor).openGrf(chooser.getSelectedFile());
 		else if (fileName.endsWith(".png") || fileName.endsWith(".PNG"))
 			openPng(chooser);
 		else
@@ -139,27 +135,25 @@ public class ActionOpen implements ActionListener
 				    lang.getProperty("error"), JOptionPane.ERROR_MESSAGE);
 	}
 
-	
-
-	private void openXml(JFileChooser chooser) throws IOException
+	private void openXml(File selectedFile) throws IOException
 	{
-		Document xmlDocument = buildXmlDocument(chooser);
+		Document xmlDocument = buildXmlDocument(selectedFile);
 		createGraphTFromXmlDocument(xmlDocument);
 		setmxGraph(xmlDocument);
 	}
 
-	private Document buildXmlDocument(JFileChooser chooser) throws IOException 
+	private Document buildXmlDocument(File selectedFile) throws IOException
 	{
-		String file = readFile(chooser);
+		String file = readFile(selectedFile);
 		Document document = mxXmlUtils.parseXml(file);
 		document.getDocumentElement().normalize();
 		return document;
 	}
 	
-	public String readFile(JFileChooser chooser) throws IOException
+	public String readFile(File selectedFile) throws IOException
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(
-				new FileInputStream(chooser.getSelectedFile()), prop.getProperty("file-encoding")));
+				new FileInputStream(selectedFile), prop.getProperty("file-encoding")));
 		StringBuilder sb = new StringBuilder();
         String line = br.readLine();
         while (line != null) {
@@ -188,7 +182,7 @@ public class ActionOpen implements ActionListener
 				if (nodeCell.getNodeType() == Node.ELEMENT_NODE)
 				{
 					Element elementCell = (Element)nodeCell;
-					addVertex(graphT, elementCell, edgeWeightDegree);
+					addVertex(graphT, elementCell);
 				}
 			}
 			for (int i = 0; i < mxCellList.getLength(); ++i)
@@ -206,7 +200,7 @@ public class ActionOpen implements ActionListener
 		}
 	}
 
-	private void addVertex(Graph<Vertex, ModgrafEdge> graphT, Element elementCell, int edgeWeightDegree) 
+	private void addVertex(Graph<Vertex, ModgrafEdge> graphT, Element elementCell)
 	{
 		String vertex = elementCell.getAttribute("vertex");
 		String id = elementCell.getAttribute("id");

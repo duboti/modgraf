@@ -17,6 +17,7 @@ public class AlgorithmMenuItems
         unweighted,
         weighted,
         doubleWeighted,
+        anyWeighted,
         any
     }
 
@@ -25,6 +26,7 @@ public class AlgorithmMenuItems
 	private Set<JMenuItem> unweighted;
 	private Set<JMenuItem> weighted;
 	private Set<JMenuItem> doubleWeighted;
+	private Set<JMenuItem> anyWeighted;
 	private Set<JMenuItem> all;
 
 	public AlgorithmMenuItems() 
@@ -34,6 +36,7 @@ public class AlgorithmMenuItems
 		unweighted = new HashSet<>();
 		weighted = new HashSet<>();
 		doubleWeighted = new HashSet<>();
+		anyWeighted = new HashSet<>();
 		all = new HashSet<>();
 	}
 
@@ -44,12 +47,20 @@ public class AlgorithmMenuItems
 		if (directedType == DirectedType.undirected)
 			undirected.add(algorithm);
 
-		if (edgeWeight == EdgeWeight.unweighted)
-			unweighted.add(algorithm);
-		if (edgeWeight == EdgeWeight.weighted)
-			weighted.add(algorithm);
-		if (edgeWeight == EdgeWeight.doubleWeighted)
-			doubleWeighted.add(algorithm);
+        switch (edgeWeight) {
+            case unweighted:
+                unweighted.add(algorithm);
+                break;
+            case weighted:
+                weighted.add(algorithm);
+                break;
+            case doubleWeighted:
+                doubleWeighted.add(algorithm);
+                break;
+            case anyWeighted:
+                anyWeighted.add(algorithm);
+                break;
+        }
 
         if (directedType == DirectedType.both && edgeWeight == EdgeWeight.any)
             all.add(algorithm);
@@ -66,6 +77,7 @@ public class AlgorithmMenuItems
 		{
 			unsetEnabled(weighted);
 			unsetEnabled(doubleWeighted);
+            unsetEnabled(anyWeighted);
 			setEnabled(unweighted);
 		}
 		if (egdeWeight == 1)
@@ -73,12 +85,14 @@ public class AlgorithmMenuItems
 			unsetEnabled(unweighted);
 			unsetEnabled(doubleWeighted);
 			setEnabled(weighted);
+            setEnabled(anyWeighted);
 		}
 		if (egdeWeight == 2)
 		{
 			unsetEnabled(unweighted);
 			unsetEnabled(weighted);
 			setEnabled(doubleWeighted);
+            setEnabled(anyWeighted);
 		}
 		if (directed)
 			unsetEnabled(undirected);

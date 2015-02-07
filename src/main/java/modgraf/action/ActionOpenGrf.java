@@ -1,22 +1,21 @@
 package modgraf.action;
 
-import java.awt.Point;
+import com.mxgraph.model.mxCell;
+import com.mxgraph.model.mxGraphModel;
+import com.mxgraph.view.mxGraph;
+import modgraf.jgrapht.Vertex;
+import modgraf.jgrapht.edge.ModgrafEdge;
+import modgraf.view.Editor;
+import org.jgrapht.Graph;
+
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import javax.swing.JFileChooser;
-
-import modgraf.jgrapht.Vertex;
-import modgraf.jgrapht.edge.ModgrafEdge;
-import modgraf.view.Editor;
-
-import org.jgrapht.Graph;
-
-import com.mxgraph.model.mxCell;
-import com.mxgraph.model.mxGraphModel;
-import com.mxgraph.view.mxGraph;
+import static java.lang.Double.parseDouble;
 
 public class ActionOpenGrf 
 {
@@ -30,12 +29,11 @@ public class ActionOpenGrf
 	
 	/**
 	 * Metoda wczytuje pliki grf.
-	 * @param chooser
 	 * @throws IOException
 	 */
-	public void openGrf(JFileChooser chooser) throws IOException
+	public void openGrf(File file) throws IOException
 	{
-		String grfFile = new ActionOpen(editor).readFile(chooser);
+		String grfFile = new ActionOpen(editor).readFile(file);
 		grfFileValidationTesting(grfFile);
 		createGraphFromGrfFile(grfFile);
 		if (existInformationAboutLocation(grfFile))
@@ -78,7 +76,7 @@ public class ActionOpenGrf
 			while (i < lines.length && !lines[i].isEmpty())
 			{
                 if (!lines[i].startsWith("#"))
-                    validVertexCounter = grfValidationVertexGeometry(lines[i], edgeWeightDegree, vertexNameList, validVertexCounter);
+                    validVertexCounter = grfValidationVertexGeometry(lines[i], vertexNameList, validVertexCounter);
 				++i;
 			}
 			if (validVertexCounter != vertexNameList.size())
@@ -88,11 +86,6 @@ public class ActionOpenGrf
 
 	/**
 	 * Metoda sprawdza poprawność fragmentu pliku grf zawierającego definicje krawędzi.
-	 * @param line
-	 * @param edgeWeightDegree
-	 * @param directed
-	 * @param vertexNameList
-	 * @param edgeList
 	 * @throws IllegalArgumentException
 	 */
 	private void grfValidationEdge(String line, int edgeWeightDegree, boolean directed,
@@ -122,33 +115,28 @@ public class ActionOpenGrf
 				throw new IllegalArgumentException("Borders can not be repeated!");
 		}
 		if (edgeWeightDegree == 1)
-			Double.parseDouble(st.nextToken());
+			parseDouble(st.nextToken());
 		if (edgeWeightDegree == 2)
 		{
-			Double.parseDouble(st.nextToken());
-			Double.parseDouble(st.nextToken());
+			parseDouble(st.nextToken());
+			parseDouble(st.nextToken());
 		}
 	}
 
 	/**
 	 * Metoda sprawdza poprawność fragmentu pliku grf zawierającego położenia wierzchołków.
-	 * @param line
-	 * @param edgeWeightDegree
-	 * @param vertexNameList
-	 * @param validVertexCounter
 	 * @return ++validVertexCounter
 	 * @throws IllegalArgumentException
 	 */
-	private int grfValidationVertexGeometry(String line, int edgeWeightDegree,
-			ArrayList<String> vertexNameList, Integer validVertexCounter) throws IllegalArgumentException
-	{
+	private int grfValidationVertexGeometry(String line,ArrayList<String> vertexNameList, Integer validVertexCounter)
+            throws IllegalArgumentException {
 		StringTokenizer st = new StringTokenizer(line);
 		if (st.countTokens() != 3)
 			throw new IllegalArgumentException("Invalid number of vertex positions!");
 		if (!vertexNameList.contains(st.nextToken()))
 			throw new IllegalArgumentException("Invalid vertex name!");
-		Double.parseDouble(st.nextToken());
-		Double.parseDouble(st.nextToken());
+		parseDouble(st.nextToken());
+		parseDouble(st.nextToken());
 		return ++validVertexCounter;
 	}
 
@@ -183,8 +171,8 @@ public class ActionOpenGrf
 		mxGraph graph = editor.getGraphComponent().getGraph();
 		Object parent = graph.getDefaultParent();
 		mxGraphModel model = (mxGraphModel) graph.getModel();
-		mxCell mxSource = null;
-		mxCell mxTarget = null;
+		mxCell mxSource;
+		mxCell mxTarget;
 		if (!editor.getVertexValuesSet().contains(sourceName))
 			mxSource = (mxCell) graph.insertVertex(parent, null, sourceName, 0, 0, 50, 50, "vertexStyle");
 		else
@@ -198,13 +186,13 @@ public class ActionOpenGrf
 			graph.insertEdge(parent, null, null, mxSource, mxTarget);
 		if (edgeWeightDegree == 1)
 		{
-			double weight = Double.parseDouble(st.nextToken());
+			double weight = parseDouble(st.nextToken());
 			graph.insertEdge(parent, null, Double.toString(weight), mxSource, mxTarget);
 		}
 		if (edgeWeightDegree == 2)
 		{
-			double capacity = Double.parseDouble(st.nextToken());
-			double cost = Double.parseDouble(st.nextToken());
+			double capacity = parseDouble(st.nextToken());
+			double cost = parseDouble(st.nextToken());
 			String value = capacity+"/"+cost;
 			graph.insertEdge(parent, null, value, mxSource, mxTarget);
 		}
@@ -234,8 +222,8 @@ public class ActionOpenGrf
             StringTokenizer st = new StringTokenizer(lines[i]);
 			mxCell cell = (mxCell) model.getCell(editor.getVertexId(st.nextToken()));
 			model.beginUpdate();
-			cell.getGeometry().setY(Double.parseDouble(st.nextToken()));
-			cell.getGeometry().setX(Double.parseDouble(st.nextToken()));
+			cell.getGeometry().setY(parseDouble(st.nextToken()));
+			cell.getGeometry().setX(parseDouble(st.nextToken()));
 			model.endUpdate();
 		}
 		editor.setVertexCounter(vertexCounter);

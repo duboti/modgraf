@@ -4,13 +4,15 @@
 - Nazwa "Nowy graf" w pasku tytułu przed stworzeniem pierwszego grafu
 - po zmianie języka w opcjach tracimy aktualnie otwarty graf. Graf jest wyświetlany w formie graficznej jednak niedostępne są opcje tj. zapisz, wykonaj algorytm
 - "Zapisz jako" startuje zawsze z domyślnego katalogu
+- możliwość tworzenia wierzchołków przed stworzeniem grafu
 
 
 Podstawowe:
-- przydałoby się pogrupowanie algorytmów w menu - tak było w poprzednim modgrafie, np. algorytmy najkrótszej ścieżki i pod tą pozycją kilka algorytmów
-- zmiana typu istniejącego grafu
+- Moduł wykonujący transformacje grafu do postaci zadania programowania liniowego
+- implementacja algorytmu dokładnego TSP
 - poszukać TODO w kodzie
 - zmiana wyglądu małych okien
+- dokumentacja (instrukcja + javadoc)
 
 
 Dodatkowe:
