@@ -23,6 +23,13 @@ import org.jgrapht.UndirectedGraph;
 import org.jgrapht.WeightedGraph;
 import org.jgrapht.generate.*;
 
+/**
+ * Klasa odpowiada za wygenerowanie grafu o zadanych parametrach.
+ *
+ * @author Daniel Pogrebniak
+ *
+ * @see ActionListener
+ */
 public class ActionGenerateGraph implements ActionListener
 {
     public static final int MAX_NUMBER_OF_EDGES = 999;

@@ -17,6 +17,11 @@ import java.util.StringTokenizer;
 
 import static java.lang.Double.parseDouble;
 
+/**
+ * Klasa odpowiada za wczytanie grafu z pliku grf.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class ActionOpenGrf 
 {
 	private Editor editor;

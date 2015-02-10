@@ -13,13 +13,13 @@ import com.mxgraph.view.mxStylesheet;
  * 
  * @author Daniel Pogrebniak
  */
-public class ActionSetStyle
+public abstract class ActionSetStyle
 {
 	protected Editor editor;
 	protected String styleName;
     protected final boolean isVertex;
-	
-	public ActionSetStyle(Editor e, String styleName, boolean isVertex)
+
+    protected ActionSetStyle(Editor e, String styleName, boolean isVertex)
 	{
 		editor = e;
 		this.styleName = styleName;

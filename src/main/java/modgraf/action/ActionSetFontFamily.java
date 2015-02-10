@@ -14,6 +14,14 @@ import javax.swing.JOptionPane;
 
 import modgraf.view.Editor;
 
+/**
+ * Klasa odpowiada za zmianę parametru wierzchołka związanego z kolorem.
+ *
+ * @author Daniel Pogrebniak
+ *
+ * @see ActionSetStyle
+ * @see ActionListener
+ */
 public class ActionSetFontFamily extends ActionSetStyle implements ActionListener
 {
 	private Properties lang;

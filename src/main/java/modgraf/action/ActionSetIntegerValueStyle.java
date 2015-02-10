@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import modgraf.view.Editor;
 
 /**
- * Klasa odpowiada za zmianę grubości krawędzi lub obramowania wierzchołka.
+ * Klasa odpowiada za zmianę grubości krawędzi, grubości obramowania wierzchołka i rozmiaru czcionki.
  * 
  * @author Daniel Pogrebniak
  *
