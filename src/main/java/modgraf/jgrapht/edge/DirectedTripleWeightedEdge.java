@@ -2,6 +2,9 @@ package modgraf.jgrapht.edge;
 
 import modgraf.jgrapht.Vertex;
 
+/**
+ * Reprezentuje krawędzie w algorytmie znajdowania najtańszego przepływu.
+ */
 public class DirectedTripleWeightedEdge extends DirectedDoubleWeightedEdge {
 
 	private static final long serialVersionUID = 8845967074459639948L;

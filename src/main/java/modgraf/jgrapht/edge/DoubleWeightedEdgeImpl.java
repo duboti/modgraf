@@ -4,12 +4,11 @@ import modgraf.jgrapht.DoubleWeightedGraph;
 import modgraf.jgrapht.Vertex;
 
 /**
- * Klasa odpowiada za tworzenie krawędzi podwójnie ważonych.
+ * Reprezentuje krawędzie podwójnie ważone nieskierowane.
  * 
  * @author Daniel Pogrebniak
  * 
  * @see ModgrafEdge
- *
  */
 public class DoubleWeightedEdgeImpl extends UndirectedEdge implements DoubleWeightedEdge
 {

@@ -8,6 +8,12 @@ import org.jgrapht.EdgeFactory;
 import modgraf.jgrapht.Vertex;
 import modgraf.view.Editor;
 
+/**
+ * Fabryka krawędzi używana niejawnie podczas dodawania do grafu dowolnej krawędzi w różnych etapach działania programu.
+ * Nowe krawędzie ważone i podwójnie ważone zawsze są inicjowane domyślnymi wartościami pobranymi z opcji programu.
+ *
+ * @param <M> klasa reprezentująca oczekiwane krawędzie
+ */
 public class ModgrafEdgeFactory<M extends ModgrafEdge> implements EdgeFactory<Vertex, ModgrafEdge>, Serializable
 {
 

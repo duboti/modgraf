@@ -7,7 +7,12 @@ import modgraf.jgrapht.Vertex;
 
 import com.mxgraph.model.mxCell;
 
-public class ModgrafEdge implements Serializable
+/**
+ * Klasa bazowa dla wszystkich klas reprezentujących krawędzie.
+ *
+ * @author Daniel Pogrebniak
+ */
+public abstract class ModgrafEdge implements Serializable
 {
 	private static final long serialVersionUID = 4970392287185325708L;
 	private Vertex source;
@@ -15,7 +20,7 @@ public class ModgrafEdge implements Serializable
 	private String name;
 	private String id;
 
-	public ModgrafEdge(Vertex source, Vertex target) 
+	protected ModgrafEdge(Vertex source, Vertex target)
 	{
 		this.source = source;
 		this.target = target;

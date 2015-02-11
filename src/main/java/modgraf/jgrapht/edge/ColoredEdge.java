@@ -2,6 +2,9 @@ package modgraf.jgrapht.edge;
 
 import modgraf.jgrapht.Vertex;
 
+/**
+ * Reprezentuje krawędzie w algorytmie kolorowania krawędzi.
+ */
 public class ColoredEdge extends UndirectedEdge
 {
 	private static final long serialVersionUID = -3045595141936494922L;

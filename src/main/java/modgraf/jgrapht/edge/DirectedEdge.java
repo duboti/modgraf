@@ -2,6 +2,11 @@ package modgraf.jgrapht.edge;
 
 import modgraf.jgrapht.Vertex;
 
+/**
+ * Klasa reprezentuje krawędzie skierowane nieważone.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class DirectedEdge extends ModgrafEdge
 {
 	public DirectedEdge(Vertex source, Vertex target) {
@@ -12,8 +17,11 @@ public class DirectedEdge extends ModgrafEdge
 
 	@Override
     public boolean equals(Object obj) {
-    	ModgrafEdge other = (ModgrafEdge) obj;
-    	return other.getSource().equals(getSource()) && other.getTarget().equals(getTarget());
+        if (obj instanceof DirectedEdge) {
+            DirectedEdge other = (DirectedEdge) obj;
+            return other.getSource().equals(getSource()) && other.getTarget().equals(getTarget());
+        } else
+            return false;
     }
     
     @Override

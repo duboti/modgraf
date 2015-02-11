@@ -2,6 +2,11 @@ package modgraf.jgrapht.edge;
 
 import modgraf.jgrapht.Vertex;
 
+/**
+ * Klasa reprezentuje krawędzie nieskierowane nieważone.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class UndirectedEdge extends ModgrafEdge
 {
 	public UndirectedEdge(Vertex source, Vertex target) {
@@ -12,9 +17,12 @@ public class UndirectedEdge extends ModgrafEdge
 
 	@Override
     public boolean equals(Object obj) {
-    	ModgrafEdge other = (ModgrafEdge) obj;
-    	return (other.getSource().equals(getSource()) && other.getTarget().equals(getTarget()))
-    		|| (other.getSource().equals(getTarget()) && other.getTarget().equals(getSource()));
+        if (obj instanceof UndirectedEdge) {
+            UndirectedEdge other = (UndirectedEdge) obj;
+            return (other.getSource().equals(getSource()) && other.getTarget().equals(getTarget()))
+                    || (other.getSource().equals(getTarget()) && other.getTarget().equals(getSource()));
+        } else
+            return false;
     }
     
     @Override

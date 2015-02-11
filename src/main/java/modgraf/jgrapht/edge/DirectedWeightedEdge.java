@@ -4,6 +4,11 @@ import modgraf.jgrapht.Vertex;
 
 import org.jgrapht.WeightedGraph;
 
+/**
+ * Reprezentuje krawędzie ważone skierowane.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class DirectedWeightedEdge extends DirectedEdge implements WeightedEdge
 {
 	public DirectedWeightedEdge(Vertex source, Vertex target) {

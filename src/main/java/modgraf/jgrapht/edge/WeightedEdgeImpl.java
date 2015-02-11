@@ -4,6 +4,11 @@ import modgraf.jgrapht.Vertex;
 
 import org.jgrapht.WeightedGraph;
 
+/**
+ * Reprezentuje krawędzie ważone nieskierowane.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class WeightedEdgeImpl extends UndirectedEdge implements WeightedEdge
 {
 	public WeightedEdgeImpl(Vertex source, Vertex target) {

@@ -4,12 +4,11 @@ import modgraf.jgrapht.DoubleWeightedGraph;
 import modgraf.jgrapht.Vertex;
 
 /**
- * Klasa odpowiada za tworzenie krawędzi podwójnie ważonych.
+ * Reprezentuje krawędzie podwójnie ważone skierowane.
  * 
  * @author Daniel Pogrebniak
  * 
  * @see ModgrafEdge
- *
  */
 public class DirectedDoubleWeightedEdge extends DirectedEdge implements DoubleWeightedEdge
 {
