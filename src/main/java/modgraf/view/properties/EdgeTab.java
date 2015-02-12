@@ -8,12 +8,16 @@ import java.util.Properties;
 
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
-import javax.swing.JPanel;
 
 import com.mxgraph.util.mxUtils;
 
 import modgraf.view.Editor;
 
+/**
+ * Klasa odpowiada za wyświetlanie zakładki zawierającej ustawienia krawędzi.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class EdgeTab extends PreferencesTab 
 {
 
@@ -71,8 +75,7 @@ public class EdgeTab extends PreferencesTab
 	{
 		Color fillColor = mxUtils.parseColor(prop.getProperty("default-edge-color"));
 		edgeColorListener = new ChangeColorListener(editor, fillColor);
-		JPanel colorChooser = createColorChooser(fillColor, edgeColorListener);
-		return colorChooser;
+        return createColorChooser(fillColor, edgeColorListener);
 	}
 	
 	private JComponent createWeightField() 
@@ -113,8 +116,7 @@ public class EdgeTab extends PreferencesTab
 	{
 		Color fontColor = mxUtils.parseColor(prop.getProperty("default-edge-font-color"));
 		fontColorListener = new ChangeColorListener(editor, fontColor);
-		JPanel colorChooser = createColorChooser(fontColor, fontColorListener);
-		return colorChooser;
+        return createColorChooser(fontColor, fontColorListener);
 	}
 	
 	public Properties getEdgeProperties() 

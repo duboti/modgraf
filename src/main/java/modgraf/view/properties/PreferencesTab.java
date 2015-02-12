@@ -14,6 +14,11 @@ import javax.swing.text.NumberFormatter;
 import layout.TableLayout;
 import modgraf.view.Editor;
 
+/**
+ * Klasa bazowa dla klas odpowiadających za wyświetlanie zakładek.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class PreferencesTab extends JPanel
 {
 	private static final long serialVersionUID = 5091363112463196059L;
@@ -89,17 +94,16 @@ public class PreferencesTab extends JPanel
 	public NumberFormatter createNumberFormatter(int min, int max)
 	{
 		NumberFormatter nf = new NumberFormatter();  
-		nf.setMinimum(new Integer(min));  
-		nf.setMaximum(new Integer(max));
+		nf.setMinimum(min);
+		nf.setMaximum(max);
 		return nf;
 	}
 	
 	public String createHint(int from, int to)
 	{
-		String hint = lang.getProperty("message-range-tip") + " "
+        return lang.getProperty("message-range-tip") + " "
 				+ from + " " + lang.getProperty("to") + " "
 				+ to + ".";
-		return hint;
 	}
 	
 }

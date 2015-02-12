@@ -160,7 +160,6 @@ public class MenuBar extends JMenuBar
     private JMenu createMenuTsp() {
         JMenu hamiltonianCycle = new JMenu(lang.getProperty("menu-algorithm-tsp"));
         hamiltonianCycle.add(createDisabledAlgorithm("menu-algorithm-tsp-approximate", new ModgrafHamiltonianCycle(editor), both, weighted));
-        hamiltonianCycle.add(createDisabledAlgorithm("menu-algorithm-tsp-exact", new ModgrafHamiltonianCycle(editor), both, weighted));
         return hamiltonianCycle;
     }
 

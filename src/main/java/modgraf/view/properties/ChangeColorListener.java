@@ -9,6 +9,11 @@ import javax.swing.JTextField;
 
 import modgraf.view.Editor;
 
+/**
+ * Klasa obsługuje wszystkie przyciski służące do zmiany kolorów, które występują opcjach.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class ChangeColorListener implements ActionListener
 {
 	

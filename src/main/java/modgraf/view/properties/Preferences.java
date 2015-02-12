@@ -16,6 +16,11 @@ import javax.swing.JTabbedPane;
 
 import modgraf.view.Editor;
 
+/**
+ * Klasa zajmuje się obsługą mechanizmu zmiany opcji.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class Preferences implements ActionListener
 {
 	private static final int FRAME_HEIGHT = 400;

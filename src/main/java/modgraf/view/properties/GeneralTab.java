@@ -13,6 +13,11 @@ import modgraf.view.Editor;
 
 import com.mxgraph.util.mxUtils;
 
+/**
+ * Klasa odpowiada za wyświetlanie zakładki zawierającej ustawienia ogólne.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class GeneralTab extends PreferencesTab
 {
 	private static final long serialVersionUID = -1956455976702453830L;
@@ -100,9 +105,9 @@ public class GeneralTab extends PreferencesTab
 	public JComboBox<Integer> createEdgeTypeComboBox()
 	{
 		Vector<Integer> edgeTypes = new Vector<>(3);
-		edgeTypes.add(new Integer(0));
-		edgeTypes.add(new Integer(1));
-		edgeTypes.add(new Integer(2));
+		edgeTypes.add(0);
+		edgeTypes.add(1);
+		edgeTypes.add(2);
 		edgeType = new JComboBox<>(edgeTypes);
 		String edgeTypeProp = prop.getProperty("default-edge-type");
 		if (edgeTypeProp.equals("0"))
@@ -157,8 +162,7 @@ public class GeneralTab extends PreferencesTab
 	{
 		Color backgroundColor = editor.getGraphComponent().getViewport().getBackground();
 		backgroundColorListener = new ChangeColorListener(editor, backgroundColor);
-		JPanel colorChooser = createColorChooser(backgroundColor, backgroundColorListener);
-		return colorChooser;
+        return createColorChooser(backgroundColor, backgroundColorListener);
 	}
 
 	public Properties getGeneralProperties()

@@ -18,7 +18,7 @@ public class DefaultProperties
 		Properties prop = new Properties();
 		prop.setProperty("language", "polski");
 		prop.setProperty("properties-file", "config.properties");
-		prop.setProperty("program-version", "3.2 beta");
+		prop.setProperty("program-version", "4.0");
 		prop.setProperty("program-name", "Modgraf v"+prop.getProperty("program-version"));
 		prop.setProperty("use-class-loader", "true");
 		prop.setProperty("graphComponent-width", "600");

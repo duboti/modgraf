@@ -5,6 +5,12 @@ import java.util.Set;
 
 import javax.swing.JMenuItem;
 
+/**
+ * Klasa odpowiada za wyszarzanie lub aktywowanie przycisków na pasku menu uruchamiających algorytmy, w zależności
+ * od typu aktualnie otwartego grafu.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class AlgorithmMenuItems 
 {
 	public enum DirectedType {

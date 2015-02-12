@@ -2,6 +2,11 @@ package modgraf.view.properties;
 
 import java.util.Properties;
 
+/**
+ * Klasa zawiera wszystkie napisy, które użytkownik może zobaczyć, pogrupowane na języki.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class Language
 {
 

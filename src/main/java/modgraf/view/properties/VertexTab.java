@@ -20,12 +20,16 @@ import java.util.Vector;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
-import javax.swing.JPanel;
 
 import modgraf.view.Editor;
 
 import com.mxgraph.util.mxUtils;
 
+/**
+ * Klasa odpowiada za wyświetlanie zakładki zawierającej ustawienia wierzchołków.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class VertexTab extends PreferencesTab
 {
 	private static final long serialVersionUID = -1343713811059005780L;
@@ -126,24 +130,22 @@ public class VertexTab extends PreferencesTab
 	{
 		Color fillColor = mxUtils.parseColor(prop.getProperty("default-vertex-fill-color"));
 		fillColorListener = new ChangeColorListener(editor, fillColor);
-		JPanel colorChooser = createColorChooser(fillColor, fillColorListener);
-		return colorChooser;
+        return createColorChooser(fillColor, fillColorListener);
 	}
 
 	private JComponent createBorderColorChooser()
 	{
 		Color borderColor = mxUtils.parseColor(prop.getProperty("default-vertex-border-color"));
 		borderColorListener = new ChangeColorListener(editor, borderColor);
-		JPanel colorChooser = createColorChooser(borderColor, borderColorListener);
-		return colorChooser;
+        return createColorChooser(borderColor, borderColorListener);
 	}
 	
 	private JComponent createFontFamilyField()
 	{
 		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		List<String> fonts = new ArrayList<String>();
-		fonts.addAll(Arrays.asList(new String[] { "Helvetica", "Verdana",
-				"Times New Roman", "Garamond", "Courier New", "Arial", "---" }));
+		List<String> fonts = new ArrayList<>();
+		fonts.addAll(Arrays.asList("Helvetica", "Verdana",
+                "Times New Roman", "Garamond", "Courier New", "Arial", "---"));
 		fonts.addAll(Arrays.asList(env.getAvailableFontFamilyNames()));
 		fontFamily = new JComboBox<>(fonts.toArray());
 		fontFamily.setSelectedItem(prop.getProperty("default-vertex-font-family"));
@@ -164,8 +166,7 @@ public class VertexTab extends PreferencesTab
 	{
 		Color fontColor = mxUtils.parseColor(prop.getProperty("default-vertex-font-color"));
 		fontColorListener = new ChangeColorListener(editor, fontColor);
-		JPanel colorChooser = createColorChooser(fontColor, fontColorListener);
-		return colorChooser;
+        return createColorChooser(fontColor, fontColorListener);
 	}
 	
 	public Properties getVertexProperties()
