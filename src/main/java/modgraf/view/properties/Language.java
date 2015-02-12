@@ -156,7 +156,7 @@ public class Language
 		lang.setProperty("message-not-complete-graph", "Nie znaleziono rozwiązania!\nPrawdopodobnie graf nie jes pełny.");
 		lang.setProperty("message-range-tip", "Liczby całkowite od");
         lang.setProperty("message-not-eulerian-graph", "Ten graf nie zawiera cyklu Eulera.");
-		
+
 		lang.setProperty("files-all", "Wszystkie wspierane formaty (*.xml;*.grf;*png)");
 		lang.setProperty("files-jar", "Pliki JAR");
 		lang.setProperty("files-grf", "Pliki programu Modgraf 2 (*.grf)");

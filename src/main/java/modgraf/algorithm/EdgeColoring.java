@@ -19,6 +19,12 @@ import org.jgrapht.alg.ChromaticNumber;
 import org.jgrapht.alg.util.VertexDegreeComparator;
 import org.jgrapht.graph.SimpleGraph;
 
+/**
+ * Algorytm przybliżony kolorowania krawędzi.
+ *
+ * @author Daniel Pogrebniak
+ * @author Jan Ignatowicz
+ */
 public class EdgeColoring
 {
 	private Map<String, List<Integer>> availableColorsForAllVertex;
@@ -26,7 +32,7 @@ public class EdgeColoring
 	public Map<Integer, Set<ModgrafEdge>> findColoredEgdeGroups(UndirectedGraph<Vertex, ModgrafEdge> undirectedGraph)
 	{
 		VertexDegreeComparator<Vertex, ModgrafEdge> comp =
-	            new VertexDegreeComparator<Vertex, ModgrafEdge>(undirectedGraph);
+	            new VertexDegreeComparator<>(undirectedGraph);
 		int maxVertexDegree = undirectedGraph.degreeOf(Collections.max(undirectedGraph.vertexSet(),comp));
 		if (maxVertexDegree < 3 )
 			return algNC(undirectedGraph);
@@ -46,7 +52,7 @@ public class EdgeColoring
 			Set<Integer> targetColorsSet = vertexColors.get(target.getId());
 			boolean sourceColorBusy = true;
 			boolean targetColorBusy = true;
-			Integer currentColor = new Integer(-1);
+			Integer currentColor = -1;
 			while ( sourceColorBusy || targetColorBusy)
 			{
 				++currentColor;
@@ -99,7 +105,7 @@ public class EdgeColoring
 		else
 			chromaticIndex = maxVertexDegree + 1;
 		for (int i = 0; i < chromaticIndex; ++i)
-			availableColors.add(new Integer(i));
+			availableColors.add(i);
 		for (Vertex vertex:undirectedGraph.vertexSet())
 		{
 			newGraph.addVertex(vertex.getId());
@@ -114,7 +120,7 @@ public class EdgeColoring
 			List<Integer> availableColorsForTarget = availableColorsForAllVertex.get(target.getId());
 			List<Integer> intersectionAvailableColors = getIntersectionList
 					(availableColorsForSource, availableColorsForTarget);
-			Integer color = null;
+			Integer color;
 			if (intersectionAvailableColors.size() == 0)
 			{
 				if (bipartite)
@@ -177,12 +183,7 @@ public class EdgeColoring
 			return newColor;
 		}
 
-		public void setNewColor(Integer newColor) 
-		{
-			this.newColor = newColor;
-		}
-
-		public ColoredEdge getEdge() 
+		public ColoredEdge getEdge()
 		{
 			return edge;
 		}
@@ -261,8 +262,7 @@ public class EdgeColoring
 				edgeForColoringList, euv);
 		if (vertexWs != null)
 			doRecolorOnPath(graph, vertexV, vertexWs, edgeForColoringList);
-		Integer newColor = changeColors(edgeForColoringList, vertexV);
-		return newColor;
+        return changeColors(edgeForColoringList, vertexV);
 	}
 
 	private String tryRecolorInFan(String vertexV, String vertexU, Set<ColoredEdge> fan,
@@ -373,7 +373,7 @@ public class EdgeColoring
 			String vertexW = edge.getOtherVertex(vertexV);
 			List<Integer> availableColorsForW = availableColorsForAllVertex.get(vertexW);
 			availableColorsForW.remove(e.getNewColor());
-			availableColorsForW.add(new Integer(oldColor));
+			availableColorsForW.add(oldColor);
 		}
 		return edgeForColoringList.get(0).getNewColor();
 	}
@@ -391,7 +391,7 @@ public class EdgeColoring
 	//TODO Nieoptymalna implementacja
 	private String getLastVertexInPath(List<ColoredEdge> path, String firstVertex)
 	{
-		String lastVertex = null;
+		String lastVertex;
 		if (path.size() == 1)
 			lastVertex = path.get(0).getOtherVertex(firstVertex);
 		else
@@ -419,9 +419,9 @@ public class EdgeColoring
 		}
 	}
 	
-	private ColoredEdge findSelectedColorEdgeForVertex(String vetex, Integer color, UndirectedGraph<String, ColoredEdge> graph)
+	private ColoredEdge findSelectedColorEdgeForVertex(String vertex, Integer color, UndirectedGraph<String, ColoredEdge> graph)
 	{
-		Set<ColoredEdge> fan = graph.edgesOf(vetex);
+		Set<ColoredEdge> fan = graph.edgesOf(vertex);
 		for(ColoredEdge edge:fan)
 		{
 			Integer edgeColor = edge.getColor();

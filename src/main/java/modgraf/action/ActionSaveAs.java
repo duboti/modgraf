@@ -206,7 +206,7 @@ public class ActionSaveAs implements ActionListener
 	private StringBuilder createGrfHeader(Graph<Vertex, ModgrafEdge> graphT, String newLine,
                                           ActionGraphTypeConverter.NewType newType)
 	{
-		StringBuilder grf = new StringBuilder("Graf programu Modgraf 3.0");//TODO property
+		StringBuilder grf = new StringBuilder(editor.getProperties().getProperty("created-by"));
 		grf.append(newLine);
 		grf.append(newLine);
 		String type = null;

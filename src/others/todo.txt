@@ -9,13 +9,12 @@
 
 Podstawowe:
 - Moduł wykonujący transformacje grafu do postaci zadania programowania liniowego
-- implementacja algorytmu dokładnego TSP
-- poszukać TODO w kodzie
 - zmiana wyglądu małych okien
 - dokumentacja (instrukcja + javadoc)
 
 
 Dodatkowe:
+- implementacja algorytmu dokładnego TSP
 - dodać czasy wykonywania obliczeń przez algorytmy
 - dodać długość najkrótszej ścieżki w rozwiązaniu tekstowym
 - zmodyfikować wygląd okna "Parametry startowe algorytmu"
