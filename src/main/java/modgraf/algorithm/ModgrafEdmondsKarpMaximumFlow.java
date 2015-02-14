@@ -67,7 +67,7 @@ public class ModgrafEdmondsKarpMaximumFlow extends ModgrafAbstractAlgorithm
 		mxGraphModel model = (mxGraphModel)editor.getGraphComponent().getGraph().getModel();
 		for (Entry<ModgrafEdge, Double> entry : resultMap.entrySet())
 		{
-			double flow = entry.getValue().doubleValue();
+			double flow = entry.getValue();
 			if (flow > 0)
 			{
 				ModgrafEdge edge = entry.getKey();
@@ -101,7 +101,7 @@ public class ModgrafEdmondsKarpMaximumFlow extends ModgrafAbstractAlgorithm
 		Map<ModgrafEdge, Double> resultMap = ekmf.getMaximumFlow();
 		for (Entry<ModgrafEdge, Double> entry : resultMap.entrySet())
 		{
-			double flow = entry.getValue().doubleValue();
+			double flow = entry.getValue();
 			if (flow > 0)
 			{
 				ModgrafEdge edge = entry.getKey();

@@ -49,6 +49,10 @@ public class ActionGraphTypeConverter implements ActionListener {
             JOptionPane.showMessageDialog(editor.getGraphComponent(),
                     lang.getProperty("error-not-open-file"),
                     lang.getProperty("error"), JOptionPane.ERROR_MESSAGE);
+        } catch (IllegalArgumentException ex) {
+            JOptionPane.showMessageDialog(editor.getGraphComponent(),
+                    lang.getProperty("error-names-with-spaces"),
+                    lang.getProperty("error"), JOptionPane.ERROR_MESSAGE);
         }
     }
 }

@@ -119,7 +119,8 @@ public class Language
 		lang.setProperty("error-not-read-class", "Nie udało się wczytać klasy!");
 		lang.setProperty("error-not-Modgraf-algorithm", "Wybrana klasa nie jest poprawnym algorytmem programu Modgraf!");
 		lang.setProperty("error-not-open-help-file", "Nie udało się otworzyć pliku pomocy: ");
-		
+		lang.setProperty("error-names-with-spaces", "Nazwy wierzchołków konwertowanego grafu nie mogą zawierać spacji!");
+
 		lang.setProperty("warning", "Ostrzeżenie");
 		lang.setProperty("warning-not-save-properties-file", "Nie udało się zapisać pliku z ustawieniami programu!");
 		lang.setProperty("warning-not-load-properties-file", "Nie udało się wczytać pliku z ustawieniami programu!");
@@ -177,7 +178,7 @@ public class Language
 		lang.setProperty("frame-vartex-params", "Parametry wierzchołka");
 		lang.setProperty("frame-change-line-width", "Podaj grubość krawędzi");
 		lang.setProperty("frame-change-font-size", "Podaj rozmiar czcionki");
-		lang.setProperty("frame-algorithm-params", "Parametry startowe algorytmu");
+		lang.setProperty("frame-algorithm-params", "Parametry startowe");
 		lang.setProperty("frame-algorithm-steps", "Krokowe wykonywanie algorytmu");
 		lang.setProperty("frame-select-color", "Wybierz kolor");
 		
@@ -400,6 +401,7 @@ public class Language
 		lang.setProperty("error-not-read-class", "Failed to load class!");
 		lang.setProperty("error-not-Modgraf-algorithm", "The selected class is not a valid algorithm of the Modgraf program!");
 		lang.setProperty("error-not-open-help-file", "Failed to open the help file: ");
+        lang.setProperty("error-names-with-spaces", "Vertex has name with space!");
 		
 		lang.setProperty("warning", "Warning");
 		lang.setProperty("warning-not-save-properties-file", "Failed to save the file with the program properties!");

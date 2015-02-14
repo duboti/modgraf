@@ -2,14 +2,13 @@ package modgraf.algorithm;
 
 import static com.mxgraph.util.mxConstants.STYLE_STROKEWIDTH;
 
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Properties;
 import java.util.Set;
 import java.util.Vector;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -17,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import layout.TableLayout;
 import modgraf.jgrapht.Vertex;
 import modgraf.jgrapht.edge.ModgrafEdge;
 import modgraf.view.Editor;
@@ -79,11 +79,15 @@ public abstract class ModgrafAbstractAlgorithm implements ActionListener {
 	 * wierzchołków i zostanie wyświetlone okno z parametrami startowymi
 	 * algorytmu.
 	 */
-	protected void openParamsWindow() {
+    protected void openParamsWindow() {
+        openParamsWindow(new Dimension(300, 140));
+    }
+
+	protected void openParamsWindow(Dimension paramsWindowSize) {
 		if (isEdgeExists()) {
 			clearBoldLines();
 			editor.getGraphComponent().refresh();
-			createParamsWindow();
+			createParamsWindow(paramsWindowSize);
 		}
 	}
 
@@ -202,43 +206,51 @@ public abstract class ModgrafAbstractAlgorithm implements ActionListener {
 	/**
 	 * Metoda tworzy okno z parametrami startowymi algorytmu.
 	 */
-	protected void createParamsWindow() {
+	protected void createParamsWindow(Dimension paramsWindowSize) {
 		JPanel paramsPanel = createParamsPanel();
+        JPanel buttonPanel = createButtonPanel();
 		frame = new JFrame(lang.getProperty("frame-algorithm-params"));
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(200, 150));
-		frame.add(paramsPanel);
+		frame.setPreferredSize(paramsWindowSize);
+        frame.add(paramsPanel, BorderLayout.CENTER);
+        frame.add(buttonPanel, BorderLayout.SOUTH);
 		frame.pack();
 		frame.setLocationRelativeTo(editor.getGraphComponent());
 		frame.setVisible(true);
 	}
 
 	/**
-	 * @return panel zawierający dwie listy wierzchołków i przycisk
-	 *         "Uruchom algorytm".
+	 * @return panel zawierający dwie listy wierzchołków
 	 */
-	protected JPanel createParamsPanel() {
-		JPanel paramsPanel = new JPanel();
-		paramsPanel.setLayout(new BoxLayout(paramsPanel, BoxLayout.Y_AXIS));
-		Vector<Vertex> vertexVector = new Vector<>(editor.getGraphT()
-				.vertexSet());
-		// Collections.sort(vertexVector);
-		startVertexComboBox = new JComboBox<>(vertexVector);
-		endVertexComboBox = new JComboBox<>(vertexVector);
-		paramsPanel.add(new JLabel(lang.getProperty("label-start-vertex")));
-		paramsPanel.add(startVertexComboBox);
-		paramsPanel.add(new JLabel(lang.getProperty("label-end-vertex")));
-		paramsPanel.add(endVertexComboBox);
-		JButton start = new JButton(lang.getProperty("button-run-algorithm"));
-		start.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				startActionButton();
-			}
-		});
-		paramsPanel.add(start);
-		return paramsPanel;
-	}
+    protected JPanel createParamsPanel() {
+        double size[][] =
+                {{0.47, 0.06, 0.47},
+                        {30, 30}};
+        JPanel paramsPanel = new JPanel();
+        paramsPanel.setLayout(new TableLayout(size));
+        Vector<Vertex> vertexVector = new Vector<>(editor.getGraphT().vertexSet());
+        // Collections.sort(vertexVector);
+        startVertexComboBox = new JComboBox<>(vertexVector);
+        endVertexComboBox = new JComboBox<>(vertexVector);
+        paramsPanel.add(new JLabel(lang.getProperty("label-start-vertex")), "0 0 r c");
+        paramsPanel.add(startVertexComboBox, "2 0 l c");
+        paramsPanel.add(new JLabel(lang.getProperty("label-end-vertex")), "0 1 r c");
+        paramsPanel.add(endVertexComboBox, "2 1 l c");
+        return paramsPanel;
+    }
+
+    private JPanel createButtonPanel() {
+        JPanel buttonPanel = new JPanel();
+        JButton start = new JButton(lang.getProperty("button-run-algorithm"));
+        start.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                startActionButton();
+            }
+        });
+        buttonPanel.add(start);
+        return buttonPanel;
+    }
 
 	/**
 	 * Metoda inicjuje pola <code>startVertex</code> i <code>endVertex</code>, a
