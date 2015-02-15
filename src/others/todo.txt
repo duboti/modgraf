@@ -66,6 +66,7 @@ find modgraf -name "*.java" | xargs cat | wc -l
 25.09.2013 4451 linii kodu (wersja ostateczna v3.0, pełny javadoc)
 06.11.2013 5616 linii kodu (dokończona modyfikacja styli wierzchołków)
 29.05.2014 7446 linii kodu dokończona krokowa wersja alg. Dijkstry
+15.02.2015 9000 linii kodu wydana wersja 4.0 (niedokończony javadoc)
 
 cd D:\Dokumenty\programy\java\Modgraf3
 javadoc -d .\javadoc -sourcepath .\src -encoding UTF-8 -charset UTF-8 -docencoding UTF-8 modgraf modgraf.action modgraf.algorithm modgraf.event modgraf.jgrapht modgraf.view modgraf.view.properties

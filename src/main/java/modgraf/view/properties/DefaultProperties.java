@@ -24,6 +24,8 @@ public class DefaultProperties
 		prop.setProperty("use-class-loader", "true");
 		prop.setProperty("graphComponent-width", "600");
 		prop.setProperty("graphComponent-height", "300");
+        prop.setProperty("algorithmParamsWindow-width", "300");
+        prop.setProperty("algorithmParamsWindow-height", "140");
 		prop.setProperty("default-graph-type", "undirected");
 		prop.setProperty("default-edge-type", "0");
 		prop.setProperty("textPane-font", "Arial");

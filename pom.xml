@@ -4,7 +4,7 @@
     <groupId>modgraf</groupId>
     <artifactId>modgraf</artifactId>
     <packaging>jar</packaging>
-    <version>3.3-SNAPSHOT</version>
+    <version>4.0</version>
 
     <repositories>
         <repository>

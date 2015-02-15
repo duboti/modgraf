@@ -1,7 +1,13 @@
 package modgraf.algorithm;
 
-import static com.mxgraph.util.mxConstants.STYLE_STROKEWIDTH;
+import com.mxgraph.model.mxGraphModel;
+import com.mxgraph.view.mxGraph;
+import layout.TableLayout;
+import modgraf.jgrapht.Vertex;
+import modgraf.jgrapht.edge.ModgrafEdge;
+import modgraf.view.Editor;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,23 +15,8 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.Vector;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-
-import layout.TableLayout;
-import modgraf.jgrapht.Vertex;
-import modgraf.jgrapht.edge.ModgrafEdge;
-import modgraf.view.Editor;
-
-import org.jgrapht.Graph;
-
-import com.mxgraph.model.mxGraphModel;
-import com.mxgraph.util.mxConstants;
-import com.mxgraph.view.mxGraph;
+import static com.mxgraph.util.mxConstants.STYLE_FILLCOLOR;
+import static com.mxgraph.util.mxConstants.STYLE_STROKEWIDTH;
 
 /**
  * Klasa bazowa dla wszystkich algorytmów.
@@ -33,7 +24,6 @@ import com.mxgraph.view.mxGraph;
  * @author Daniel Pogrebniak
  * 
  * @see ActionListener
- *
  */
 public abstract class ModgrafAbstractAlgorithm implements ActionListener {
 	/**
@@ -42,12 +32,12 @@ public abstract class ModgrafAbstractAlgorithm implements ActionListener {
 	 */
 	protected Editor editor;
 	/**
-	 * Id wierzchołka startowego. Pole jest uzupełniane, gdy zostanie dokonany
+	 * Wierzchołek startowy. Pole jest uzupełniane, gdy zostanie dokonany
 	 * wybór z listy <code>startVertexComboBox</code>.
 	 */
 	protected Vertex startVertex;
 	/**
-	 * Id wierzchołka końcowego. Pole jest uzupełniane, gdy zostanie dokonany
+	 * Wierzchołek końcowy. Pole jest uzupełniane, gdy zostanie dokonany
 	 * wybór z listy <code>endVertexComboBox</code>.
 	 */
 	protected Vertex endVertex;
@@ -64,25 +54,41 @@ public abstract class ModgrafAbstractAlgorithm implements ActionListener {
 	 * Okno z parametrami startowymi algorytmu.
 	 */
 	protected JFrame frame;
+    /**
+     * Mapa z tekstami
+     */
 	protected Properties lang;
+    /**
+     * Mapa z ustawieniami
+     */
 	protected Properties prop;
 
+    /**
+     * Konstruktor
+     *
+     * @param e edytor
+     */
 	protected ModgrafAbstractAlgorithm(Editor e) {
 		editor = e;
 		lang = editor.getLanguage();
 		prop = e.getProperties();
 	}
 
-	/**
-	 * Jeśli istnieją w grafie krawędzie to zostanie im ustawiona domyślna
-	 * grubość. Następnie ustawiona zostanie domyślna grubość obramowania
-	 * wierzchołków i zostanie wyświetlone okno z parametrami startowymi
-	 * algorytmu.
-	 */
+    /**
+     * Wyświetla domyślnej wielkości okno z parametrami startowymi
+     */
     protected void openParamsWindow() {
-        openParamsWindow(new Dimension(300, 140));
+        Integer width = new Integer(prop.getProperty("algorithmParamsWindow-width"));
+        Integer height = new Integer(prop.getProperty("algorithmParamsWindow-height"));
+        openParamsWindow(new Dimension(width, height));
     }
 
+    /**
+     * Jeśli istnieją w grafie krawędzie to zostanie im ustawiona domyślna
+     * grubość. Następnie ustawiona zostanie domyślna grubość obramowania
+     * wierzchołków i zostanie wyświetlone okno z parametrami startowymi
+     * algorytmu.
+     */
 	protected void openParamsWindow(Dimension paramsWindowSize) {
 		if (isEdgeExists()) {
 			clearBoldLines();
@@ -139,6 +145,9 @@ public abstract class ModgrafAbstractAlgorithm implements ActionListener {
 		graph.clearSelection();
 	}
 
+    /**
+     * Metoda ustawia domyślną grubość dla wszystkich krawędzi i wierzchołków.
+     */
 	protected void clearBoldLines() {
 		mxGraph graph = editor.getGraphComponent().getGraph();
 		graph.selectAll();
@@ -146,13 +155,23 @@ public abstract class ModgrafAbstractAlgorithm implements ActionListener {
 		graph.clearSelection();
 	}
 
+    /**
+     * Metoda ustawia kolor wypełnienia dla wierzchołka o podanym id.
+     *
+     * @param vertexId id wierzchołka
+     * @param color kolor
+     */
 	protected void changeVertexFillColor(String vertexId, String color) {
-		mxGraph graph = editor.getGraphComponent().getGraph();
-		mxGraphModel model = (mxGraphModel) graph.getModel();
-		graph.setCellStyles(mxConstants.STYLE_FILLCOLOR, color,
-				new Object[] { model.getCell(vertexId) });
+        setCellStyle(vertexId, STYLE_FILLCOLOR, color);
 	}
 
+    /**
+     * Metoda ustawia dla obiektu o podanym id podaną wartość podanego stylu.
+     *
+     * @param id id obiektu
+     * @param style nazwa stylu
+     * @param value wartość stylu
+     */
 	protected void setCellStyle(String id, String style, String value) {
 		mxGraph graph = editor.getGraphComponent().getGraph();
 		mxGraphModel model = (mxGraphModel) graph.getModel();
@@ -162,14 +181,11 @@ public abstract class ModgrafAbstractAlgorithm implements ActionListener {
 	/**
 	 * Metoda ustawia krawędzi <code>edge</code> grubość <code>width</code>.
 	 * 
-	 * @param edge
-	 * @param width
+	 * @param edge krawędź
+	 * @param width grubość
 	 */
-	protected void changeEdgeStrokeWidth(ModgrafEdge edge, int width) {
-		Graph<Vertex, ModgrafEdge> graphT = editor.getGraphT();
-		Vertex source = graphT.getEdgeSource(edge);
-		Vertex target = graphT.getEdgeTarget(edge);
-		changeEdgeStrokeWidth(source, target, width);
+	protected void changeEdgeStrokeWidth(ModgrafEdge edge, Integer width) {
+        setCellStyle(edge.getId(), STYLE_STROKEWIDTH, width.toString());
 	}
 
 
@@ -177,30 +193,24 @@ public abstract class ModgrafAbstractAlgorithm implements ActionListener {
 	 * Metoda znajduje krawędź między wierzchołkami o id <code>source</code> i
 	 * <code>target</code>, a następnie ustawia jej grubość <code>width</code>.
 	 * 
-	 * @param source
-	 * @param target
-	 * @param width
+	 * @param source wierzchołek startowy
+	 * @param target wierzchołek końcowy
+	 * @param width grubość
 	 */
-	protected void changeEdgeStrokeWidth(Vertex source, Vertex target, int width) {
-		mxGraph graph = editor.getGraphComponent().getGraph();
-		mxGraphModel model = (mxGraphModel) graph.getModel();
+	protected void changeEdgeStrokeWidth(Vertex source, Vertex target, Integer width) {
 		String edgeId = editor.getEdgeId(source.getId(), target.getId());
-		graph.setCellStyles(STYLE_STROKEWIDTH, Integer.toString(width),
-				new Object[] { model.getCell(edgeId) });
+        setCellStyle(edgeId, STYLE_STROKEWIDTH, width.toString());
 	}
 
 	/**
 	 * Metoda ustawia wierzchołkowi o id <code>vertexId</code> grubość
 	 * obramowania <code>width</code>.
 	 * 
-	 * @param vertex
-	 * @param width
+	 * @param vertex wierzchołek
+	 * @param width grubość obramowania
 	 */
-	protected void changeVertexStrokeWidth(Vertex vertex, int width) {
-		mxGraph graph = editor.getGraphComponent().getGraph();
-		mxGraphModel model = (mxGraphModel) graph.getModel();
-		graph.setCellStyles(STYLE_STROKEWIDTH, Integer.toString(width),
-				new Object[] { model.getCell(vertex.getId()) });
+	protected void changeVertexStrokeWidth(Vertex vertex, Integer width) {
+        setCellStyle(vertex.getId(), STYLE_STROKEWIDTH, width.toString());
 	}
 
 	/**
@@ -223,13 +233,10 @@ public abstract class ModgrafAbstractAlgorithm implements ActionListener {
 	 * @return panel zawierający dwie listy wierzchołków
 	 */
     protected JPanel createParamsPanel() {
-        double size[][] =
-                {{0.47, 0.06, 0.47},
-                        {30, 30}};
+        double size[][] ={{0.47, 0.06, 0.47},{30, 30}};
         JPanel paramsPanel = new JPanel();
         paramsPanel.setLayout(new TableLayout(size));
         Vector<Vertex> vertexVector = new Vector<>(editor.getGraphT().vertexSet());
-        // Collections.sort(vertexVector);
         startVertexComboBox = new JComboBox<>(vertexVector);
         endVertexComboBox = new JComboBox<>(vertexVector);
         paramsPanel.add(new JLabel(lang.getProperty("label-start-vertex")), "0 0 r c");
@@ -239,6 +246,9 @@ public abstract class ModgrafAbstractAlgorithm implements ActionListener {
         return paramsPanel;
     }
 
+    /**
+     * @return panel z przyciskiem uruchamiającym algorytm
+     */
     private JPanel createButtonPanel() {
         JPanel buttonPanel = new JPanel();
         JButton start = new JButton(lang.getProperty("button-run-algorithm"));
@@ -277,7 +287,7 @@ public abstract class ModgrafAbstractAlgorithm implements ActionListener {
 	protected abstract void findAndShowResult();
 
 	/**
-	 * @return nazwę widoczna w menu <i>Algorytmy</i>.
+	 * @return nazwa widoczna w menu <i>Algorytmy</i>.
 	 */
 	public abstract String getName();
 }
