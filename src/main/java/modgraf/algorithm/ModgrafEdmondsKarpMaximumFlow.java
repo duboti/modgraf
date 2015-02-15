@@ -15,9 +15,6 @@ import org.jgrapht.Graph;
 import org.jgrapht.WeightedGraph;
 import org.jgrapht.alg.EdmondsKarpMaximumFlow;
 
-import com.mxgraph.model.mxCell;
-import com.mxgraph.model.mxGraphModel;
-
 /**
  * Klasa rozwiązuje problem maksymalnego przepływu.
  * 
@@ -64,7 +61,6 @@ public class ModgrafEdmondsKarpMaximumFlow extends ModgrafAbstractAlgorithm
 		sb.append(newLine);
 		Graph<Vertex, ModgrafEdge> graphT = editor.getGraphT();
 		Map<ModgrafEdge, Double> resultMap = ekmf.getMaximumFlow();
-		mxGraphModel model = (mxGraphModel)editor.getGraphComponent().getGraph().getModel();
 		for (Entry<ModgrafEdge, Double> entry : resultMap.entrySet())
 		{
 			double flow = entry.getValue();
@@ -72,15 +68,9 @@ public class ModgrafEdmondsKarpMaximumFlow extends ModgrafAbstractAlgorithm
 			{
 				ModgrafEdge edge = entry.getKey();
 				double capacity =  graphT.getEdgeWeight(edge);
-				Vertex sourceId = graphT.getEdgeSource(edge);
-				Vertex targetId = graphT.getEdgeTarget(edge);
-				mxCell cellSource = (mxCell) model.getCell(sourceId.getId());
-				mxCell cellTarget = (mxCell) model.getCell(targetId.getId());
-				String source = cellSource.getValue().toString();
-				String target = cellTarget.getValue().toString();
-				sb.append(source);
+				sb.append(edge.getSource().getName());
 				sb.append(" : ");
-				sb.append(target);
+				sb.append(edge.getTarget().getName());
 				sb.append(" --> ");
 				sb.append(flow);
 				sb.append("/");

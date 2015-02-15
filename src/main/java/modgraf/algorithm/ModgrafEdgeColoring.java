@@ -2,7 +2,6 @@ package modgraf.algorithm;
 
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
@@ -16,8 +15,6 @@ import modgraf.view.Editor;
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.UndirectedGraph;
 
-import com.mxgraph.model.mxCell;
-import com.mxgraph.model.mxGraphModel;
 import com.mxgraph.util.mxConstants;
 import org.jgrapht.graph.AsUndirectedGraph;
 
@@ -42,7 +39,6 @@ public class ModgrafEdgeColoring extends ModgrafAbstractAlgorithm
 	@Override
 	protected void findAndShowResult() 
 	{
-		Date start = new Date();
 		EdgeColoring edgeColoring = new EdgeColoring();
         UndirectedGraph<Vertex, ModgrafEdge> undirectedGraph;
         if (editor.getGraphT() instanceof UndirectedGraph)
@@ -50,10 +46,9 @@ public class ModgrafEdgeColoring extends ModgrafAbstractAlgorithm
         else
             undirectedGraph = new AsUndirectedGraph<>((DirectedGraph<Vertex, ModgrafEdge>) editor.getGraphT());
 		Map<Integer, Set<ModgrafEdge>> result = edgeColoring.findColoredEgdeGroups(undirectedGraph);
-		Date end = new Date();
 		if (result != null)
 		{
-			createTextResult(result, end.getTime() - start.getTime());
+			createTextResult(result);
 			createGraphicalResult(result);
 		}
 		else
@@ -64,10 +59,9 @@ public class ModgrafEdgeColoring extends ModgrafAbstractAlgorithm
 		}
 	}
 
-	private void createTextResult(Map<Integer, Set<ModgrafEdge>> result, long time)
+	private void createTextResult(Map<Integer, Set<ModgrafEdge>> result)
 	{
 		StringBuilder sb = new StringBuilder();
-		mxGraphModel model = (mxGraphModel)editor.getGraphComponent().getGraph().getModel();
 		String newLine = "\n";
 		sb.append(lang.getProperty("alg-ec-message-1"));
 		sb.append(result.keySet().size());
@@ -79,14 +73,10 @@ public class ModgrafEdgeColoring extends ModgrafAbstractAlgorithm
 			sb.append(" : ");
 			for (ModgrafEdge edge : edgeSet)
 			{
-				Vertex sourceId = edge.getSource();
-				mxCell source = (mxCell) model.getCell(sourceId.getId());
 				sb.append("(");
-				sb.append(source.getValue().toString());
+                sb.append(edge.getSource().getName());
 				sb.append(",");
-				Vertex targetId = edge.getTarget();
-				mxCell target = (mxCell) model.getCell(targetId.getId());
-				sb.append(target.getValue().toString());
+                sb.append(edge.getTarget().getName());
 				sb.append("), ");
 			}
 			sb.deleteCharAt(sb.length()-2);
@@ -97,20 +87,16 @@ public class ModgrafEdgeColoring extends ModgrafAbstractAlgorithm
 
 	private void createGraphicalResult(Map<Integer, Set<ModgrafEdge>> result)
 	{
-		mxGraphModel model = (mxGraphModel)editor.getGraphComponent().getGraph().getModel();
 		ArrayList<String> colorList = createColorList();
-		model.beginUpdate();
 		for (Integer colorInt : result.keySet())
 		{
 			Set<ModgrafEdge> edgeSet = result.get(colorInt);
 			String color = getColor(colorList, colorInt);
 			for (ModgrafEdge edge : edgeSet)
 			{
-				String edgeId = editor.getEdgeId(edge.getSource().getId(), edge.getTarget().getId());
-				setCellStyle(edgeId, mxConstants.STYLE_STROKECOLOR, color);
+				setCellStyle(edge.getId(), mxConstants.STYLE_STROKECOLOR, color);
 			}
 		}
-		model.endUpdate();
 		editor.getGraphComponent().refresh();
 	}
 

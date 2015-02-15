@@ -16,8 +16,6 @@ import org.jgrapht.DirectedGraph;
 import org.jgrapht.UndirectedGraph;
 import org.jgrapht.alg.ChromaticNumber;
 
-import com.mxgraph.model.mxCell;
-import com.mxgraph.model.mxGraphModel;
 import org.jgrapht.graph.AsUndirectedGraph;
 
 /**
@@ -67,9 +65,7 @@ public class ModgrafChromaticNumber extends ModgrafAbstractAlgorithm
 
 	private void createGraphicalResult(Map<Integer, Set<Vertex>> result)
 	{
-		mxGraphModel model = (mxGraphModel)editor.getGraphComponent().getGraph().getModel();
 		ArrayList<String> colorList = createColorList();
-		model.beginUpdate();
 		for (Integer colorInt : result.keySet())
 		{
 			Set<Vertex> vertexSet = result.get(colorInt);
@@ -77,14 +73,12 @@ public class ModgrafChromaticNumber extends ModgrafAbstractAlgorithm
 			for (Vertex vetrex : vertexSet)
 				changeVertexFillColor(vetrex.getId(), color);
 		}
-		model.endUpdate();
 		editor.getGraphComponent().refresh();
 	}
 
 	private void createTextResult(Map<Integer, Set<Vertex>> result)
 	{
 		StringBuilder sb = new StringBuilder();
-		mxGraphModel model = (mxGraphModel)editor.getGraphComponent().getGraph().getModel();
 		String newLine = "\n";
 		sb.append(lang.getProperty("alg-cn-message-1"));
 		sb.append(result.keySet().size());
@@ -94,10 +88,9 @@ public class ModgrafChromaticNumber extends ModgrafAbstractAlgorithm
 			Set<Vertex> vertexSet = result.get(colorInt);
 			sb.append(colorInt);
 			sb.append(" : ");
-			for (Vertex vetrex : vertexSet)
+			for (Vertex vertex : vertexSet)
 			{
-				mxCell cell = (mxCell) model.getCell(vetrex.getId());
-				sb.append(cell.getValue().toString());
+				sb.append(vertex.getName());
 				sb.append(", ");
 			}
 			sb.deleteCharAt(sb.length()-2);

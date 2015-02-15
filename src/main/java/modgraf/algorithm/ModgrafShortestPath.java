@@ -16,9 +16,6 @@ import org.jgrapht.alg.BellmanFordShortestPath;
 import org.jgrapht.alg.DijkstraShortestPath;
 import org.jgrapht.alg.FloydWarshallShortestPaths;
 
-import com.mxgraph.model.mxCell;
-import com.mxgraph.model.mxGraphModel;
-
 /**
  * Klasa rozwiązuje problem najkrótsza ścieżka.
  * 
@@ -34,7 +31,7 @@ public class ModgrafShortestPath extends ModgrafAbstractAlgorithm
 	{
 		BellmanFord,
 		Dijkstra,
-		FloydWarshall;
+		FloydWarshall
 	}
 	
 	private Algorithm algorithm;
@@ -70,7 +67,6 @@ public class ModgrafShortestPath extends ModgrafAbstractAlgorithm
 	private void createTextResult(List<ModgrafEdge> result)
 	{
 		StringBuilder sb = new StringBuilder();
-		mxGraphModel model = (mxGraphModel)editor.getGraphComponent().getGraph().getModel();
 		sb.append(lang.getProperty("alg-sp-message-1"));
 		sb.append(startVertexComboBox.getSelectedItem());
 		sb.append(lang.getProperty("alg-sp-message-2"));
@@ -86,23 +82,19 @@ public class ModgrafShortestPath extends ModgrafAbstractAlgorithm
 			if (result.size() > 4 )
 				sb.append(lang.getProperty("alg-sp-message-6"));
 			sb.append(lang.getProperty("alg-sp-message-7"));
-			String start = (String)startVertexComboBox.getSelectedItem().toString();
-			sb.append(start);
+			Vertex start = (Vertex) startVertexComboBox.getSelectedItem();
+			sb.append(start.getName());
 			ArrayList<String> vertexIdList = new ArrayList<>();
-			vertexIdList.add(editor.getVertexId(start));
-			for (int i = 0; i < result.size(); ++i)
-			{
-				sb.append(", ");
-				
-				Vertex vertex = result.get(i).getTarget();
-				if (vertexIdList.contains(vertex.getId()))
-					vertex = result.get(i).getSource();
-				vertexIdList.add(vertex.getId());
-				mxCell vertexCell = (mxCell)model.getCell(vertex.getId());
-				vertexIdList.add(vertexCell.getValue().toString());
-				sb.append(vertexCell.getValue().toString());
-			}
-			sb.append(".");
+			vertexIdList.add(start.getId());
+            for (ModgrafEdge edge : result) {
+                sb.append(", ");
+                Vertex vertex = edge.getTarget();
+                if (vertexIdList.contains(vertex.getId()))
+                    vertex = edge.getSource();
+                vertexIdList.add(vertex.getId());
+                sb.append(vertex.getName());
+            }
+            sb.append(".");
 		}
 		editor.setText(sb.toString());
 	}
@@ -140,7 +132,7 @@ public class ModgrafShortestPath extends ModgrafAbstractAlgorithm
 		if (algorithm == Algorithm.FloydWarshall)
 		{
 			FloydWarshallShortestPaths<Vertex, ModgrafEdge> fwsp = 
-					new FloydWarshallShortestPaths<Vertex, ModgrafEdge>(editor.getGraphT());
+					new FloydWarshallShortestPaths<>(editor.getGraphT());
 			GraphPath<Vertex, ModgrafEdge> path = fwsp.getShortestPath(startVertex, endVertex);
 			result = path.getEdgeList();
 		}

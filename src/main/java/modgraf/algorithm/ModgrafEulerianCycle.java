@@ -55,8 +55,10 @@ public class ModgrafEulerianCycle extends ModgrafAbstractAlgorithm {
     }
 
     private void createGraphicalResult(List<Vertex> result) {
-        for (Vertex vertex : result) {
-            changeVertexStrokeWidth(vertex, 3);
+        int width = 4;
+        for (int i = 0; i < result.size()-1; ++i){
+            changeVertexStrokeWidth(result.get(i), width);
+            changeEdgeStrokeWidth(result.get(i), result.get(i+1), width);
         }
         editor.getGraphComponent().refresh();
     }
