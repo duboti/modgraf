@@ -18,10 +18,13 @@ import java.util.*;
 import java.util.List;
 
 /**
- * 
+ * Klasa rozwiązuje problem najtańszego przepływu.
+ *
+ * @author Marcin Kubik
+ * @author Piotr Zapaśnik
+ * @author Daniel Pogrebniak
  *
  * @see ModgrafAbstractAlgorithm
- * 
  */
 public class ModgrafBusackerGowenCheapestFlow extends ModgrafAbstractAlgorithm {
 

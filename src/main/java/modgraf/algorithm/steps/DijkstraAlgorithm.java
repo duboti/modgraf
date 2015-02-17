@@ -22,6 +22,11 @@ import org.jgrapht.WeightedGraph;
 import com.mxgraph.model.mxCell;
 import com.mxgraph.model.mxGraphModel;
 
+/**
+ * Klasa zawiera krokową implementację algorytmu Dijkstry.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class DijkstraAlgorithm extends ModgrafAbstractStepsAlgorithm
 {
 	private boolean first;
@@ -97,7 +102,7 @@ public class DijkstraAlgorithm extends ModgrafAbstractStepsAlgorithm
 		}
 		Graph<Vertex, ModgrafEdge> graphT = editor.getGraphT();
 		vertexU = queue.poll();
-		Set<ModgrafEdge> edgesSet = null;
+		Set<ModgrafEdge> edgesSet;
 		if (graphT instanceof DirectedGraph)
 			edgesSet = ((DirectedGraph<Vertex, ModgrafEdge>)graphT).outgoingEdgesOf(vertexU);
 		else
@@ -144,7 +149,7 @@ public class DijkstraAlgorithm extends ModgrafAbstractStepsAlgorithm
 		edgeVchecked = true;
 	}
 	
-	class DistanceVertex extends Vertex implements Comparable<DistanceVertex>
+	static class DistanceVertex extends Vertex implements Comparable<DistanceVertex>
 	{
 		private static final long serialVersionUID = -1504310465327879043L;
 		private double distance;
@@ -170,11 +175,6 @@ public class DijkstraAlgorithm extends ModgrafAbstractStepsAlgorithm
 		public ModgrafEdge getPrevious()
 		{
 			return previous;
-		}
-		
-		public void setPrevious(ModgrafEdge previous)
-		{
-			this.previous = previous;
 		}
 		
 		@Override
@@ -209,7 +209,7 @@ public class DijkstraAlgorithm extends ModgrafAbstractStepsAlgorithm
 		for(Vertex vertex : vertexSet)
 		{
 			mxCell cell = (mxCell) model.getCell(vertex.getId());
-			String value = null;
+			String value;
 			Double d = distances.get(vertex.getId());
 			if (d.equals(Double.MAX_VALUE))
 				value = vertex.getName() + "\n" + Character.toString('\u221E');
