@@ -47,7 +47,7 @@ public class ActionSetCustomSize implements ActionListener
 		JPanel paramsPanel = createParamsPanel();
 		frame = new JFrame(lang.getProperty("frame-vartex-params"));
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(205, 150));
+		frame.setPreferredSize(new Dimension(190, 150));
 		frame.add(paramsPanel);
 		frame.pack();
 		frame.setLocationRelativeTo(editor.getGraphComponent());
@@ -60,11 +60,11 @@ public class ActionSetCustomSize implements ActionListener
 		paramsPanel.add(new JLabel(lang.getProperty("message-write-numbers")));//TODO from 0 to 1000
 		paramsPanel.add(new JLabel(lang.getProperty("label-height")));
 		Dimension dimension = new Dimension(80, 20);
-		height = new JTextField("50.0");
+		height = new JTextField("50");
 		height.setPreferredSize(dimension);
 		paramsPanel.add(height);
 		paramsPanel.add(new JLabel(lang.getProperty("label-width")));
-		width = new JTextField("50.0");
+		width = new JTextField("50");
 		width.setPreferredSize(dimension);
 		paramsPanel.add(width);
 		JButton button = new JButton(lang.getProperty("button-change-size"));
@@ -75,11 +75,11 @@ public class ActionSetCustomSize implements ActionListener
 			{
 				try
 				{
-					double h = Double.parseDouble(height.getText());
-					if (h < 0.0 || h > 1000.0)
+					int h = Integer.parseInt(height.getText());
+					if (h < 0 || h > 1000)
 						throw new InvalidAttributeValueException();
-					double w = Double.parseDouble(width.getText());
-					if (w < 0.0 || w > 1000.0)
+                    int w = Integer.parseInt(width.getText());
+					if (w < 0 || w > 1000)
 						throw new InvalidAttributeValueException();
 					new ActionSetSize(editor, h, w).actionPerformed(null);
 					frame.dispose();

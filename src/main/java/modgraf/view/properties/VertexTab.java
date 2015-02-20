@@ -88,9 +88,6 @@ public class VertexTab extends PreferencesTab
 		vector.add(lang.getProperty("menu-vertex-shape-rhombus"));
 		vector.add(lang.getProperty("menu-vertex-shape-cloud"));
 		vector.add(lang.getProperty("menu-vertex-shape-hexagon"));
-		vector.add(lang.getProperty("menu-vertex-shape-triangle"));
-		vector.add(lang.getProperty("menu-vertex-shape-actor"));
-		vector.add(lang.getProperty("menu-vertex-shape-cylinder"));
 		shape = new JComboBox<>(vector);
 		shape.setSelectedItem(prop.getProperty("default-vertex-shape"));
 		return shape;
