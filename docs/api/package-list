@@ -1,7 +1,9 @@
 modgraf
 modgraf.action
 modgraf.algorithm
+modgraf.algorithm.steps
 modgraf.event
 modgraf.jgrapht
+modgraf.jgrapht.edge
 modgraf.view
 modgraf.view.properties
