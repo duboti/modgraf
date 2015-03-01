@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 import com.mxgraph.model.mxICell;
 
+/**
+ * Reprezentuje wierzchołek.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class Vertex implements Serializable
 {
 	private static final long serialVersionUID = -1378221843083731105L;

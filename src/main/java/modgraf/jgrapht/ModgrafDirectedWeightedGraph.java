@@ -6,6 +6,8 @@ import org.jgrapht.EdgeFactory;
 import org.jgrapht.graph.SimpleDirectedWeightedGraph;
 
 /**
+ * Reprezentuje obiekt grafu skierowanego ważonego.
+ *
  * @author Daniel Pogrebniak
  */
 public class ModgrafDirectedWeightedGraph extends SimpleDirectedWeightedGraph<Vertex, ModgrafEdge>

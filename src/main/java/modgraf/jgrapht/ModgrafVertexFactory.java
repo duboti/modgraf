@@ -1,9 +1,12 @@
 package modgraf.jgrapht;
 
-import modgraf.jgrapht.Vertex;
-
 import org.jgrapht.VertexFactory;
 
+/**
+ * "Fabryka" wierzchołków wykorzystywana podczas generowania grafów.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class ModgrafVertexFactory implements VertexFactory<Vertex>
 {
 	Integer counter = 0;

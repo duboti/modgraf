@@ -18,6 +18,11 @@ import org.jgrapht.UndirectedGraph;
 import com.mxgraph.util.mxConstants;
 import org.jgrapht.graph.AsUndirectedGraph;
 
+/**
+ * Klasa prezentuje rozwiązanie problemu kolorowania krawędzi. Do obliczeń wykorzystuje klasę {@link EdgeColoring}.
+ *
+ * @author Daniel Pogrebniak
+ */
 public class ModgrafEdgeColoring extends ModgrafAbstractAlgorithm 
 {
 	public ModgrafEdgeColoring(Editor e) 
