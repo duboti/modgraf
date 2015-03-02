@@ -26,12 +26,14 @@ public class Help implements ActionListener
 	private JFrame frame;
 	private Properties lang;
 	boolean useClassLoader;
+    String type;
 	
-	public Help(Editor e)
+	public Help(Editor e, String type)
 	{
 		lang = e.getLanguage();
 		String useClassLoaderString = e.getProperties().getProperty("use-class-loader");
 		useClassLoader = Boolean.parseBoolean(useClassLoaderString);
+        this.type = type;
 	}
 	
 	@Override
@@ -44,7 +46,7 @@ public class Help implements ActionListener
 	{
 		JScrollPane editorScrollPane = createTextPanel();
 		JPanel buttonPanel = createButtonPanel();
-		frame = new JFrame(lang.getProperty("menu-help-help"));
+		frame = new JFrame(lang.getProperty("menu-help-"+type));
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setPreferredSize(new Dimension(800, 600));
 		frame.add(editorScrollPane, BorderLayout.CENTER);
@@ -56,12 +58,12 @@ public class Help implements ActionListener
 	private JScrollPane createTextPanel()
 	{
 		JEditorPane editorPane = new JEditorPane();
-		File helpFile = new File("help/help.html");
+		File helpFile = new File("help/"+type+".html");
 		try
 		{
-			URL helpFileURL = null;
+			URL helpFileURL;
 			if (useClassLoader)
-				helpFileURL = getClass().getClassLoader().getResource("help/help.html");
+				helpFileURL = getClass().getClassLoader().getResource("help/"+type+".html");
 			else
 				helpFileURL = helpFile.toURI().toURL();
 			editorPane.setPage(helpFileURL);
@@ -72,8 +74,7 @@ public class Help implements ActionListener
 					helpFile.getAbsolutePath());
 		}
 		editorPane.setEditable(false);
-		JScrollPane editorScrollPane = new JScrollPane(editorPane);
-		return editorScrollPane;
+        return new JScrollPane(editorPane);
 	}
 
 	private JPanel createButtonPanel()

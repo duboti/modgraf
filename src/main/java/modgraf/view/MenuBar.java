@@ -126,7 +126,8 @@ public class MenuBar extends JMenuBar
 		add(utils);
 		
 		JMenu help = new JMenu(lang.getProperty("menu-help"));
-		help.add(createMenuItem("menu-help-help", new Help(editor), true, "icons/help.png", null));
+		help.add(createMenuItem("menu-help-user-guide", new Help(editor, "user-guide"), true, "icons/help.png", null));
+		help.add(createMenuItem("menu-help-tips", new Help(editor, "tips")));
 		help.addSeparator();
 		help.add(createMenuItem("menu-help-about", new AboutModgraf(editor), true, "icons/information.png", null));
 		add(help);
@@ -140,8 +141,8 @@ public class MenuBar extends JMenuBar
 
     private JMenu createMenuSpanningTree() {
         JMenu spanningTree = new JMenu(lang.getProperty("menu-algorithm-spanning-tree"));
-        spanningTree.add(createDisabledAlgorithm("menu-algorithm-spanning-tree-k", new ModgrafSpanningTree(editor, ModgrafSpanningTree.Algorithm.Kruskal), both, any));
-        spanningTree.add(createDisabledAlgorithm("menu-algorithm-spanning-tree-p", new ModgrafSpanningTree(editor, ModgrafSpanningTree.Algorithm.Prim), both, any));
+        spanningTree.add(createDisabledAlgorithm("menu-algorithm-spanning-tree-k", new ModgrafSpanningTree(editor, ModgrafSpanningTree.Algorithm.Kruskal),  undirected, weighted));
+        spanningTree.add(createDisabledAlgorithm("menu-algorithm-spanning-tree-p", new ModgrafSpanningTree(editor, ModgrafSpanningTree.Algorithm.Prim), undirected, weighted));
         return spanningTree;
     }
 

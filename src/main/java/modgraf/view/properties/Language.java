@@ -104,7 +104,8 @@ public class Language
 		lang.setProperty("menu-utils-gen-random-flow", "Losowa sieć przepływowa");
 		
 		lang.setProperty("menu-help", "Pomoc");
-		lang.setProperty("menu-help-help", "Pomoc");
+		lang.setProperty("menu-help-user-guide", "Instrukcja użytkownika");
+		lang.setProperty("menu-help-tips", "Wskazówki dla programistów");
 		lang.setProperty("menu-help-about", "O programie");
 		
 		lang.setProperty("error", "Błąd");
@@ -386,7 +387,8 @@ public class Language
 		lang.setProperty("menu-utils-gen-random-flow", "Random flow");
 		
 		lang.setProperty("menu-help", "Help");
-		lang.setProperty("menu-help-help", "Help");
+        lang.setProperty("menu-help-user-guide", "User guide");
+        lang.setProperty("menu-help-tips", "Tips for developers");
 		lang.setProperty("menu-help-about", "About Modgraf");
 		
 		lang.setProperty("error", "Error");

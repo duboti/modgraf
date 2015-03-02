@@ -1,3 +1,9 @@
 #create local repo with tablelayout.jar
 mvn org.apache.maven.plugins:maven-install-plugin:2.3.1:install-file -Dfile=modgraf/src/lib/tablelayout.jar -DgroupId=layout.TableLayout -DartifactId=TableLayout -Dversion=1.0 -Dpackaging=jar -DlocalRepositoryPath=modgraf/my-repo
 mvn deploy:deploy-file -Dfile=jgrapht/jgrapht-core/target/jgrapht-core-0.9.1-sources.jar -DgroupId=org.jgrapht -DartifactId=jgrapht-core -Dversion=9.1.0 -Dpackaging=jar -Durl=file://modgraf/my-repo -Dclassifier=sources
+
+
+#create javadoc
+javadoc -d .\docs\api -sourcepath .\src\main\java -encoding UTF-8 -charset UTF-8 -docencoding UTF-8 modgraf modgraf.action modgraf.algorithm modgraf.algorithm.step modgraf.event modgraf.jgrapht modgraf.view modgraf.view.properties
+
+F:\Programy\Java\jdk1.7.0_71\bin\javadoc -d .\docs\api -sourcepath .\src\main\java -encoding UTF-8 -charset UTF-8 -docencoding UTF-8 modgraf modgraf.action modgraf.algorithm modgraf.algorithm.steps modgraf.event modgraf.jgrapht modgraf.jgrapht.edge modgraf.view modgraf.view.properties

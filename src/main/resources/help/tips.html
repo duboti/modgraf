@@ -1,0 +1,2282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pl" > 
+<head><title></title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2"> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"> 
+<!-- html --> 
+<meta name="src" content="wskazowki.tex"> 
+<meta name="date" content="2015-03-02 03:50:00"> 
+<link rel="stylesheet" type="text/css" href="tips.css"> 
+</head><body 
+>
+                                                                          
+                                                                          
+<a 
+ id="x1-2r1"></a>
+
+<h2 class="chapterHead"><span class="titlemark"> </span><a 
+ id="x1-10001"></a>
+Wskazówki
+dla
+programistów
+algorytmów</h2>
+<a 
+ id="x1-1001r1"></a>
+
+<h3 class="sectionHead"><span class="titlemark">  </span><a 
+ id="x1-20001"></a>1.
+Przygotowanie
+&#347;rodowiska</h3>
+<!--l. 4--><p class="noindent" >Wymagania:
+   <ul class="itemize1">
+   <li class="itemize">Java 7.x+
+   </li>
+   <li class="itemize">Git
+   </li>
+   <li class="itemize">Maven 3.x</li></ul>
+<!--l. 12--><p class="indent" >   Budowanie <span 
+class="ec-qtmri-x-x-120">Modgrafa </span>z konsoli:
+   <ol  class="enumerate1" >
+   <li 
+  class="enumerate" id="x1-2002x1">Pobranie repozytorium <span 
+class="ec-qtmri-x-x-120">Git</span>: <!--l. 15-->
+   <div class="lstlisting" id="listing-1"><span class="label"><a 
+ id="x1-2003r1"></a></span><span 
+class="ec-qtmr-x-x-109">git</span><span 
+class="ec-qtmr-x-x-109">&#x00A0;</span><span 
+class="ec-qtmr-x-x-109">clone</span><span 
+class="ec-qtmr-x-x-109">&#x00A0;</span><span 
+class="ec-qtmr-x-x-109">https</span><span 
+class="ec-qtmr-x-x-109">://</span><span 
+class="ec-qtmr-x-x-109">github</span><span 
+class="ec-qtmr-x-x-109">.</span><span 
+class="ec-qtmr-x-x-109">com</span><span 
+class="ec-qtmr-x-x-109">/</span><span 
+class="ec-qtmr-x-x-109">duboti</span><span 
+class="ec-qtmr-x-x-109">/</span><span 
+class="ec-qtmr-x-x-109">modgraf</span><span 
+class="ec-qtmr-x-x-109">.</span><span 
+class="ec-qtmr-x-x-109">git</span>
+   
+   </div>
+   </li>
+   <li 
+  class="enumerate" id="x1-2005x2">Budowanie za pomoc&#261; <span 
+class="ec-qtmri-x-x-120">Maven 3</span>: <!--l. 19-->
+   <div class="lstlisting" id="listing-2"><span class="label"><a 
+ id="x1-2006r1"></a></span><span 
+class="ec-qtmr-x-x-109">mvn</span><span 
+class="ec-qtmr-x-x-109">&#x00A0;</span><span 
+class="ec-qtmr-x-x-109">clean</span><span 
+class="ec-qtmr-x-x-109">&#x00A0;</span><span 
+class="ec-qtmr-x-x-109">install</span>
+   
+   </div>
+                                                                          
+                                                                          
+   </li>
+   <li 
+  class="enumerate" id="x1-2008x3">Uruchomienie programu: <!--l. 23-->
+   <div class="lstlisting" id="listing-3"><span class="label"><a 
+ id="x1-2009r1"></a></span><span 
+class="ec-qtmr-x-x-109">java</span><span 
+class="ec-qtmr-x-x-109">&#x00A0;</span><span 
+class="plsy-10x-x-109">-</span><span 
+class="ec-qtmr-x-x-109">jar</span><span 
+class="ec-qtmr-x-x-109">&#x00A0;</span><span 
+class="ec-qtmr-x-x-109">target</span><span 
+class="ec-qtmr-x-x-109">/</span><span 
+class="ec-qtmr-x-x-109">modgraf</span><span 
+class="plsy-10x-x-109">-</span><span 
+class="ec-qtmr-x-x-109">4.</span><span 
+class="ec-qtmr-x-x-109">x</span><span 
+class="plsy-10x-x-109">-</span><span 
+class="ec-qtmr-x-x-109">jar</span><span 
+class="plsy-10x-x-109">-</span><span 
+class="ec-qtmr-x-x-109">with</span><span 
+class="plsy-10x-x-109">-</span><span 
+class="ec-qtmr-x-x-109">dependencies</span><span 
+class="ec-qtmr-x-x-109">.</span><span 
+class="ec-qtmr-x-x-109">jar</span>
+   
+   </div>
+   </li></ol>
+<!--l. 29--><p class="indent" >   Osobi&#347;cie polecam polecam budowanie <span 
+class="ec-qtmri-x-x-120">Modgrafa </span>z IDE posiadaj&#261;cego wtyczk&#281; do
+Gita i Mavena. Wtedy po pobraniu repozytorium nale&#380;y:
+   <ol  class="enumerate1" >
+   <li 
+  class="enumerate" id="x1-2011x1">Wybra&#263; opcj&#281; <span 
+class="ec-qtmri-x-x-120">Import Maven project</span>
+   </li>
+   <li 
+  class="enumerate" id="x1-2013x2">Uruchamia&#263; za pomoc&#261; <span 
+class="ec-qtmri-x-x-120">Run Java Application </span>z ustawionym parametrem <span 
+class="ec-qtmri-x-x-120">main</span>
+   <span 
+class="ec-qtmri-x-x-120">class</span>: <span 
+class="ec-qcrr-x-x-120">modgraf.Main</span></li></ol>
+<a 
+ id="x1-2014r2"></a>
+
+<h3 class="sectionHead"><span class="titlemark">  </span><a 
+ id="x1-30002"></a>2.
+Implementacja
+algorytmu
+w
+trybie
+zwyk&#322;ym</h3>
+<!--l. 36--><p class="noindent" >Wskazówki z przyk&#322;adami dla osób chc&#261;cych napisa&#263; w&#322;asne algorytmy:
+   <ol  class="enumerate1" >
+   <li 
+  class="enumerate" id="x1-3002x1">Ka&#380;dy            algorytm            musi            dziedziczy&#263;            po            klasie
+   <span 
+class="ec-qcrr-x-x-120">ModgrafAbstractAlgorithm</span>.
+                                                                          
+                                                                          
+   <!--l. 42-->
+   <div class="lstlisting" id="listing-4"><span class="label"><a 
+ id="x1-3003r1"></a>1</span><span 
+class="ec-qcrb-x-x-120">package</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">modgraf</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">algorithm</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3004r2"></a>2</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3005r3"></a>3</span><span 
+class="ec-qcrb-x-x-120">import</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">modgraf</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">algorithm</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">ModgrafAbstractAlgorithm</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3006r4"></a>4</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3007r5"></a>5</span><span 
+class="ec-qcrb-x-x-120">public</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">class</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">MyAlgorithm</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">extends</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">ModgrafAbstractAlgorithm</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">...</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">}</span>
+   
+   </div>
+   </li>
+   <li 
+  class="enumerate" id="x1-3009x2">Nale&#380;y stworzy&#263; publiczny konstruktor przyjmuj&#261;cy obiekt klasy <span 
+class="ec-qcrr-x-x-120">Editor</span>.
+   <!--l. 50-->
+   <div class="lstlisting" id="listing-5"><span class="label"><a 
+ id="x1-3010r1"></a>1</span><span 
+class="ec-qcrb-x-x-120">public</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">MyAlgorithm</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">Editor</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">e</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3011r2"></a>2</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">super</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">e</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3012r3"></a>3</span><span 
+class="ec-qcrr-x-x-120">}</span>
+   
+   </div>
+   </li>
+   <li 
+  class="enumerate" id="x1-3014x3">Klasa <span 
+class="ec-qcrr-x-x-120">ModgrafAbstractAlgorithm </span>zawiera w deklaracji interfejs
+   <span 
+class="ec-qcrr-x-x-120">ActionListener</span>, ale go nie implementuje. Faktyczna implementacja
+   powinna znale&#378;&#263; si&#281; w klasie pochodnej. W najprostszym przypadku (gdy nie
+   istniej&#261; &#380;adne ograniczenia odno&#347;nie typu grafu) implementacja metody
+   <span 
+class="ec-qcrr-x-x-120">actionPerformed(...) </span>mo&#380;e ograniczy&#263; si&#281; do wywo&#322;ania metody
+   <span 
+class="ec-qcrr-x-x-120">openParamsWindow() </span>z klasy bazowej. <!--l. 56-->
+   <div class="lstlisting" id="listing-6"><span class="label"><a 
+ id="x1-3015r1"></a>1</span><span 
+class="ec-qcrr-x-x-120">@Override</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3016r2"></a>2</span><span 
+class="ec-qcrb-x-x-120">public</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">void</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">actionPerformed</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">ActionEvent</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">arg0</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3017r3"></a>3</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">openParamsWindow</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3018r4"></a>4</span><span 
+class="ec-qcrr-x-x-120">}</span>
+   
+   </div>
+   </li>
+   <li 
+  class="enumerate" id="x1-3020x4">Zwykle jednak istniej&#261; ograniczenia, dlatego warto na samym pocz&#261;tku sprawdzi&#263;
+   typ grafu. <!--l. 63-->
+   <div class="lstlisting" id="listing-7"><span class="label"><a 
+ id="x1-3021r1"></a>1</span><span 
+class="ec-qcrr-x-x-120">@Override</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3022r2"></a>2</span><span 
+class="ec-qcrb-x-x-120">public</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">void</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">actionPerformed</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">ActionEvent</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">arg0</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3023r3"></a>3</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">if</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">editor</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getGraphT</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">instanceof</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">DirectedGraph</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3024r4"></a>4</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&amp;&amp;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">editor</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getGraphT</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">instanceof</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">WeightedGraph</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3025r5"></a>5</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">openParamsWindow</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3026r6"></a>6</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">else</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3027r7"></a>7</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">JOptionPane</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">showMessageDialog</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">editor</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getGraphComponent</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3028r8"></a>8</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">lang</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getProperty</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">warning</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">wrong</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">graph</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">type</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">+</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3029r9"></a>9</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">lang</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getProperty</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">alg</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">mf</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">graph</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">type</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3030r10"></a>10</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">lang</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getProperty</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">warning</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">JOptionPane</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">WARNING_MESSAGE</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3031r11"></a>11</span><span 
+class="ec-qcrr-x-x-120">}</span>
+   
+   </div>
+   </li>
+   <li 
+  class="enumerate" id="x1-3033x5">Je&#380;eli algorytm nie potrzebuje parametrów pocz&#261;tkowych to zamiast metody
+   <span 
+class="ec-qcrr-x-x-120">openParamsWindow() </span>u&#380;ywamy metody <span 
+class="ec-qcrr-x-x-120">startAlgorithmWithoutParams()</span>.
+   <!--l. 77-->
+   <div class="lstlisting" id="listing-8"><span class="label"><a 
+ id="x1-3034r1"></a>1</span><span 
+class="ec-qcrr-x-x-120">@Override</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3035r2"></a>2</span><span 
+class="ec-qcrb-x-x-120">public</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">void</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">actionPerformed</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">ActionEvent</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">arg0</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3036r3"></a>3</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">startAlgorithmWithoutParams</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3037r4"></a>4</span><span 
+class="ec-qcrr-x-x-120">}</span>
+   
+   </div>
+   </li>
+   <li 
+  class="enumerate" id="x1-3039x6">Metoda <span 
+class="ec-qcrr-x-x-120">getName() </span>jest abstrakcyjna, wi&#281;c zawsze trzeba j&#261; zaimplementowa&#263;.
+                                                                          
+                                                                          
+   <span 
+class="ec-qcrr-x-x-120">String </span>zwracany przez t&#281; metod&#281; zostanie umieszczony w menu <span 
+class="ec-qtmri-x-x-120">Algorytmy</span>.
+   <!--l. 84-->
+   <div class="lstlisting" id="listing-9"><span class="label"><a 
+ id="x1-3040r1"></a>1</span><span 
+class="ec-qcrr-x-x-120">@Override</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3041r2"></a>2</span><span 
+class="ec-qcrb-x-x-120">public</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">String</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">getName</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3042r3"></a>3</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">return</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">lang</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getProperty</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">menu</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">algorithm</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">maximum</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">flow</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3043r4"></a>4</span><span 
+class="ec-qcrr-x-x-120">}</span>
+   
+   </div>
+   </li>
+   <li 
+  class="enumerate" id="x1-3045x7">Metoda <span 
+class="ec-qcrr-x-x-120">findAndShowResult() </span>tak&#380;e jest abstrakcyjna, wi&#281;c zawsze trzeba j&#261;
+   zaimplementowa&#263;. W celu zwi&#281;kszenia czytelno&#347;ci kodu warto oddzieli&#263; od
+   siebie:
+       <ul class="itemize1">
+       <li class="itemize">obliczanie wyniku (w przyk&#322;adzie metoda <span 
+class="ec-qcrr-x-x-120">findResult</span>)
+       </li>
+       <li class="itemize">tworzenie      tekstowego      rozwi&#261;zania      (w      przyk&#322;adzie      metoda
+       <span 
+class="ec-qcrr-x-x-120">createTextResult(result)</span>)
+       </li>
+       <li class="itemize">rysowanie      rozwi&#261;zania      na      grafie      (w      przyk&#322;adzie      metoda
+       <span 
+class="ec-qcrr-x-x-120">createGraphicalResult(result)</span>)</li></ul>
+   <!--l. 97-->
+   <div class="lstlisting" id="listing-10"><span class="label"><a 
+ id="x1-3046r1"></a>1</span><span 
+class="ec-qcrr-x-x-120">@Override</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3047r2"></a>2</span><span 
+class="ec-qcrb-x-x-120">protected</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">void</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">findAndShowResult</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3048r3"></a>3</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">List</span><span 
+class="ec-qcrr-x-x-120">&#x003C;</span><span 
+class="ec-qcrr-x-x-120">DefaultEdge</span><span 
+class="ec-qcrr-x-x-120">&#x003E;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">result</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">=</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">MyAlgorithm</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">findResult</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3049r4"></a>4</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">editor</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getGraphT</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">startVertex</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">endVertex</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3050r5"></a>5</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">if</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">result</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">!=</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">null</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3051r6"></a>6</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">createTextResult</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">result</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3052r7"></a>7</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">createGraphicalResult</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">result</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3053r8"></a>8</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">}</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3054r9"></a>9</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">else</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3055r10"></a>10</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">JOptionPane</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">showMessageDialog</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">editor</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getGraphComponent</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3056r11"></a>11</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">lang</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getProperty</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">message</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">no</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">solution</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3057r12"></a>12</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">lang</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getProperty</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">information</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">JOptionPane</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">INFORMATION_MESSAGE</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3058r13"></a>13</span><span 
+class="ec-qcrr-x-x-120">}</span>
+   
+   </div>
+   </li>
+   <li 
+  class="enumerate" id="x1-3060x8">Je&#380;eli wynik dzia&#322;ania algorytmu jest w postaci listy kraw&#281;dzi to implementacja
+   metody <span 
+class="ec-qcrr-x-x-120">createGraphicalResult(result) </span>jest bardzo prosta:
+   <!--l. 113-->
+   <div class="lstlisting" id="listing-11"><span class="label"><a 
+ id="x1-3061r1"></a>1</span><span 
+class="ec-qcrb-x-x-120">private</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">void</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">createGraphicalResult</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">List</span><span 
+class="ec-qcrr-x-x-120">&#x003C;</span><span 
+class="ec-qcrr-x-x-120">ModgrafEdge</span><span 
+class="ec-qcrr-x-x-120">&#x003E;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">result</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3062r2"></a>2</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">int</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">width</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">=</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">4;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">//</span><span 
+class="ec-qcrr-x-x-120">Po</span><span 
+class="ec-qcrr-x-x-120">&#380;</span><span 
+class="ec-qcrr-x-x-120">&#261;</span><span 
+class="ec-qcrr-x-x-120">dana</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">grubo</span><span 
+class="ec-qcrr-x-x-120">&#347;</span><span 
+class="ec-qcrr-x-x-120">&#263;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">kraw</span><span 
+class="ec-qcrr-x-x-120">&#281;</span><span 
+class="ec-qcrr-x-x-120">dzi</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3063r3"></a>3</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">for</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">ModgrafEdge</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">edge</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">:</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">result</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3064r4"></a>4</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">changeEdgeStrokeWidth</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">edge</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">width</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3065r5"></a>5</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">editor</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getGraphComponent</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">refresh</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3066r6"></a>6</span><span 
+class="ec-qcrr-x-x-120">}</span>
+   
+   </div>
+   </li>
+   <li 
+  class="enumerate" id="x1-3068x9">Analogicznie wygl&#261;da implementacja metody <span 
+class="ec-qcrr-x-x-120">createGraphicalResult</span>
+   <span 
+class="ec-qcrr-x-x-120">(result) </span>w przypadku, gdy rozwi&#261;zaniem jest lista wierzcho&#322;ków: <!--l. 122-->
+   <div class="lstlisting" id="listing-12"><span class="label"><a 
+ id="x1-3069r1"></a>1</span><span 
+class="ec-qcrb-x-x-120">private</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">void</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">createGraphicalResult</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">List</span><span 
+class="ec-qcrr-x-x-120">&#x003C;</span><span 
+class="ec-qcrr-x-x-120">Vertex</span><span 
+class="ec-qcrr-x-x-120">&#x003E;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">result</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3070r2"></a>2</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">int</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">width</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">=</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">4;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">//</span><span 
+class="ec-qcrr-x-x-120">Po</span><span 
+class="ec-qcrr-x-x-120">&#380;</span><span 
+class="ec-qcrr-x-x-120">&#261;</span><span 
+class="ec-qcrr-x-x-120">dana</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">grubo</span><span 
+class="ec-qcrr-x-x-120">&#347;</span><span 
+class="ec-qcrr-x-x-120">&#263;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">obramowania</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">wierzcho</span><span 
+class="ec-qcrr-x-x-120">&#322;</span><span 
+class="ec-qcrr-x-x-120">ka</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3071r3"></a>3</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">for</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">Vertex</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">vertex</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">:</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">result</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3072r4"></a>4</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">changeVertexStrokeWidth</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">vertex</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">width</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3073r5"></a>5</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">editor</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getGraphComponent</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">refresh</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3074r6"></a>6</span><span 
+class="ec-qcrr-x-x-120">}</span>
+   
+   </div>
+   </li>
+                                                                          
+                                                                          
+   <li 
+  class="enumerate" id="x1-3076x10">Metoda <span 
+class="ec-qcrr-x-x-120">createGraphicalResult(result) </span>powinna w ostatniej linijce
+   zawiera&#263; wywo&#322;anie metody <span 
+class="ec-qcrr-x-x-120">refresh()</span>. <!--l. 131-->
+   <div class="lstlisting" id="listing-13"><span class="label"><a 
+ id="x1-3077r1"></a>1</span><span 
+class="ec-qcrr-x-x-120">editor</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getGraphComponent</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">refresh</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">;</span>
+   
+   </div>
+   </li>
+   <li 
+  class="enumerate" id="x1-3079x11">Równie prosto mo&#380;na zaimplementowa&#263; metod&#281; <span 
+class="ec-qcrr-x-x-120">createTextResult</span>
+   <span 
+class="ec-qcrr-x-x-120">(result) </span>w przypadku, gdy chcemy po prostu wypisa&#263; list&#281; wierzcho&#322;ków:
+   <!--l. 135-->
+   <div class="lstlisting" id="listing-14"><span class="label"><a 
+ id="x1-3080r1"></a>1</span><span 
+class="ec-qcrb-x-x-120">private</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">void</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">createTextResult</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">List</span><span 
+class="ec-qcrr-x-x-120">&#x003C;</span><span 
+class="ec-qcrr-x-x-120">Vertex</span><span 
+class="ec-qcrr-x-x-120">&#x003E;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">result</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3081r2"></a>2</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">StringBuilder</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">sb</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">=</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">new</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">StringBuilder</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3082r3"></a>3</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">append</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">lang</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getProperty</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">menu</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">algorithm</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">my</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">algorithm</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3083r4"></a>4</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">append</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">:\</span><span 
+class="ec-qcrr-x-x-120">n</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3084r5"></a>5</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">for</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">Vertex</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">vertex</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">:</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">result</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3085r6"></a>6</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">sb</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">append</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">vertex</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getName</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3086r7"></a>7</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">append</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3087r8"></a>8</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">}</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3088r9"></a>9</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">sb</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">replace</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">sb</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">length</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">-2,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">sb</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">length</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3089r10"></a>10</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">editor</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">setText</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">sb</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">toString</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3090r11"></a>11</span><span 
+class="ec-qcrr-x-x-120">}</span>
+   
+   </div>
+   </li>
+   <li 
+  class="enumerate" id="x1-3092x12">Analogicznie wygl&#261;da implementacja metody <span 
+class="ec-qcrr-x-x-120">createTextResult</span>
+   <span 
+class="ec-qcrr-x-x-120">(result) </span>w przypadku, gdy rozwi&#261;zaniem jest lista kraw&#281;dzi: <!--l. 149-->
+   <div class="lstlisting" id="listing-15"><span class="label"><a 
+ id="x1-3093r1"></a>1</span><span 
+class="ec-qcrb-x-x-120">private</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">void</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">createTextResult</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">List</span><span 
+class="ec-qcrr-x-x-120">&#x003C;</span><span 
+class="ec-qcrr-x-x-120">ModgrafEdge</span><span 
+class="ec-qcrr-x-x-120">&#x003E;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">edges</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">double</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">totalWeight</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3094r2"></a>2</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">StringBuilder</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">sb</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">=</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">new</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">StringBuilder</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3095r3"></a>3</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">append</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">lang</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getProperty</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">alg</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">my</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">message</span><span 
+class="ec-qcrr-x-x-120">-1</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3096r4"></a>4</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">append</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">totalWeight</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3097r5"></a>5</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">append</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">lang</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getProperty</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">alg</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">my</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">message</span><span 
+class="ec-qcrr-x-x-120">-2</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3098r6"></a>6</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">for</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">ModgrafEdge</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">edge</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">:</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">edges</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3099r7"></a>7</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">sb</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">append</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">edge</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getSource</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getName</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3100r8"></a>8</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">append</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">-</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3101r9"></a>9</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">append</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">edge</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getTarget</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getName</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3102r10"></a>10</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">append</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">\</span><span 
+class="ec-qcrr-x-x-120">n</span><span 
+class="ec-qcrr-x-x-120">"</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3103r11"></a>11</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">}</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3104r12"></a>12</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">editor</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">setText</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">sb</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">toString</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-3105r13"></a>13</span><span 
+class="ec-qcrr-x-x-120">}</span>
+   
+   </div>
+   </li>
+   <li 
+  class="enumerate" id="x1-3107x13">Metoda <span 
+class="ec-qcrr-x-x-120">createTextResult(result) </span>powinna w ostatniej linijce zawiera&#263;
+   wywo&#322;anie metody <span 
+class="ec-qcrr-x-x-120">setText(String)</span>. <!--l. 165-->
+   <div class="lstlisting" id="listing-16"><span class="label"><a 
+ id="x1-3108r1"></a>1</span><span 
+class="ec-qcrr-x-x-120">editor</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">setText</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">sb</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">toString</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span>
+   
+   </div>
+   </li>
+   <li 
+  class="enumerate" id="x1-3110x14">Podczas implementacji algorytmów mo&#380;e by&#263; przydatne stworzenie w&#322;asnych klas
+   odpowiadaj&#261;cych wierzcho&#322;kom lub kraw&#281;dziom zawieraj&#261;cych dodatkowe pola. W
+   przypadku wierzcho&#322;ków sprawa jest prosta, bo zawsze nale&#380;y dziedziczy&#263; po klasie
+   <span 
+class="ec-qcrr-x-x-120">Vertex</span>. Przyk&#322;ad: statyczna klasa <span 
+class="ec-qcrr-x-x-120">DistanceVertex </span>znajduj&#261;ca si&#281; wewn&#261;trz
+   klasy <span 
+class="ec-qcrr-x-x-120">DijkstraAlgorithm</span>.
+   <!--l. 170--><p class="noindent" >Sprawa jest du&#380;o bardziej skomplikowana dla kraw&#281;dzi, poniewa&#380; w <span 
+class="ec-qtmri-x-x-120">Modgrafie </span>jest
+   wiele klas reprezentuj&#261;cych ró&#380;ne rodzaje kraw&#281;dzi. Ogólna zasada mówi &#380;e
+   powinno si&#281; dziedziczy&#263; po klasie, która zosta&#322;a wykorzystana do tworzenia
+   kraw&#281;dzi w danym grafie:
+       <ul class="itemize1">
+       <li class="itemize">graf nieskierowany niewa&#380;ony &#8212; <span 
+class="ec-qcrr-x-x-120">UndirectedEdge</span>
+                                                                          
+                                                                          
+       </li>
+       <li class="itemize">graf nieskierowany wa&#380;ony &#8212; <span 
+class="ec-qcrr-x-x-120">WeightedEdgeImpl</span>
+       </li>
+       <li class="itemize">graf              nieskierowany              podwójnie              wa&#380;ony              &#8212;
+       <span 
+class="ec-qcrr-x-x-120">DoubleWeightedEdgeImpl</span>
+       </li>
+       <li class="itemize">graf skierowany niewa&#380;ony &#8212; <span 
+class="ec-qcrr-x-x-120">DirectedEdge</span>
+       </li>
+       <li class="itemize">graf skierowany wa&#380;ony &#8212; <span 
+class="ec-qcrr-x-x-120">DirectedWeightedEdge</span>
+       </li>
+       <li class="itemize">graf               skierowany               podwójnie               wa&#380;ony               &#8212;
+       <span 
+class="ec-qcrr-x-x-120">DirectedDoubleWeightedEdge</span></li></ul>
+   <!--l. 180--><p class="noindent" >Przyk&#322;ady:
+       <ul class="itemize1">
+       <li class="itemize">klasa <span 
+class="ec-qcrr-x-x-120">ColoredEdge </span>rozszerza klas&#281; <span 
+class="ec-qcrr-x-x-120">UndirectedEdge </span>o pole <span 
+class="ec-qtmri-x-x-120">kolor</span>
+       </li>
+       <li class="itemize">klasa        <span 
+class="ec-qcrr-x-x-120">DirectedTripleWeightedEdge   </span>rozszerza        klas&#281;
+       <span 
+class="ec-qcrr-x-x-120">DirectedDoubleWeightedEdge </span>o pola <span 
+class="ec-qtmri-x-x-120">flow </span>i <span 
+class="ec-qtmri-x-x-120">consistentWithFlow</span></li></ul>
+   </li>
+   <li 
+  class="enumerate" id="x1-3112x15">Dodanie na sta&#322;e nowego algorytmu do <span 
+class="ec-qtmri-x-x-120">Modgrafa </span>b&#281;dzie wymaga&#322;o zmian w
+   klasach <span 
+class="ec-qcrr-x-x-120">MenuBar </span>oraz <span 
+class="ec-qcrr-x-x-120">Language </span>w sposób analogiczny do istniej&#261;cych ju&#380;
+   algorytmów.</li></ol>
+<a 
+ id="x1-3113r3"></a>
+
+<h3 class="sectionHead"><span class="titlemark"> </span><a 
+ id="x1-40003"></a>3.
+Implementacja
+algorytmu
+w
+trybie
+krokowym</h3>
+<!--l. 189--><p class="noindent" >Wskazówki z przyk&#322;adami dla osób chc&#261;cych napisa&#263; w&#322;asne algorytmy w trybie
+krokowym:
+   <ol  class="enumerate1" >
+   <li 
+  class="enumerate" id="x1-4002x1">Ka&#380;dy algorytm w trybie krokowym musi dziedziczy&#263; po klasie
+   <span 
+class="ec-qcrr-x-x-120">ModgrafAbstractStepsAlgorithm</span>. <!--l. 192-->
+   <div class="lstlisting" id="listing-17"><span class="label"><a 
+ id="x1-4003r1"></a>1</span><span 
+class="ec-qcrb-x-x-120">package</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">modgraf</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">algorithm</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">steps</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4004r2"></a>2</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4005r3"></a>3</span><span 
+class="ec-qcrb-x-x-120">import</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">modgraf</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">algorithm</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">ModgrafAbstractStepsAlgorithm</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4006r4"></a>4</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4007r5"></a>5</span><span 
+class="ec-qcrb-x-x-120">public</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">class</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">MyStepsAlgorithm</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">extends</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">ModgrafAbstractStepsAlgorithm</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">...</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">}</span>
+   
+                                                                          
+                                                                          
+   </div>
+   </li>
+   <li 
+  class="enumerate" id="x1-4009x2">Wskazówki od 2. do 6., 14. oraz 15. z poprzedniego rozdzia&#322;u dotycz&#261; programistów
+   algorytmów zarówno w trybie zwyk&#322;ym jak i krokowym.
+   </li>
+   <li 
+  class="enumerate" id="x1-4011x3">W przypadku algorytmów w trybie krokowym nie nale&#380;y nadpisywa&#263; implementacji
+   metody <span 
+class="ec-qcrr-x-x-120">findAndShowResult()</span>, która tworzy okno &#8222;Krokowe wykonywanie
+   algorytmu&#8221; pokazane na rysunku <span 
+class="ec-qtmb-x-x-120">??</span>. Dla algorytmów w trybie krokowym
+   dedykowana jest metoda <span 
+class="ec-qcrr-x-x-120">runOneStep()</span>, która wykonuje 1 krok algorytmu.
+   Poni&#380;ej znajduj&#281; si&#281; przyk&#322;ad implementacji tej metody dla algorytmu Dijksty.
+   <!--l. 201-->
+   <div class="lstlisting" id="listing-18"><span class="label"><a 
+ id="x1-4012r1"></a>1</span><span 
+class="ec-qcrr-x-x-120">@Override</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4013r2"></a>2</span><span 
+class="ec-qcrb-x-x-120">protected</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">void</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">runOneStep</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4014r3"></a>3</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">if</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">first</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4015r4"></a>4</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">firstStep</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4016r5"></a>5</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">else</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4017r6"></a>6</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">if</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">(!</span><span 
+class="ec-qcrr-x-x-120">endVertex</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">equals</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">vertexU</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4018r7"></a>7</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">if</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">edgesList</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">isEmpty</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&amp;&amp;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">edgeVchecked</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4019r8"></a>8</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">selectNextVertex</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4020r9"></a>9</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">else</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4021r10"></a>10</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">if</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">edgeVchecked</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4022r11"></a>11</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">selectNextEdge</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4023r12"></a>12</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">else</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4024r13"></a>13</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">checkDistance</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4025r14"></a>14</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">}</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4026r15"></a>15</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">}</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">else</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4027r16"></a>16</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">createTextResult</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4028r17"></a>17</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">changeState</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">State</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">End</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4029r18"></a>18</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">}</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4030r19"></a>19</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">}</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4031r20"></a>20</span><span 
+class="ec-qcrr-x-x-120">}</span>
+   
+   </div>
+   <!--l. 224--><p class="noindent" >Fragment pochodzi z klasy <span 
+class="ec-qcrr-x-x-120">DijkstraAlgorithm </span>z pakietu <span 
+class="ec-qcrr-x-x-120">modgraf.</span>
+   <span 
+class="ec-qcrr-x-x-120">algorithm.steps</span>. Pe&#322;ny kod tej klasy mo&#380;na znale&#378;&#263; w repozytorium
+   <span 
+class="ec-qtmri-x-x-120">Modgrafa </span>na <span 
+class="ec-qtmri-x-x-120">GitHubie</span>.
+   </li>
+   <li 
+  class="enumerate" id="x1-4033x4">Najwi&#281;ksz&#261; trudno&#347;ci&#261; w pisaniu algorytmów w trybie krokowym jest
+   brak mo&#380;liwo&#347;ci u&#380;ywania p&#281;tli, które s&#261; nieod&#322;&#261;czn&#261; cech&#261; wszystkich
+   algorytmów. Cz&#281;sto w ramach jednej iteracji wykonywanych jest wiele operacji. W
+   algorytmie w trybie krokowym ka&#380;da taka czynno&#347;&#263; powinna odpowiada&#263;
+   jednemu stanowi implementowanej klasy. Przed rozpocz&#281;ciem implementacji
+   warto zaplanowa&#263; maszyn&#281; stanow&#261; dla wybranego algorytmu. W powy&#380;szym
+   przyk&#322;adzie wida&#263; &#8222;drabink&#281; ifów&#8221;, która jest nielubiana przez do&#347;wiadczonych
+   programistów, ale bez niej trudno by&#322;oby mi sprawdzi&#263; w jakiem stanie
+   znajduje si&#281; aktualnie algorytm. Oczywi&#347;cie mo&#380;liwe s&#261; inne sposoby
+   implementacji maszyny stanowej. Wa&#380;ne jest jednak, aby ka&#380;demu stanowi
+   odpowiada&#322;o wywo&#322;anie jakiej&#347; metody. U&#322;atwia to testowanie dzia&#322;ania
+   algorytmu.
+   </li>
+   <li 
+  class="enumerate" id="x1-4035x5">W ka&#380;dym kroku powinno znale&#378;&#263; si&#281; modyfikowanie warstwy matematycznej
+   grafu, stanu algorytmu oraz warstwy wizualnej grafu. Przyk&#322;ad: <!--l. 227-->
+   <div class="lstlisting" id="listing-19"><span class="label"><a 
+ id="x1-4036r1"></a>1</span><span 
+class="ec-qcrb-x-x-120">private</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">void</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">checkDistance</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4037r2"></a>2</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">//</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">Linie</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">od</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">3.</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">do</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">8.</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">modyfikuj</span><span 
+class="ec-qcrr-x-x-120">&#261;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">warstw</span><span 
+class="ec-qcrr-x-x-120">&#281;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">matematyczn</span><span 
+class="ec-qcrr-x-x-120">&#261;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4038r3"></a>3</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">double</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">distanceThroughU</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">=</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">distances</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">get</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">vertexU</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getId</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4039r4"></a>4</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">+</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">((</span><span 
+class="ec-qcrr-x-x-120">WeightedEdge</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">edgeV</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getWeight</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4040r5"></a>5</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">if</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">distanceThroughU</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x003C;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">distances</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">get</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">vertexV</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getId</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">{</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4041r6"></a>6</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">queue</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">remove</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrb-x-x-120">new</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">DistanceVertex</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">vertexV</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">0.0,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">null</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4042r7"></a>7</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">distances</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">put</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">vertexV</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">getId</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">distanceThroughU</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4043r8"></a>8</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">queue</span><span 
+class="ec-qcrr-x-x-120">.</span><span 
+class="ec-qcrr-x-x-120">add</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrb-x-x-120">new</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">DistanceVertex</span><span 
+class="ec-qcrr-x-x-120">(</span><span 
+class="ec-qcrr-x-x-120">vertexV</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">distanceThroughU</span><span 
+class="ec-qcrr-x-x-120">,</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">edgeV</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">)</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4044r9"></a>9</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">showDistances</span><span 
+class="ec-qcrr-x-x-120">()</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">//</span><span 
+class="ec-qcrr-x-x-120">ta</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">metoda</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">pokazuje</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">w</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">warstwie</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">wizualnej</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">zamiany</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4045r10"></a>10</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">//</span><span 
+class="ec-qcrr-x-x-120">wykonane</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">w</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">warstwie</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">matematycznej</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4046r11"></a>11</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">}</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4047r12"></a>12</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">edgeVchecked</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">=</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrb-x-x-120">true</span><span 
+class="ec-qcrr-x-x-120">;</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">//</span><span 
+class="ec-qcrr-x-x-120">ta</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">flaga</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">zmienia</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">stan</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><span 
+class="ec-qcrr-x-x-120">algorytmu</span><span 
+class="ec-qcrr-x-x-120">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4048r13"></a>13</span><span 
+class="ec-qcrr-x-x-120">}</span>
+   
+   </div>
+   </li></ol>
+                                                                          
+                                                                          
+    
+</body></html> 
+
+                                                                          
+
+

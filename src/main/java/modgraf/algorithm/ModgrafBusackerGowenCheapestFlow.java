@@ -82,7 +82,7 @@ public class ModgrafBusackerGowenCheapestFlow extends ModgrafAbstractAlgorithm {
 
 	private void createGraphicalResult(
 			SimpleDirectedWeightedGraph<Vertex, DirectedTripleWeightedEdge> graph) {
-		int width = 3;
+		int width = 4;
 		int halfWidth = 1;
 		Graph<Vertex, ModgrafEdge> graphT = editor.getGraphT();
 
