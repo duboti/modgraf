@@ -22,6 +22,10 @@ public class Language
 		lang.setProperty("menu-file-saveas", "Zapisz jako");
         lang.setProperty("menu-file-save-text-result", "Zapisz rozwiązanie tekstowe");
 
+		lang.setProperty("menu-edit", "Edycja");
+		lang.setProperty("menu-edit-selectable", "Zaznaczanie");
+		lang.setProperty("menu-edit-connectable", "Rysowanie krawędzi");
+
 		lang.setProperty("menu-vertex", "Wierzchołek");
 		lang.setProperty("menu-vertex-add", "Dodaj wierzchołek");
 		lang.setProperty("menu-vertex-delete", "Usuń zaznaczone");
@@ -303,6 +307,10 @@ public class Language
 		lang.setProperty("menu-file-save", "Save");
 		lang.setProperty("menu-file-saveas", "Save as");
 		lang.setProperty("menu-file-save-text-result", "Save text result");
+
+		lang.setProperty("menu-edit", "Edit");
+		lang.setProperty("menu-edit-selectable", "Selectable");
+		lang.setProperty("menu-edit-connectable", "Connectable");
 
 		lang.setProperty("menu-vertex", "Vertex");
 		lang.setProperty("menu-vertex-add", "Add vertex");

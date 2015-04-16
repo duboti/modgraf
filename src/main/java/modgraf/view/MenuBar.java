@@ -1,41 +1,26 @@
 package modgraf.view;
 
-import static com.mxgraph.util.mxConstants.SHAPE_CLOUD;
-import static com.mxgraph.util.mxConstants.SHAPE_ELLIPSE;
-import static com.mxgraph.util.mxConstants.SHAPE_HEXAGON;
-import static com.mxgraph.util.mxConstants.SHAPE_RECTANGLE;
-import static com.mxgraph.util.mxConstants.SHAPE_RHOMBUS;
-import static com.mxgraph.util.mxConstants.STYLE_FILLCOLOR;
-import static com.mxgraph.util.mxConstants.STYLE_FONTCOLOR;
-import static com.mxgraph.util.mxConstants.STYLE_FONTSIZE;
-import static com.mxgraph.util.mxConstants.STYLE_STROKECOLOR;
-import static com.mxgraph.util.mxConstants.STYLE_STROKEWIDTH;
-import static modgraf.view.AlgorithmMenuItems.DirectedType.both;
-import static modgraf.view.AlgorithmMenuItems.DirectedType.directed;
-import static modgraf.view.AlgorithmMenuItems.DirectedType.undirected;
-import static modgraf.view.AlgorithmMenuItems.EdgeWeight.*;
-import static modgraf.view.properties.PreferencesTab.FONT_MAXIMUM_SIZE;
-import static modgraf.view.properties.PreferencesTab.FONT_MINIMUM_SIZE;
-import static modgraf.view.properties.VertexTab.BORDER_MAXIMUM_WIDTH;
-import static modgraf.view.properties.VertexTab.BORDER_MINIMUM_WIDTH;
-
-import java.awt.Component;
-import java.awt.event.ActionListener;
-import java.net.URL;
-import java.util.Properties;
-
-import javax.swing.ImageIcon;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.KeyStroke;
-
 import modgraf.action.*;
+import modgraf.action.ActionChangeGraphSetting.Settings;
 import modgraf.algorithm.*;
 import modgraf.algorithm.steps.DijkstraAlgorithm;
 import modgraf.view.AlgorithmMenuItems.DirectedType;
 import modgraf.view.AlgorithmMenuItems.EdgeWeight;
 import modgraf.view.properties.Preferences;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.net.URL;
+import java.util.Properties;
+
+import static com.mxgraph.util.mxConstants.*;
+import static modgraf.view.AlgorithmMenuItems.DirectedType.*;
+import static modgraf.view.AlgorithmMenuItems.EdgeWeight.*;
+import static modgraf.view.properties.PreferencesTab.FONT_MAXIMUM_SIZE;
+import static modgraf.view.properties.PreferencesTab.FONT_MINIMUM_SIZE;
+import static modgraf.view.properties.VertexTab.BORDER_MAXIMUM_WIDTH;
+import static modgraf.view.properties.VertexTab.BORDER_MINIMUM_WIDTH;
 
 /**
  * Klasa zawiera pasek menu.
@@ -69,7 +54,12 @@ public class MenuBar extends JMenuBar
 		file.add(createMenuItem("menu-file-saveas",	new ActionSaveAs(editor), 	false));
 		file.add(createMenuItem("menu-file-save-text-result",	new ActionSaveTextResult(editor), 	false));
 		add(file);
-		
+
+		JMenu edit = new JMenu(lang.getProperty("menu-edit"));
+		edit.add(createCheckboxMenuItem("menu-edit-selectable", Settings.selectable));
+		edit.add(createCheckboxMenuItem("menu-edit-connectable", Settings.connectable));
+		add(edit);
+
 		JMenu vertex = new JMenu(lang.getProperty("menu-vertex"));
 		vertex.add(createMenuItem("menu-vertex-add", 	new ActionAddVertex(editor), 		false, "icons/add.png", 	"INSERT"));
 		vertex.add(createMenuItem("menu-vertex-delete", new ActionRemoveSelected(editor), 	false, "icons/minus.png", 	"DELETE"));
@@ -133,7 +123,14 @@ public class MenuBar extends JMenuBar
 		add(help);
 	}
 
-    private JMenu createMenuEulerianCycle() {
+	private JCheckBoxMenuItem createCheckboxMenuItem(String propertyName, Settings type) {
+		JCheckBoxMenuItem menuItem = new JCheckBoxMenuItem(lang.getProperty(propertyName));
+		menuItem.setState(true);
+		menuItem.addActionListener(new ActionChangeGraphSetting(editor, menuItem, type));
+		return menuItem;
+	}
+
+	private JMenu createMenuEulerianCycle() {
         JMenu eulerianCycle = new JMenu(lang.getProperty("menu-algorithm-eulerian-cycle"));
         eulerianCycle.add(createDisabledAlgorithm("menu-algorithm-eulerian-cycle-h", new ModgrafEulerianCycle(editor), undirected, any));
         return eulerianCycle;
