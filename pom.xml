@@ -4,12 +4,12 @@
     <groupId>modgraf</groupId>
     <artifactId>modgraf</artifactId>
     <packaging>jar</packaging>
-    <version>4.0</version>
+    <version>4.1</version>
 
     <repositories>
         <repository>
             <id>my-local-repo</id>
-            <url>file:\\${basedir}\my-repo</url>
+            <url>file://${basedir}/my-repo</url>
         </repository>
     </repositories>
 
